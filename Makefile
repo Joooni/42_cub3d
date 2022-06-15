@@ -17,6 +17,7 @@ SRC =	main.c \
 		$(SRC_PATH)draw_utils.c \
 		$(SRC_PATH)init.c \
 		$(SRC_PATH)controls.c \
+		$(SRC_PATH)utils.c \
 		
 # -*- Objects -*-
 SRCS=$(addprefix $(SRC_PATH),$(SRC))

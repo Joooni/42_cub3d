@@ -73,5 +73,6 @@ int		ft_render_next_frame(t_window *window);
 
 // utils.c
 
-int		ft_close(t_window *window);
+int	ft_close(t_window *window);
+
 #endif

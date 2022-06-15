@@ -29,4 +29,5 @@ void	ft_init_player(t_window *window)
 	window->player->x = 30;
 	window->player->y = 30;
 	window->player->size = 5;
+	window->player->color = 0x0058BD55;
 }

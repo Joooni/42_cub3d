@@ -24,7 +24,29 @@ int	ft_render_next_frame(t_window *window)
 		}
 		y++;
 	}
+	ft_draw_grid(window);
+	ft_grid_highlight(window);
 	ft_draw_player(window);
 	mlx_put_image_to_window(window->mlx, window->win, window->img->img, 0, 0);
 	return (0);
+}
+
+void	ft_draw_rect(t_window *window, t_rect rect)
+{
+	int	counter_x;
+	int	counter_y;
+
+	counter_y = 0;
+	while (counter_y < rect.size_y)
+	{
+		counter_x = 0;
+		while (counter_x < rect.size_x)
+		{
+			ft_pixel_put_img(window->img,
+				rect.x + counter_x,
+				rect.y + counter_y, rect.color);
+			counter_x++;
+		}
+		counter_y++;
+	}
 }

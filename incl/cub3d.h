@@ -1,4 +1,3 @@
-
 #ifndef CUB3D_H
 
 # define CUB3D_H
@@ -52,12 +51,27 @@ typedef struct s_window
 	t_player	*player;
 }	t_window;
 
+// init.c
+
 void	ft_init(t_window *window);
-t_image *ft_init_image(void *mlx);
-int		ft_close(t_window *window);
+t_image	*ft_init_image(void *mlx);
+void	ft_init_player(t_window *window);
+
+// controls.c
+
 int		ft_key_press(int keycode, t_window *window);
-void	ft_pixel_put_img(t_image *img, int x, int y, int color);
 void	ft_move(int keycode, t_window *window);
+
+// draw_minimap.c
+
 void	ft_draw_player(t_window *window);
+
+// draw_utils.c
+
+void	ft_pixel_put_img(t_image *img, int x, int y, int color);
 int		ft_render_next_frame(t_window *window);
+
+// utils.c
+
+int		ft_close(t_window *window);
 #endif

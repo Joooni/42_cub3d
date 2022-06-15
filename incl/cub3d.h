@@ -6,7 +6,7 @@
 /*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 09:30:22 by jsubel            #+#    #+#             */
-/*   Updated: 2022/06/13 09:55:06 by jsubel           ###   ########.fr       */
+/*   Updated: 2022/06/15 12:16:03 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 
 # include <stdlib.h>
 # include <stdio.h>
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include <math.h>
 # include "../libft/libft.h"
 # include <stdint.h>
 # include "error.h"
+# include "keys.h"
 
 /**
 * @brief minilibx image structure
@@ -51,6 +52,7 @@ typedef struct s_player
 {
 	double	x;
 	double	y;
+	int		size;
 }	t_player;
 
 typedef struct s_window
@@ -61,4 +63,12 @@ typedef struct s_window
 	t_player	*player;
 }	t_window;
 
+void	ft_init(t_window *window);
+t_image *ft_init_image(void *mlx);
+int		ft_close(t_window *window);
+int		ft_key_press(int keycode, t_window *window);
+void	ft_pixel_put_img(t_image *img, int x, int y, int color);
+void	ft_move(int keycode, t_window *window);
+void	ft_draw_player(t_window *window);
+int		ft_render_next_frame(t_window *window);
 #endif

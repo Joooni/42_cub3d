@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 09:50:35 by jsubel            #+#    #+#             */
-/*   Updated: 2022/06/15 11:24:06 by jsubel           ###   ########.fr       */
+/*   Created: 2022/06/15 11:43:13 by jsubel            #+#    #+#             */
+/*   Updated: 2022/06/15 11:43:23 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
 
-# define ERR_IMAGE_INIT		"Error: Can\'t initialise image"
-# define ERR_WINDOW_INIT	"Error: Can\'t initialise window"
-# define ERR_MLX_INIT		"Error: Can\'t initialise mlx instance"
+#ifndef KEYS_H
+# define KEYS_H
+
+#  define ARROW_LEFT		123
+#  define ARROW_RIGHT		124
+#  define ARROW_UP			126
+#  define ARROW_DOWN		125
+
+#  define MOUSE_UP			4
+#  define MOUSE_DOWN		5
+
+#  define KEY_ESCAPE		53
+#  define KEY_SPACE			49
+#  define KEY_PLUS			30
+#  define KEY_MINUS			44
+#  define KEY_R				15
+#  define KEY_C				8
 
 #endif

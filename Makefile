@@ -3,23 +3,19 @@
 NAME = cub3d
 # -*- Compiler -*-
 GCC = gcc
-FLAGS = -Wall -Wextra -Werror -Imlx -O3
+FLAGS = -Wall -Wextra -Werror -Imlx
 
 # -*- Includes -*-
 SRC_PATH = src/
-OBJ_PATH = obj/
 LIBFT = libft
 INCL = incl
-MLX_MACOS = mlx_macos
-MLX_LINUX = mlx_linux
+MLX_MACOS = mlx
 
 # -*- Source Files -*-
-SRC =	main.c \
-		$(SRC_PATH)
+SRC =	main.c
 
 # -*- Objects -*-
 SRCS=$(addprefix $(SRC_PATH),$(SRC))
-OBJS=$(addprefix $(OBJ_PATH),$(SRC:.c=.o))
 
 all: lib tmp $(NAME)
 
@@ -31,12 +27,9 @@ lib:
 	make -C $(LIBFT)
 	make -C $(MLX_MACOS)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	$(GCC) $(FLAGS) -c -o $@ $^
+$(NAME): $(LIBFT)/libft.a $(SRC)
+	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)/libft.a
-	$(GCC) $(FLAGS) $^ -L $(LIBFT) -lmlx -framework OpenGL -framework AppKit -lz -lm -o $(NAME)
-endif
 
 clean:
 	make clean -C $(LIBFT)

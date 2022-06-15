@@ -13,6 +13,8 @@ MLX_MACOS = mlx
 
 # -*- Source Files -*-
 SRC =	main.c \
+		get_next_line/get_next_line.c \
+		get_next_line/get_next_line_utils.c \
 		$(SRC_PATH)controls.c \
 		$(SRC_PATH)draw_minimap.c \
 		$(SRC_PATH)draw_utils.c \

@@ -7,6 +7,11 @@
 #  define ARROW_UP			126
 #  define ARROW_DOWN		125
 
+#  define KEY_W				13
+#  define KEY_A				0
+#  define KEY_S				1
+#  define KEY_D				2
+
 #  define MOUSE_UP			4
 #  define MOUSE_DOWN		5
 

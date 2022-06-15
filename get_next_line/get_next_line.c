@@ -5,109 +5,118 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 08:30:30 by jtomala           #+#    #+#             */
-/*   Updated: 2021/12/21 09:03:50 by jtomala          ###   ########.fr       */
+/*   Created: 2022/06/15 20:07:17 by jtomala           #+#    #+#             */
+/*   Updated: 2022/06/15 20:10:34 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_save_buffer(int fd, char *tmp)
+char *get_next_line(int fd)
 {
-	int		read_done;
-	char	*buff_part;
+	static char buffer[BUFFER_SIZE + 1];
+	char *output;
+	
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	output = (char *) malloc(BUFFER_SIZE + 1);
+	if (!output)
+		return (NULL);
+	output[0] = '\0';
+	return (gnl_handler(fd, buffer, output));
+}
 
-	read_done = 1;
-	while ((read_done != 0) && (ft_strchr(tmp, '\n') == 0))
+char *gnl_handler(int fd, char *buffer, char *output)
+{
+	ssize_t read_result;
+
+	while (1)
 	{
-		buff_part = (char *)ft_calloc ((BUFFER_SIZE + 1), sizeof(char));
-		if (buff_part == 0)
-			return (0);
-		read_done = read(fd, buff_part, BUFFER_SIZE);
-		if (read_done == -1)
+		if (buffer[0])
 		{
-			free(buff_part);
-			return (0);
+			if (ft_strchr(buffer, '\n'))
+				return (ft_found_new_line(buffer, output));
+			output = ft_realloc(output, buffer, 1, 0);
 		}
-		else if (read_done > 0)
-			tmp = ft_strjoin(tmp, buff_part);
-		else
-			free(buff_part);
+		read_result = read(fd, (void *) buffer, BUFFER_SIZE);
+		if (read_result == -1 || (read_result == 0 && output[0] == '\0'))
+		{
+			free(output);
+			return (NULL);
+		}
+		buffer[read_result] = '\0';
+		if (read_result == 0)
+			return (output);
 	}
-	return (tmp);
 }
 
-static char	*ft_save_line(char *tmp)
+char *ft_found_new_line(char *buffer, char *output)
 {
-	char	*line;
-	int		size;
-	int		i;
+	int copy_size;
+	char *tmp;
+
+	copy_size = (ft_strchr(buffer, '\n') - buffer) + 1;
+	tmp = (char *) malloc(BUFFER_SIZE + 1);
+	if (!tmp)
+		return (NULL);
+	ft_copy(tmp, buffer, copy_size + 1);
+	output = ft_realloc(output, tmp, 1, 1);
+	ft_copy(buffer, &buffer[copy_size], 0);
+	return (output);
+}
+
+char *ft_realloc(char *s1, char *s2, int free_s1, int free_s2)
+{
+	int s1_len;
+	int s2_len;
+	char *output;
+	int i;
+
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	output = (char *) malloc(s1_len + s2_len + 1);
+	if (!output)
+		return (NULL);
+	i = ft_copy(output, s1, 0);
+	ft_copy(&output[i], s2, 0);
+	if (free_s1)
+		free(s1);
+	if (free_s2)
+		free(s2);
+	return (output);
+}
+
+int	ft_copy(char *dst, char *src, int len)
+{
+	int i;
 
 	i = 0;
-	size = ft_strlen(tmp);
-	if (size == 0)
-		return (0);
-	line = (char *)ft_calloc ((1 + size), sizeof(char));
-	while (i < size)
+	if (len == 0)
 	{
-		line[i] = tmp[i];
-		i++;
+		while (src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
 	}
-	return (line);
+	else
+	{
+		len--;
+		while (i < len && src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+	}
+	dst[i] = '\0';
+	return (i);
 }
 
-static char	*ft_trim_tmp(char *tmp)
-{
-	int		len;
-	int		i;
-	int		j;
-	char	*new_tmp;
-
-	i = 0;
-	j = 0;
-	while (tmp[i] != '\0' && tmp[i] != '\n')
-		i++;
-	if (tmp[i] == '\0' || tmp[0] == '\0')
-	{
-		free(tmp);
-		return (0);
-	}
-	len = 0;
-	while (tmp[i + 1 + len] != '\0')
-		len++;
-	new_tmp = (char *)ft_calloc((len + 1), sizeof(char));
-	while (j < len)
-	{
-		new_tmp[j] = tmp[i + 1 + j];
-		j++;
-	}
-	free(tmp);
-	return (new_tmp);
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*tmp;
-	char		*line;
-
-	if (BUFFER_SIZE <= 0 || fd < 0)
-		return (0);
-	tmp = ft_save_buffer(fd, tmp);
-	if (tmp == 0)
-		return (0);
-	line = ft_save_line(tmp);
-	tmp = ft_trim_tmp(tmp);
-	return (line);
-}
-
-// int	main(void)
+// int main(void)
 // {
-// 	int	fd = open("file", O_RDONLY);
-// 	char *line;
-
-// 	line = get_next_line(fd);
-// 	printf("%s\n", line);
-// 	line = get_next_line(fd);
+// 	int fd = open("file", O_RDONLY);
+// 	printf("%d\n", fd);
+// 	char *line = get_next_line(fd);
 // 	printf("%s\n", line);
 // 	return (0);
 // }

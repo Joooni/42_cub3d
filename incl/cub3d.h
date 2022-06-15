@@ -53,12 +53,21 @@ typedef struct s_player
 	int		color;
 }	t_player;
 
+typedef struct s_map
+{
+	char **map;
+	char *path;
+	int rows;
+	int columns;
+}	t_map;
+
 typedef struct s_window
 {
 	void		*mlx;
 	void		*win;
 	t_image		*img;
 	t_player	*player;
+	t_map		*map;
 }	t_window;
 
 // init.c
@@ -87,5 +96,9 @@ void	ft_draw_rect(t_window *window, t_rect rect);
 // utils.c
 
 int	ft_close(t_window *window);
+
+//map_helper.c
+
+int map_handler(t_window *window);
 
 #endif

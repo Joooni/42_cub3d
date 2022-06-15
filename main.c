@@ -16,7 +16,9 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(window->mlx, ft_render_next_frame, window);
 	mlx_hook(window->win, 17, 0, ft_close, window);
 	mlx_hook(window->win, 2, 1L << 0, ft_key_press, window);
-	printf("%s\n", argv[0]);
+	if (map_handler(window))
+		ft_end_process("Invalid map-read");
+	printf("%s\n", argv[0]); //testing
 	mlx_loop(window->mlx);
 	return (0);
 }

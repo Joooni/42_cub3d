@@ -21,6 +21,7 @@ SRC =	main.c \
 		$(SRC_PATH)init.c \
 		$(SRC_PATH)controls.c \
 		$(SRC_PATH)utils.c \
+		$(SRC_PATH)map_handler.c \
 
 # -*- Objects -*-
 SRCS=$(addprefix $(SRC_PATH),$(SRC))

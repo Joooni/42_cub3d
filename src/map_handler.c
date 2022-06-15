@@ -18,7 +18,7 @@ int map_handler(t_window *window)
 		if (ft_isalpha(line[0]))
 		{
 			//function that saves the paths and the values for F C
-			printf("\033[90mFound a alph character\033[0m\n");
+			printf("\033[90mFound an alph character\033[0m\n");
 		}
 		free(line);
 		line = get_next_line(fd);

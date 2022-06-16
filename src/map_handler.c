@@ -1,6 +1,31 @@
 #include "../incl/cub3d.h"
 
 
+// int ft_copy(char *dest, char *src, int len)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	if (len == 0)
+// 	{
+// 		while (src[i])
+// 		{
+// 			dest[i] = src[i];
+// 			i++;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		len--;
+// 		while (i < len && src[i])
+// 		{
+// 			dest[i] = src[i];
+// 			i++;
+// 		}
+// 	}
+// 	return (i);
+// }
+
 /*
 gets triggert when the first character of the line is a alph
 safes all the paths of the directions and the colors of the 
@@ -34,15 +59,18 @@ int	safe_preoptions(t_window *window, char *line)
 gets triggert when the first character of the line is a number
 safes every row of the map in the char** map and counts the size
 */
-int safe_map(t_window *window, char *line)
+int safe_map(t_window *window, char *line, int row)
 {
 	int i;
 	int columns;
 
 	i = 0;
 	columns = 0;
-	window->map->map = ft_calloc(1, sizeof(char **));
-	window->map->map[window->map->rows] = ft_substr(line, 0, ft_strlen(line));
+	// window->map->map = ft_calloc(1, sizeof(char **));
+	// window->map->map[row] = ft_calloc(1, sizeof(char *));
+	// ft_copy(window->map->map[window->map->rows], line, 0);
+	//window->map->map[row] = ft_substr(line, 0, ft_strlen(line));
+	printf("%d\n", row);
 	while (line[i])
 	{
 		if (ft_isdigit(line[i]))
@@ -71,17 +99,19 @@ int	map_handler(t_window *window)
 	line = get_next_line(fd);
 	while (line)
 	{
-		printf("\033[33mline:\033[0m %s", line);
+		while (line[counter] == ' ')
+			counter++;
+		//printf("\033[33mline:\033[0m %s", line);
 		if (ft_isalpha(line[0]))
 			safe_preoptions(window, line);
-		else if (ft_isdigit(line[0]))
+		else if (ft_isdigit(line[counter]))
 		{
-			safe_map(window, line);
+			safe_map(window, line, window->map->rows);
 			window->map->rows++;
 		}
-		else
-			free(line);
+		free(line);
 		line = get_next_line(fd);
 	}
+	printf("rows: %d\ncolumns: %d\n", window->map->rows, window->map->columns);
 	return (0);
 }

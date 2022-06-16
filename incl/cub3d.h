@@ -59,6 +59,12 @@ typedef struct s_map
 	char *path;
 	int rows;
 	int columns;
+	char *NO_path;
+	char *SO_path;
+	char *WE_path;
+	char *EA_path;
+	char *F_tex;
+	char *C_tex;
 }	t_map;
 
 typedef struct s_window

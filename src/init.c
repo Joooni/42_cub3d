@@ -7,6 +7,8 @@ void	ft_init(t_window *window)
 		ft_end_process(ERR_WINDOW_INIT);
 	window->img = ft_init_image(window->mlx);
 	ft_init_player(window);
+	window->map->rows = 0;
+	window->map->columns = 0;
 }
 
 t_image *ft_init_image(void *mlx)

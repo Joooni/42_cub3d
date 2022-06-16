@@ -6,7 +6,8 @@ int	main(int argc, char **argv)
 	void		*mlx;
 
 	window = (t_window *)ft_calloc(1, sizeof(t_window));
-	if (!window)
+	window->map = (t_map *)ft_calloc(1, sizeof(t_map));
+	if (!window || !window->map)
 		ft_end_process(ERR_MLX_INIT);
 	if (argc != 2)
 		ft_end_process("Invalid input");

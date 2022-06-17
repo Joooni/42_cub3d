@@ -25,11 +25,20 @@ t_image *ft_init_image(void *mlx)
 
 void	ft_init_player(t_window *window)
 {
-	window->player = ft_calloc(1, sizeof(t_player));
-	window->player->x = 30;
-	window->player->y = 30;
-
+	window->player = (t_player *)ft_calloc(1, sizeof(t_player));
+	printf("123\n");
+	window->player->pos = ft_init_vector(30, 30);
+	window->player->dir = ft_init_vector(100, 20);
 	window->player->size = 5;
 	window->player->color = 0x0058BD55;
+}
 
+t_vec	*ft_init_vector (double x, double y)
+{
+	t_vec *vec;
+
+	vec = ft_calloc(1, sizeof(t_vec));
+	vec->x = x;
+	vec->y = y;
+	return (vec);
 }

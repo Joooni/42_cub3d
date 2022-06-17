@@ -19,12 +19,12 @@ void	ft_move(int keycode, t_window *window)
 	int	mv_dist;
 
 	mv_dist = 8;
-	if (keycode == ARROW_LEFT && window->player->x > mv_dist)
-		window->player->x -= 8;
-	else if (keycode == ARROW_RIGHT && WINDOW_WIDTH > window->player->x + mv_dist)
-		window->player->x += 8;
-	else if (keycode == ARROW_UP && window->player->y > mv_dist)
-		window->player->y -= 8;
-	else if (keycode == ARROW_DOWN && WINDOW_HEIGHT > window->player->y + mv_dist)
-		window->player->y += 8;
+	if (keycode == ARROW_LEFT && window->player->pos->x > mv_dist)
+		window->player->pos->x -= 8;
+	else if (keycode == ARROW_RIGHT && WINDOW_WIDTH > window->player->pos->x + mv_dist)
+		window->player->pos->x += 8;
+	else if (keycode == ARROW_UP && window->player->pos->y > mv_dist)
+		window->player->pos->y -= 8;
+	else if (keycode == ARROW_DOWN && WINDOW_HEIGHT > window->player->pos->y + mv_dist)
+		window->player->pos->y += 8;
 }

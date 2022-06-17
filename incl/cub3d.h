@@ -31,6 +31,11 @@ typedef struct s_image {
 	int		endian;
 }	t_image;
 
+typedef struct s_vec {
+	double	x;
+	double	y;
+}	t_vec;
+
 typedef struct s_color
 {
 	int8_t			channel[4];
@@ -44,14 +49,22 @@ typedef struct s_rect{
 	int	color;
 }	t_rect;
 
+typedef struct s_rc
+{
+	t_vec	dir;
+	t_vec	SideDist;
+	t_vec	DeltaDist;
+}	t_rc;
+
 typedef struct s_player
 {
-	double	x;
-	double	y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
+	t_vec	MapPos;
+	t_vec	*pos;
+	t_vec	*dir;
+	t_vec	plane;
+	t_vec	camera;
+	t_vec	step;
+	t_rc	ray;
 	int		size;
 	int		color;
 }	t_player;
@@ -69,6 +82,7 @@ typedef struct s_window
 void	ft_init(t_window *window);
 t_image	*ft_init_image(void *mlx);
 void	ft_init_player(t_window *window);
+t_vec	*ft_init_vector (double x, double y);
 
 // controls.c
 
@@ -86,9 +100,16 @@ void	ft_grid_highlight(t_window *window);
 void	ft_pixel_put_img(t_image *img, int x, int y, int color);
 int		ft_render_next_frame(t_window *window);
 void	ft_draw_rect(t_window *window, t_rect rect);
+void	ft_draw_vector(t_window *window, t_vec vector);
 
 // utils.c
 
 int	ft_close(t_window *window);
+
+// raycaster.c
+
+void	ft_cast_ray(t_window *window);
+void	ft_ray_distance(t_window *window);
+void	ft_step_direction(t_player *player);
 
 #endif

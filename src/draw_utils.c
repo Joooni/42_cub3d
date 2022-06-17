@@ -26,6 +26,7 @@ int	ft_render_next_frame(t_window *window)
 	}
 	ft_draw_grid(window);
 	ft_grid_highlight(window);
+	ft_draw_vector(window, *(window->player->dir));
 	ft_draw_player(window);
 	mlx_put_image_to_window(window->mlx, window->win, window->img->img, 0, 0);
 	return (0);
@@ -49,4 +50,24 @@ void	ft_draw_rect(t_window *window, t_rect rect)
 		}
 		counter_y++;
 	}
+}
+
+void	ft_draw_vector(t_window *window, t_vec vector)
+{
+	int		i;
+	float	x_n;
+	float	y_n;
+	float	factor;
+
+	i = 0;
+	factor = vector.y / vector.x;
+	while (i < vector.x)
+	{
+		x_n = window->player->pos->x + i;
+		y_n = factor * i + window->player->pos->y;
+		printf("draw vector at (%f/%f)\n", x_n, y_n);
+		ft_pixel_put_img(window->img, x_n, y_n, 0xFF03FC0B);
+		i++;
+	}
+	printf("factor: %f\n", factor);
 }

@@ -76,9 +76,14 @@ typedef struct s_window
 	t_map		*map;
 }	t_window;
 
+
+// main.c -> file_check.c (doesn't exist yet)
+
+int set_path(t_window *window, char *path);
+
 // init.c
 
-void	ft_init(t_window *window);
+void	ft_init(t_window *window, char *path);
 t_image	*ft_init_image(void *mlx);
 void	ft_init_player(t_window *window);
 

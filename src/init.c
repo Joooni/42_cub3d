@@ -1,6 +1,6 @@
 #include "../incl/cub3d.h"
 
-void	ft_init(t_window *window)
+void	ft_init(t_window *window, char *path)
 {
 	window->win = mlx_new_window(window->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
 	if (!window->win)
@@ -9,6 +9,8 @@ void	ft_init(t_window *window)
 	ft_init_player(window);
 	window->map->rows = 0;
 	window->map->columns = 0;
+	if (set_path(window, path))
+		ft_end_process("Invalid path");
 }
 
 t_image *ft_init_image(void *mlx)

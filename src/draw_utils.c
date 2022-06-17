@@ -66,7 +66,7 @@ void	ft_draw_vector(t_window *window, t_vec vector)
 		x_n = window->player->pos->x + i;
 		y_n = factor * i + window->player->pos->y;
 		printf("draw vector at (%f/%f)\n", x_n, y_n);
-		ft_pixel_put_img(window->img, x_n, y_n, 0xFF03FC0B);
+		ft_pixel_put_img(window->img, fabs(x_n), fabs(y_n), 0xFF03FC0B);
 		i++;
 	}
 	printf("factor: %f\n", factor);

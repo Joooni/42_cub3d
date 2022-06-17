@@ -4,6 +4,7 @@
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
+# define M_DEGREE_TURN 5
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -88,6 +89,7 @@ t_vec	*ft_init_vector (double x, double y);
 
 int		ft_key_press(int keycode, t_window *window);
 void	ft_move(int keycode, t_window *window);
+void	ft_turn(int keycode, t_window *window);
 
 // draw_minimap.c
 

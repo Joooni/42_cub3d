@@ -1,4 +1,4 @@
-#include "../incl/cub3d.h"
+#include "incl/cub3d.h"
 
 /*
 gets triggert when the first character of the line is a alph
@@ -54,10 +54,32 @@ int count_map(t_window *window, char *line)
 /*
 safes the map
 */
-// int safe_map(t_window *window, line)
-// {
-// 	window->map->map = ft_calloc()
-// }
+int safe_map(t_window *window, int rows)
+{
+	int i;
+	int	fd;
+	int	counter;
+	char	*line;
+
+	window->map->map = ft_calloc(rows, sizeof(char **));
+	i = 0;
+	fd = open("maps/map1.cub", O_RDONLY);
+	counter = 0;
+	if (fd <= 0)
+		return (1);
+	line = get_next_line(fd);
+	while (line)
+	{
+		while (line[counter] == ' ')
+			counter++;
+		if (ft_isdigit(line[counter]) && line[0] != 'F' && line[0] != 'C' \
+			&& i <= rows)
+			window->map->map[i++] = ft_substr(line, 0, ft_strlen(line));
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (0);
+}
 
 /*
 reads in the map that got passed and calls different functions to 
@@ -78,25 +100,16 @@ int	map_handler(t_window *window)
 	{
 		while (line[counter] == ' ')
 			counter++;
-		//printf("\033[33mline:\033[0m %s", line);
 		if (ft_isalpha(line[0]))
 			safe_preoptions(window, line);
 		else if (ft_isdigit(line[counter]))
 		{
-			count_map(window, line); //umbenennen in count_map
+			count_map(window, line);
 			window->map->rows++;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
-	//call save map here because you have to know the amount of rows
-	printf("rows: %d\ncolumns: %d\n", window->map->rows, window->map->columns);
+	safe_map(window, window->map->rows);
 	return (0);
 }
-
-
-/*
-
-**map = ft_calloc(row, sizeof(char *))
-
-*/

@@ -13,6 +13,30 @@ void	ft_init(t_window *window, char *path)
 		ft_end_process("Invalid path");
 }
 
+/*
+checks if the filepath ends with "".cub"
+*/
+int set_path(t_window *window, char *path)
+{
+	int len;
+	int flag;
+
+	len = ft_strlen(path);
+	flag = 0;
+	if (path[len - 0] == 'b')
+		flag = 1;
+	if (path[len - 1] == 'u')
+		flag = 1;
+	if (path[len - 2] == 'c')
+		flag = 1;
+	if (path[len - 3] == '.')
+		flag = 1;
+	if (flag == 1)
+		return (1);
+	window->map->path = path;
+	return (0);
+}
+
 t_image *ft_init_image(void *mlx)
 {
 	t_image	*image;
@@ -30,8 +54,8 @@ t_image *ft_init_image(void *mlx)
 void	ft_init_player(t_window *window)
 {
 	window->player = ft_calloc(1, sizeof(t_player));
-	window->player->x = 30;
-	window->player->y = 30;
+	// window->player->x = 30;
+	// window->player->y = 30;
 	window->player->size = 5;
 	window->player->color = 0x0058BD55;
 }

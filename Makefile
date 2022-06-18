@@ -22,6 +22,8 @@ SRC =	main.c \
 		$(SRC_PATH)controls.c \
 		$(SRC_PATH)utils.c \
 		$(SRC_PATH)map_handler.c \
+		$(SRC_PATH)check_map.c \
+
 
 # -*- Objects -*-
 SRCS=$(addprefix $(SRC_PATH),$(SRC))
@@ -37,7 +39,7 @@ lib:
 	make -C $(MLX_MACOS)
 
 $(NAME): $(LIBFT)/libft.a $(SRC)
-	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
+	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -g -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 
 
 clean:

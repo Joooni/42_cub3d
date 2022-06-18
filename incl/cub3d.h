@@ -53,18 +53,28 @@ typedef struct s_player
 	int		color;
 }	t_player;
 
+typedef struct s_texture
+{
+	int	red;
+	int	green;
+	int	blue;
+}	t_texture;
+
 typedef struct s_map
 {
 	char **map;
 	char *path;
 	int rows;
 	int columns;
+	char direction;
 	char *NO_path;
 	char *SO_path;
 	char *WE_path;
 	char *EA_path;
 	char *F_tex;
 	char *C_tex;
+	t_texture *F;
+	t_texture *C;
 }	t_map;
 
 typedef struct s_window
@@ -76,14 +86,10 @@ typedef struct s_window
 	t_map		*map;
 }	t_window;
 
-
-// main.c -> file_check.c (doesn't exist yet)
-
-int set_path(t_window *window, char *path);
-
 // init.c
 
 void	ft_init(t_window *window, char *path);
+int set_path(t_window *window, char *path);
 t_image	*ft_init_image(void *mlx);
 void	ft_init_player(t_window *window);
 
@@ -111,5 +117,12 @@ int	ft_close(t_window *window);
 //map_helper.c
 
 int map_handler(t_window *window);
+int count_map(t_window *window, char *line);
+int	safe_preoptions(t_window *window, char *line);
+int safe_map(t_window *window, int rows);
+
+// check_map.c
+
+int	check_map(t_window *window);
 
 #endif

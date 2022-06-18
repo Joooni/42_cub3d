@@ -1,4 +1,4 @@
-#include "incl/cub3d.h"
+#include "../incl/cub3d.h"
 
 /*
 gets triggert when the first character of the line is a alph
@@ -36,19 +36,30 @@ safes every row of the map in the char** map and counts the size
 int count_map(t_window *window, char *line)
 {
 	int i;
+	int flag;
 	int columns;
 
 	i = 0;
+	flag = 0;
 	columns = 0;
 	while (line[i])
 	{
 		if (ft_isdigit(line[i]))
 			columns++;
+		if (line[i] == 'N' || line[i] == 'E' || line[i] == 'S'
+			|| line[i] == 'W')
+		{
+			window->map->direction = line[i];
+			window->player->x = i * 32;
+			window->player->y = window->map->rows * 32;
+			flag++;
+		}
 		i++;
 	}
+	window->map->rows++;
 	if (window->map->columns < columns)
 		window->map->columns = columns;
-	return (0);
+	return (flag);
 }
 
 /*
@@ -63,7 +74,7 @@ int safe_map(t_window *window, int rows)
 
 	window->map->map = ft_calloc(rows, sizeof(char **));
 	i = 0;
-	fd = open("maps/map1.cub", O_RDONLY);
+	fd = open(window->map->path , O_RDONLY);
 	counter = 0;
 	if (fd <= 0)
 		return (1);
@@ -89,10 +100,12 @@ int	map_handler(t_window *window)
 {
 	int	fd;
 	int	counter;
+	int player_flag;
 	char	*line;
 
-	fd = open("maps/map1.cub", O_RDONLY);
+	fd = open(window->map->path , O_RDONLY);
 	counter = 0;
+	player_flag = 0;
 	if (fd <= 0)
 		return (1);
 	line = get_next_line(fd);
@@ -103,13 +116,15 @@ int	map_handler(t_window *window)
 		if (ft_isalpha(line[0]))
 			safe_preoptions(window, line);
 		else if (ft_isdigit(line[counter]))
-		{
-			count_map(window, line);
-			window->map->rows++;
-		}
+			player_flag += count_map(window, line);
 		free(line);
 		line = get_next_line(fd);
 	}
 	safe_map(window, window->map->rows);
+	if (player_flag == 0 || player_flag > 1)
+		ft_end_process("Invalid amount of player\n");
+	if(!check_map(window))
+		ft_end_process("Invalid map");
+	printf("x: %d\ny: %d\n", (int)window->player->x, (int)window->player->y);
 	return (0);
 }

@@ -33,11 +33,11 @@ int	safe_preoptions(t_window *window, char *line)
 gets triggert when the first character of the line is a number
 safes every row of the map in the char** map and counts the size
 */
-int count_map(t_window *window, char *line)
+int	count_map(t_window *window, char *line)
 {
-	int i;
-	int flag;
-	int columns;
+	int	i;
+	int	flag;
+	int	columns;
 
 	i = 0;
 	flag = 0;
@@ -65,16 +65,16 @@ int count_map(t_window *window, char *line)
 /*
 safes the map
 */
-int safe_map(t_window *window, int rows)
+int	safe_map(t_window *window, int rows)
 {
-	int i;
-	int	fd;
-	int	counter;
+	int		i;
+	int		fd;
+	int		counter;
 	char	*line;
 
 	window->map->map = ft_calloc(rows, sizeof(char **));
 	i = 0;
-	fd = open(window->map->path , O_RDONLY);
+	fd = open(window->map->path, O_RDONLY);
 	counter = 0;
 	if (fd <= 0)
 		return (1);
@@ -98,12 +98,12 @@ handle the input
 */
 int	map_handler(t_window *window)
 {
-	int	fd;
-	int	counter;
-	int player_flag;
+	int		fd;
+	int		counter;
+	int		player_flag;
 	char	*line;
 
-	fd = open(window->map->path , O_RDONLY);
+	fd = open(window->map->path, O_RDONLY);
 	counter = 0;
 	player_flag = 0;
 	if (fd <= 0)
@@ -121,9 +121,7 @@ int	map_handler(t_window *window)
 		line = get_next_line(fd);
 	}
 	safe_map(window, window->map->rows);
-	if (player_flag == 0 || player_flag > 1)
-		ft_end_process("Invalid amount of player\n");
-	if(!check_map(window))
-		ft_end_process("Invalid map");
+	if (player_flag == 0 || player_flag > 1 || !check_map(window))
+		ft_end_process("Invalid map\n");
 	return (0);
 }

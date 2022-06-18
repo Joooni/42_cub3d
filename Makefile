@@ -23,6 +23,7 @@ SRC =	main.c \
 		$(SRC_PATH)utils.c \
 		$(SRC_PATH)map_handler.c \
 		$(SRC_PATH)check_map.c \
+		$(SRC_PATH)check_map_utils.c \
 
 
 # -*- Objects -*-

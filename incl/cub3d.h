@@ -125,4 +125,8 @@ int safe_map(t_window *window, int rows);
 
 int	check_map(t_window *window);
 
+//check_map_utils.c
+
+int	init_colors(t_window *window);
+
 #endif

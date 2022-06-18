@@ -125,6 +125,5 @@ int	map_handler(t_window *window)
 		ft_end_process("Invalid amount of player\n");
 	if(!check_map(window))
 		ft_end_process("Invalid map");
-	printf("x: %d\ny: %d\n", (int)window->player->x, (int)window->player->y);
 	return (0);
 }

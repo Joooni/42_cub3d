@@ -4,7 +4,9 @@
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
-# define M_DEGREE_TURN 5
+# define M_DEGREE_TURN 0.05
+# define M_INIT_VECTOR_X 200
+# define M_INIT_VECTOR_Y 0
 
 # include <stdlib.h>
 # include <stdio.h>

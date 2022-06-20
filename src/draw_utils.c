@@ -5,7 +5,7 @@ void	ft_pixel_put_img(t_image *img, int x, int y, int color)
 	char	*dst;
 
 	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	ft_render_next_frame(t_window *window)
@@ -54,20 +54,22 @@ void	ft_draw_rect(t_window *window, t_rect rect)
 
 void	ft_draw_vector(t_window *window, t_vec vector)
 {
-	int		i;
-	float	x_n;
-	float	y_n;
-	float	factor;
+	int		nbr_pixels;
+	double	delta_x;
+	double	delta_y;
+	double	pixel_x;
+	double	pixel_y;
 
-	i = 0;
-	factor = vector.y / vector.x;
-	while (i < vector.x)
+	nbr_pixels = sqrt((vector.x * vector.x) + (vector.y * vector.y));
+	delta_x = vector.x / nbr_pixels;
+	delta_y = vector.y / nbr_pixels;
+	pixel_x = window->player->pos->x;
+	pixel_y = window->player->pos->y;
+	while (nbr_pixels)
 	{
-		x_n = window->player->pos->x + i;
-		y_n = factor * i + window->player->pos->y;
-		printf("draw vector at (%f/%f)\n", x_n, y_n);
-		ft_pixel_put_img(window->img, fabs(x_n), fabs(y_n), 0xFF03FC0B);
-		i++;
+		ft_pixel_put_img(window->img, pixel_x, pixel_y, 0x006FF542);
+		pixel_x += delta_x;
+		pixel_y += delta_y;
+		nbr_pixels--;
 	}
-	printf("factor: %f\n", factor);
 }

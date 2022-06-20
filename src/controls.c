@@ -36,18 +36,17 @@ void	ft_move(int keycode, t_window *window)
 
 void	ft_turn(int keycode, t_window *window)
 {
-	float radian;
+	double	old_dir_x;
 
-	radian = M_DEGREE_TURN * 180 / M_PI;
-	printf("sin: %f cos: %f\n", sin(radian), cos(radian));
-	if (keycode == ARROW_LEFT)
+	old_dir_x = window->player->dir->x;
+	if (keycode == ARROW_RIGHT)
 	{
-		window->player->dir->x = window->player->dir->x * cos(radian) - window->player->dir->y * sin(radian);
-		window->player->dir->y = window->player->dir->x * sin(radian) + window->player->dir->y * cos(radian);
+		window->player->dir->x = old_dir_x * cos(M_DEGREE_TURN) - window->player->dir->y * sin(M_DEGREE_TURN);
+		window->player->dir->y = old_dir_x * sin(M_DEGREE_TURN) + window->player->dir->y * cos(M_DEGREE_TURN);
 	}
 	else
 	{
-		window->player->dir->x = window->player->dir->x * cos(radian) + window->player->dir->y * sin(radian);
-		window->player->dir->y = window->player->dir->x * sin(radian) * -1 + window->player->dir->y * cos(radian);
+		window->player->dir->x = old_dir_x * cos(M_DEGREE_TURN) + window->player->dir->y * sin(M_DEGREE_TURN);
+		window->player->dir->y = old_dir_x * sin(M_DEGREE_TURN) * -1 + window->player->dir->y * cos(M_DEGREE_TURN);
 	}
 }

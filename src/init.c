@@ -28,7 +28,7 @@ void	ft_init_player(t_window *window)
 	window->player = (t_player *)ft_calloc(1, sizeof(t_player));
 	printf("123\n");
 	window->player->pos = ft_init_vector(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	window->player->dir = ft_init_vector(100, 0);
+	window->player->dir = ft_init_vector(M_INIT_VECTOR_X, M_INIT_VECTOR_Y);
 	window->player->size = 5;
 	window->player->color = 0x0058BD55;
 }

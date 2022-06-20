@@ -24,6 +24,7 @@ int	ft_render_next_frame(t_window *window)
 		}
 		y++;
 	}
+	draw_map(window);
 	ft_draw_grid(window);
 	ft_grid_highlight(window);
 	ft_draw_vector(window, *(window->player->dir));

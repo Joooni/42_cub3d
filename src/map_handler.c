@@ -73,7 +73,7 @@ int	safe_map(t_window *window, int rows)
 	int		counter;
 	char	*line;
 
-	window->map->map = ft_calloc(rows, sizeof(char **));
+	window->map->map = (char **)ft_calloc(rows, sizeof(char *));
 	i = 0;
 	fd = open(window->map->path, O_RDONLY);
 	counter = 0;

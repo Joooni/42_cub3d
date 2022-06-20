@@ -24,6 +24,7 @@ SRC =	main.c \
 		$(SRC_PATH)map_handler.c \
 		$(SRC_PATH)check_map.c \
 		$(SRC_PATH)check_map_utils.c \
+		$(SRC_PATH)draw_map.c \
 
 
 # -*- Objects -*-
@@ -41,6 +42,9 @@ lib:
 
 $(NAME): $(LIBFT)/libft.a $(SRC)
 	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
+
+debug: $(LIBFT)/libft.a $(SRC)
+	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -g -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 
 
 clean:

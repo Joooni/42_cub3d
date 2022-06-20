@@ -152,4 +152,8 @@ int	check_map(t_window *window);
 
 int	init_colors(t_window *window);
 
+//draw_map.c
+
+void draw_map(t_window *window);
+
 #endif

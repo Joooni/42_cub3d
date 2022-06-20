@@ -62,14 +62,14 @@ typedef struct s_map
 	int rows;
 	int columns;
 	char direction;
-	char *NO_path;
-	char *SO_path;
-	char *WE_path;
-	char *EA_path;
-	char *F_tex;
-	char *C_tex;
-	t_color *F;
-	t_color *C;
+	char *no_path;
+	char *so_path;
+	char *we_path;
+	char *ea_path;
+	char *f_tex;
+	char *c_tex;
+	t_color *f;
+	t_color *c;
 }	t_map;
 
 typedef struct s_window
@@ -113,7 +113,7 @@ int	ft_close(t_window *window);
 
 int map_handler(t_window *window);
 int count_map(t_window *window, char *line);
-int	safe_preoptions(t_window *window, char *line);
+int	safe_preoptions(t_window *window, char *line, int counter);
 int safe_map(t_window *window, int rows);
 
 // check_map.c

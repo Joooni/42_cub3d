@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
+/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 10:05:12 by jsubel            #+#    #+#             */
-/*   Updated: 2022/03/31 13:42:11 by jsubel           ###   ########.fr       */
+/*   Updated: 2022/06/20 09:52:57 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,39 @@
 
 static int	is_whitespace(char c);
 
+static int	check_calc_value(long res, int c, const char *str)
+{
+	res = (res * 10) + (str[c] - '0');
+	if (res > 2147483647 || res < -2147483648)
+		ft_end_process("Number is too high!");
+	return ((int) res);
+}
+
 int	ft_atoi(const char *str)
 {
-	int			i;
-	long long	nbr;
-	int			sign;
+	int	c;
+	int	s;
+	int	res;
 
-	i = 0;
-	nbr = 0;
-	sign = 1;
-	while (is_whitespace(str[i]))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	c = 0;
+	s = 1;
+	res = 0;
+	while (is_whitespace(str[c]))
+		c++;
+	if (str[c] == '-' || str[c] == '+')
+		if (str[c++] == '-')
+			s = -1;
+	while (str[c])
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		if (str[c] >= '0' && str[c] <= '9')
+			res = check_calc_value(res, c, str);
+		else if (str[c] == '\n')
+			break ;
+		else
+			ft_end_process("Invalid character!");
+		c++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nbr = 10 * nbr + (str[i] - '0');
-		i++;
-	}
-	if (nbr * sign > 2147483647 || nbr * sign < -2147483648)
-		ft_end_process("Error");
-	return (nbr * sign);
+	return (res * s);
 }
 
 static int	is_whitespace(char c)

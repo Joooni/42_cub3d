@@ -28,25 +28,25 @@ int	init_colors(t_window *window)
 	char	**tmp_f;
 	char	**tmp_c;
 
-	window->map->F = ft_calloc(1, sizeof(t_color));
-	window->map->C = ft_calloc(1, sizeof(t_color));
-	tmp_f = ft_split(window->map->F_tex, ',');
-	window->map->F->red = ft_atoi(tmp_f[0]);
+	window->map->f = ft_calloc(1, sizeof(t_color));
+	window->map->c = ft_calloc(1, sizeof(t_color));
+	tmp_f = ft_split(window->map->f_tex, ',');
+	window->map->f->red = ft_atoi(tmp_f[0]);
 	free(tmp_f[0]);
-	window->map->F->green = ft_atoi(tmp_f[1]);
+	window->map->f->green = ft_atoi(tmp_f[1]);
 	free(tmp_f[1]);
-	window->map->F->blue = ft_atoi(tmp_f[2]);
+	window->map->f->blue = ft_atoi(tmp_f[2]);
 	free(tmp_f[2]);
 	free(tmp_f);
-	tmp_c = ft_split(window->map->C_tex, ',');
-	window->map->C->red = ft_atoi(tmp_c[0]);
+	tmp_c = ft_split(window->map->c_tex, ',');
+	window->map->c->red = ft_atoi(tmp_c[0]);
 	free(tmp_c[0]);
-	window->map->C->green = ft_atoi(tmp_c[1]);
+	window->map->c->green = ft_atoi(tmp_c[1]);
 	free(tmp_c[1]);
-	window->map->C->blue = ft_atoi(tmp_c[2]);
+	window->map->c->blue = ft_atoi(tmp_c[2]);
 	free(tmp_c[2]);
 	free(tmp_c);
-	if (!check_colors(window->map->F, window->map->C))
+	if (!check_colors(window->map->f, window->map->c))
 		ft_end_process("Invalid colors");
 	return (1);
 }

@@ -5,27 +5,28 @@ gets triggert when the first character of the line is a alph
 safes all the paths of the directions and the colors of the 
 ciling and the floor
 */
-int	safe_preoptions(t_window *window, char *line)
+int	safe_preoptions(t_window *window, char *line, int counter)
 {
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] == 'N' && line[i + 1] == 'O')
-			window->map->NO_path = ft_substr(line, 3, ft_strlen(line) - 3);
-		else if (line[i] == 'S' && line[i + 1] == 'O')
-			window->map->SO_path = ft_substr(line, 3, ft_strlen(line) - 3);
-		else if (line[i] == 'W' && line[i + 1] == 'E')
-			window->map->WE_path = ft_substr(line, 3, ft_strlen(line) - 3);
-		else if (line[i] == 'E' && line[i + 1] == 'A')
-			window->map->EA_path = ft_substr(line, 3, ft_strlen(line) - 3);
-		else if (line[i] == 'F')
-			window->map->F_tex = ft_substr(line, i + 2, ft_strlen(line) - 2);
-		else if (line[i] == 'C')
-			window->map->C_tex = ft_substr(line, i + 2, ft_strlen(line) - 2);
-		i++;
-	}
+	if (line[counter] == 'N' && line[counter + 1] == 'O')
+		window->map->no_path = ft_substr(line, counter + 3, ft_strlen(line) \
+			- counter - 4);
+	else if (line[counter] == 'S' && line[counter + 1] == 'O')
+		window->map->so_path = ft_substr(line, counter + 3, ft_strlen(line) \
+			- counter - 4);
+	else if (line[counter] == 'W' && line[counter + 1] == 'E')
+		window->map->we_path = ft_substr(line, counter + 3, ft_strlen(line) \
+			- counter - 4);
+	else if (line[counter] == 'E' && line[counter + 1] == 'A')
+		window->map->ea_path = ft_substr(line, counter + 3, ft_strlen(line) \
+			- counter - 4);
+	else if (line[counter] == 'F')
+		window->map->f_tex = ft_substr(line, counter + 2, ft_strlen(line) \
+			- counter - 2);
+	else if (line[counter] == 'C')
+		window->map->c_tex = ft_substr(line, counter + 2, ft_strlen(line) \
+			- counter - 2);
+	else
+		ft_end_process("Invalid identifier!");
 	return (0);
 }
 
@@ -104,17 +105,17 @@ int	map_handler(t_window *window)
 	char	*line;
 
 	fd = open(window->map->path, O_RDONLY);
-	counter = 0;
 	player_flag = 0;
 	if (fd <= 0)
 		return (1);
 	line = get_next_line(fd);
 	while (line)
 	{
+		counter = 0;
 		while (line[counter] == ' ')
 			counter++;
-		if (ft_isalpha(line[0]))
-			safe_preoptions(window, line);
+		if (ft_isalpha(line[counter]))
+			safe_preoptions(window, line, counter);
 		else if (ft_isdigit(line[counter]))
 			player_flag += count_map(window, line);
 		free(line);

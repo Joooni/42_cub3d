@@ -6,7 +6,7 @@ small testfunction to see what got red
 // void print_read(t_window *window)
 // {
 // 	int i = 0;
-// 	while (window->map->map[i])
+// 	while (i < window->map->columns)
 // 	{
 // 		printf("line[%d] %s", i, window->map->map[i]);
 // 		i++;
@@ -34,7 +34,6 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(window->mlx, ft_render_next_frame, window);
 	mlx_hook(window->win, 17, 0, ft_close, window);
 	mlx_hook(window->win, 2, 1L << 0, ft_key_press, window);
-	//print_read(window);
 	printf("%s\n", argv[0]); //testing
 	mlx_loop(window->mlx);
 	return (0);

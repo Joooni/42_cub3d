@@ -41,7 +41,6 @@ void ft_move_to_dir(t_window *window, int keycode)
 	}
 	else if (keycode == KEY_A)
 	{
-		//printf("dir->x %d\ndir->y: %d\n----------\n", (int)window->player->dir->x, (int)window->player->dir->y);
 		vec->x += window->player->dir->y;
 		vec->y -= window->player->dir->x;
 	}

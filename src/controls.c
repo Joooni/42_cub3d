@@ -18,15 +18,6 @@ int	ft_key_press(int keycode, t_window *window)
 void ft_move_to_dir(t_window *window, int keycode)
 {
 	t_vec *vec;
-	int faktor_x;
-	int faktor_y;
-
-	faktor_x = 1;
-	faktor_y = 1;
-	if (window->player->dir->x < 0)
-		faktor_x = -1;
-	if (window->player->dir->y < 0)
-		faktor_y = -1;
 
 	vec = window->player->pos;
 	if (keycode == KEY_W)

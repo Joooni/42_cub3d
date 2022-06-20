@@ -39,9 +39,6 @@ typedef struct s_image {
 typedef struct s_vec {
 	float	x;
 	float	y;
-	float	pa;
-	float	pdx;
-	float	pdy;
 }	t_vec;
 
 typedef struct s_rect{

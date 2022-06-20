@@ -67,8 +67,5 @@ t_vec	*ft_init_vector (double x, double y)
 	vec = ft_calloc(1, sizeof(t_vec));
 	vec->x = x;
 	vec->y = y;
-	vec->pa = 0;
-	vec->pdx = cos(vec->pa) * 5;
-	vec->pdy = sin(vec->pa) * 5;
 	return (vec);
 }

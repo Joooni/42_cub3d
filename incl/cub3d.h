@@ -32,11 +32,6 @@ typedef struct s_image {
 	int		endian;
 }	t_image;
 
-typedef struct s_color
-{
-	int8_t			channel[4];
-}	t_color;
-
 typedef struct s_rect{
 	int	x;
 	int	y;
@@ -53,12 +48,12 @@ typedef struct s_player
 	int		color;
 }	t_player;
 
-typedef struct s_texture
+typedef struct s_color
 {
 	int	red;
 	int	green;
 	int	blue;
-}	t_texture;
+}	t_color;
 
 typedef struct s_map
 {
@@ -73,8 +68,8 @@ typedef struct s_map
 	char *EA_path;
 	char *F_tex;
 	char *C_tex;
-	t_texture *F;
-	t_texture *C;
+	t_color *F;
+	t_color *C;
 }	t_map;
 
 typedef struct s_window

@@ -40,7 +40,7 @@ lib:
 	make -C $(MLX_MACOS)
 
 $(NAME): $(LIBFT)/libft.a $(SRC)
-	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -g -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
+	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 
 
 clean:

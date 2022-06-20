@@ -3,7 +3,7 @@
 /*
 checks if the color-values are between 0-255
 */
-static int	check_colors(t_texture *F, t_texture *C)
+static int	check_colors(t_color *F, t_color *C)
 {
 	if (F->red < 0 || F->red > 255)
 		return (0);

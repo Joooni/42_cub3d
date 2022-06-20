@@ -4,12 +4,7 @@ int	ft_key_press(int keycode, t_window *window)
 {
 	if (keycode == KEY_ESCAPE)
 		ft_close(window);
-<<<<<<< HEAD
 	else if (keycode == ARROW_UP || keycode == ARROW_DOWN
-=======
-	else if (keycode == ARROW_LEFT || keycode == ARROW_RIGHT
-		|| keycode == ARROW_UP || keycode == ARROW_DOWN
->>>>>>> 23efd1e6258c5f5d403daff58f2905e49ca74534
 		|| keycode == KEY_W || keycode == KEY_A
 		|| keycode == KEY_S || keycode == KEY_D )
 		ft_move(keycode, window);

@@ -2,7 +2,7 @@
 
 /*
 gets triggert when the first character of the line is a alph
-safes all the paths of the directions and the colors of the 
+safes all the paths of the directions and the colors of the
 ciling and the floor
 */
 int	safe_preoptions(t_window *window, char *line, int counter)
@@ -51,8 +51,8 @@ int	count_map(t_window *window, char *line)
 			|| line[i] == 'W')
 		{
 			window->map->direction = line[i];
-			window->player->x = i * 32;
-			window->player->y = window->map->rows * 32;
+			window->player->pos->x = i * 32;
+			window->player->pos->y = window->map->rows * 32;
 			flag++;
 		}
 		i++;
@@ -94,7 +94,7 @@ int	safe_map(t_window *window, int rows)
 }
 
 /*
-reads in the map that got passed and calls different functions to 
+reads in the map that got passed and calls different functions to
 handle the input
 */
 int	map_handler(t_window *window)

@@ -39,12 +39,6 @@ typedef struct s_vec {
 	double	x;
 	double	y;
 }	t_vec;
-
-typedef struct s_color
-{
-	int8_t			channel[4];
-}	t_color;
-
 typedef struct s_rect{
 	int	x;
 	int	y;

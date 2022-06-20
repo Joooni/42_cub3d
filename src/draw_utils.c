@@ -66,7 +66,7 @@ void	ft_draw_vector(t_window *window, t_vec vector)
 	delta_y = vector.y / nbr_pixels;
 	pixel_x = window->player->pos->x;
 	pixel_y = window->player->pos->y;
-	while (nbr_pixels)
+	while (nbr_pixels + 150)
 	{
 		ft_pixel_put_img(window->img, pixel_x, pixel_y, 0x006FF542);
 		pixel_x += delta_x;

@@ -5,7 +5,7 @@
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
 # define M_DEGREE_TURN 0.05
-# define M_INIT_VECTOR_X 200
+# define M_INIT_VECTOR_X 2
 # define M_INIT_VECTOR_Y 0
 
 # include <stdlib.h>
@@ -15,6 +15,7 @@
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
 # include <stdint.h>
+# include <math.h>
 # include "error.h"
 # include "keys.h"
 
@@ -36,9 +37,13 @@ typedef struct s_image {
 }	t_image;
 
 typedef struct s_vec {
-	double	x;
-	double	y;
+	float	x;
+	float	y;
+	float	pa;
+	float	pdx;
+	float	pdy;
 }	t_vec;
+
 typedef struct s_rect{
 	int	x;
 	int	y;

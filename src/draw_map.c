@@ -39,6 +39,8 @@ void draw_map(t_window *window)
 				draw_something(window, x, y, 0x00353542);
 			else if (player_flag(window->map->map, y, x))
 				draw_something(window, x, y, 0x005858ad);
+			else if (window->map->map[y][x] == '\n')
+				break ;
 			x++;
 		}
 		y++;

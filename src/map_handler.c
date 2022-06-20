@@ -85,7 +85,7 @@ int	safe_map(t_window *window, int rows)
 		while (line[counter] == ' ')
 			counter++;
 		if (ft_isdigit(line[counter]) && line[0] != 'F' && line[0] != 'C' \
-			&& i <= rows)
+			&& i < rows)
 			window->map->map[i++] = ft_substr(line, 0, ft_strlen(line));
 		free(line);
 		line = get_next_line(fd);

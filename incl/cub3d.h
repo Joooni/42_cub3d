@@ -13,6 +13,7 @@
 # include "../mlx/mlx.h"
 # include <math.h>
 # include "../libft/libft.h"
+# include "../get_next_line/get_next_line.h"
 # include <stdint.h>
 # include "error.h"
 # include "keys.h"
@@ -72,17 +73,43 @@ typedef struct s_player
 	int		color;
 }	t_player;
 
+typedef struct s_color
+{
+	int	red;
+	int	green;
+	int	blue;
+}	t_color;
+
+typedef struct s_map
+{
+	char **map;
+	char *path;
+	int rows;
+	int columns;
+	char direction;
+	char *no_path;
+	char *so_path;
+	char *we_path;
+	char *ea_path;
+	char *f_tex;
+	char *c_tex;
+	t_color *f;
+	t_color *c;
+}	t_map;
+
 typedef struct s_window
 {
 	void		*mlx;
 	void		*win;
 	t_image		*img;
 	t_player	*player;
+	t_map		*map;
 }	t_window;
 
 // init.c
 
-void	ft_init(t_window *window);
+void	ft_init(t_window *window, char *path);
+int set_path(t_window *window, char *path);
 t_image	*ft_init_image(void *mlx);
 void	ft_init_player(t_window *window);
 t_vec	*ft_init_vector (double x, double y);
@@ -115,5 +142,20 @@ int	ft_close(t_window *window);
 void	ft_cast_ray(t_window *window);
 void	ft_ray_distance(t_window *window);
 void	ft_step_direction(t_player *player);
+
+//map_helper.c
+
+int map_handler(t_window *window);
+int count_map(t_window *window, char *line);
+int	safe_preoptions(t_window *window, char *line, int counter);
+int safe_map(t_window *window, int rows);
+
+// check_map.c
+
+int	check_map(t_window *window);
+
+//check_map_utils.c
+
+int	init_colors(t_window *window);
 
 #endif

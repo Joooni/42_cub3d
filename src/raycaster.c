@@ -4,7 +4,7 @@ void	ft_cast_ray(t_window *window, t_rc *rc)
 {
 	ft_init_rc(window, rc);
 	ft_calc_step(window, rc);
-	ft_calc_hit(*(window->map), window->player);
+	ft_calc_hit(*(window->map), rc);
 }
 
 void	ft_calc_hit(t_map map, t_rc *ray)
@@ -71,7 +71,6 @@ void	ft_init_rc(t_window *window, t_rc *rc)
 	rc->map_pos->y = (int)window->player->pos->y / 32;
 	rc->dir->x = window->player->dir->x;
 	rc->dir->y = window->player->dir->y + window->player->camera.x * 0.66;
-	printf("	ray dirs:\nx: %f	y: %f\n", rc->dir->x, rc->dir->y);
 	if (rc->dir->x == 0)
 		rc->delta_dist->x = INFINITY;
 	else

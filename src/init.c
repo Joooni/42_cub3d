@@ -7,6 +7,7 @@ void	ft_init(t_window *window, char *path)
 		ft_end_process(ERR_WINDOW_INIT);
 	window->img = ft_init_image(window->mlx);
 	ft_init_player(window);
+	ft_init_ray(window);
 	window->map->rows = 0;
 	window->map->columns = 0;
 	if (set_path(window, path))
@@ -83,7 +84,7 @@ void	ft_init_ray(t_window *window)
 {
 	window->player->ray = (t_rc *)ft_calloc(1, sizeof(t_rc));
 	window->player->ray->dir = (t_vec *)ft_calloc(1, sizeof(t_vec));
-	window->player->ray->side_dist = ft_calloc(1, sizeof(t_vec));
-	window->player->ray->map_pos = ft_calloc(1, sizeof(t_vec));
+	window->player->ray->side_dist = (t_vec *)ft_calloc(1, sizeof(t_vec));
+	window->player->ray->map_pos = (t_vec_i *)ft_calloc(1, sizeof(t_vec_i));
 	window->player->ray->delta_dist = ft_calloc(1, sizeof(t_vec));
 }

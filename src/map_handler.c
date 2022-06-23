@@ -7,22 +7,22 @@ ciling and the floor
 */
 int	safe_preoptions(t_window *window, char *line, int counter)
 {
-	if (line[counter] == 'N' && line[counter + 1] == 'O')
+	if (line[counter] == 'N' && line[counter + 1] == 'O' && !window->map->no_path)
 		window->map->no_path = ft_substr(line, counter + 3, ft_strlen(line) \
 			- counter - 4);
-	else if (line[counter] == 'S' && line[counter + 1] == 'O')
+	else if (line[counter] == 'S' && line[counter + 1] == 'O' && !window->map->so_path)
 		window->map->so_path = ft_substr(line, counter + 3, ft_strlen(line) \
 			- counter - 4);
-	else if (line[counter] == 'W' && line[counter + 1] == 'E')
+	else if (line[counter] == 'W' && line[counter + 1] == 'E' && !window->map->we_path)
 		window->map->we_path = ft_substr(line, counter + 3, ft_strlen(line) \
 			- counter - 4);
-	else if (line[counter] == 'E' && line[counter + 1] == 'A')
+	else if (line[counter] == 'E' && line[counter + 1] == 'A' && !window->map->ea_path)
 		window->map->ea_path = ft_substr(line, counter + 3, ft_strlen(line) \
 			- counter - 4);
-	else if (line[counter] == 'F')
+	else if (line[counter] == 'F' && !window->map->f_tex)
 		window->map->f_tex = ft_substr(line, counter + 2, ft_strlen(line) \
 			- counter - 2);
-	else if (line[counter] == 'C')
+	else if (line[counter] == 'C' && !window->map->c_tex)
 		window->map->c_tex = ft_substr(line, counter + 2, ft_strlen(line) \
 			- counter - 2);
 	else

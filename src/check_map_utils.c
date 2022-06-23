@@ -26,7 +26,7 @@ takes the colors of and insert them into an extra struct for them
 int	init_colors(t_window *window)
 {
 	char	**tmp_f;
-	char	**tmp_c;//mach mal nur eins eyyy
+	char	**tmp_c;
 
 	window->map->f = ft_calloc(1, sizeof(t_color));
 	window->map->c = ft_calloc(1, sizeof(t_color));

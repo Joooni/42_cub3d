@@ -27,6 +27,7 @@ int	ft_render_next_frame(t_window *window)
 	draw_map(window);
 	ft_draw_grid(window);
 	ft_grid_highlight(window);
+	ft_cast_ray(window, window->player->ray);
 	ft_draw_vector(window, *(window->player->dir));
 	ft_draw_player(window);
 	ft_move(window);

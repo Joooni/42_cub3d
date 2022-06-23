@@ -56,6 +56,18 @@ typedef struct s_rc
 	t_vec	DeltaDist;
 }	t_rc;
 
+typedef struct s_key
+{
+	int		w;
+	int		a;
+	int		s;
+	int		d;
+	int		a_l;
+	int		a_r;
+	int		a_u;
+	int		a_d;
+}	t_key;
+
 typedef struct s_player
 {
 	t_vec	MapPos;
@@ -65,6 +77,7 @@ typedef struct s_player
 	t_vec	camera;
 	t_vec	step;
 	t_rc	ray;
+	t_key 	*key;
 	int		size;
 	int		color;
 }	t_player;
@@ -113,8 +126,20 @@ t_vec	*ft_init_vector (double x, double y);
 // controls.c
 
 int		ft_key_press(int keycode, t_window *window);
-void	ft_move(int keycode, t_window *window);
-void	ft_turn(int keycode, t_window *window);
+int		ft_key_release(int keycode, t_window *window);
+void	ft_move(t_window *window);
+// void	ft_turn(int keycode, t_window *window);
+
+//	controls_move.c
+
+void	ft_move_up(t_window *window);
+void	ft_move_left(t_window *window);
+void	ft_move_right(t_window *window);
+void	ft_move_down(t_window *window);
+void	ft_turn_right(t_window *window);
+void	ft_turn_left(t_window *window);
+
+
 
 // draw_minimap.c
 

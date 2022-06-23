@@ -31,12 +31,12 @@ int	main(int argc, char **argv)
 	if (!window || !window->map)
 		ft_end_process(ERR_MLX_INIT);
 	if (argc != 2)
-		ft_end_process("Invalid input");
+		ft_end_process(ERR_INV_INPUT);
 	mlx = mlx_init();
 	window->mlx = mlx;
 	ft_init(window, argv[1]);
 	if (map_handler(window))
-		ft_end_process("Invalid map-read");
+		ft_end_process(ERR_INV_MAP);
 	//print_read(window);
 	mlx_loop_hook(window->mlx, ft_render_next_frame, window);
 	mlx_hook(window->win, 17, 0, ft_close, window);

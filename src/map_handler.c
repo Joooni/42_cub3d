@@ -26,7 +26,7 @@ int	safe_preoptions(t_window *window, char *line, int counter)
 		window->map->c_tex = ft_substr(line, counter + 2, ft_strlen(line) \
 			- counter - 2);
 	else
-		ft_end_process("Invalid identifier!");
+		ft_end_process(ERR_INV_IDEN);
 	return (0);
 }
 
@@ -123,6 +123,6 @@ int	map_handler(t_window *window)
 	}
 	safe_map(window, window->map->rows);
 	if (player_flag == 0 || player_flag > 1 || !check_map(window))
-		ft_end_process("Invalid map\n");
+		ft_end_process(ERR_INV_MAP);
 	return (0);
 }

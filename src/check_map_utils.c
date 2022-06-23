@@ -33,7 +33,7 @@ int	init_colors(t_window *window)
 	tmp_f = ft_split(window->map->f_tex, ',');
 	tmp_c = ft_split(window->map->c_tex, ',');
 	if (!tmp_f[2] || !tmp_c[2])
-		ft_end_process("Invalid colors");
+		ft_end_process(ERR_INV_COLORS);
 	window->map->f->red = ft_atoi(tmp_f[0]);
 	free(tmp_f[0]);
 	window->map->f->green = ft_atoi(tmp_f[1]);
@@ -49,6 +49,6 @@ int	init_colors(t_window *window)
 	free(tmp_c[2]);
 	free(tmp_c);
 	if (!check_colors(window->map->f, window->map->c))
-		ft_end_process("Invalid colors");
+		ft_end_process(ERR_INV_COLORS);
 	return (1);
 }

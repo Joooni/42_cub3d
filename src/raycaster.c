@@ -57,6 +57,7 @@ void	ft_calc_step(t_window *window, t_rc *ray)
 	}
 }
 
+//testweise änderung
 void	ft_init_rc(t_window *window, t_rc *ray)
 {
 	ray->map_pos->x = (int)window->player->pos->x / 32;

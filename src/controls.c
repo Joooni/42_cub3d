@@ -20,8 +20,6 @@ int	ft_key_press(int keycode, t_window *window)
 		window->player->key->a_l = 1;
 	if (keycode == ARROW_RIGHT)
 		window->player->key->a_r = 1;
-	else
-		printf(":c I don't know that key, sorry. :c\n");
 	return (0);
 }
 

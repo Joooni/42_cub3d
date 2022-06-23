@@ -58,7 +58,7 @@ void	ft_init_player(t_window *window)
 	window->player->key = (t_key *)ft_calloc(1, sizeof(t_key));
 	window->player->pos = ft_init_vector(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 	window->player->dir = ft_init_vector(M_INIT_VECTOR_X, M_INIT_VECTOR_Y);
-	window->player->size = 5;
+	window->player->size = 10;
 	window->player->color = 0x0058BD55;
 	window->player->key->w = 0;
 	window->player->key->a = 0;

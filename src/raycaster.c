@@ -27,6 +27,7 @@ void	ft_calc_hit(t_map map, t_rc *ray)
 		if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '1')
 			ray->hit = 1;
 	}
+	printf("hit at coordinates: (%d/%d)\n", ray->map_pos->x, ray->map_pos->y);
 }
 
 void	ft_calc_step(t_window *window, t_rc *ray)
@@ -75,29 +76,38 @@ void	ft_init_rc(t_window *window, t_rc *ray)
 	ray->hit = 0;
 }
 
-/* void	ft_calc_distance(t_window *window, t_rc *ray)
+void	ft_calc_distance(t_rc *ray)
 {
-	double wall_dist_perp;
-
-	wall_dist_perp = 0;
 	if (ray->side == 0)
-		wall_dist_perp = (ray->side_dist->x - ray->delta_dist->x) * 32;
+		ray->wall_dist_perp = (ray->side_dist->x  - 32 * ray->delta_dist->x);
 	else
-		wall_dist_perp = (ray->side_dist->y - ray->delta_dist->y) * 32;
-} */
+		ray->wall_dist_perp = (ray->side_dist->y  - 32 * ray->delta_dist->y);
+}
 
 void	ft_draw_to_wall(t_window *window, t_rc *ray)
 {
-/* 	double	vec_x;
-	double	vey_y;
+	double	vec_x;
+	double	vec_y;
+	t_vec	*vec;
 
-	vec_x = 0;
-	vec_y = 0; */
-
+	vec_x = ray->dir->x;
+	vec_y = ray->dir->y;
+	ft_calc_distance(ray);
 	printf("############################\n");
 	printf("side distances: (%f / %f)\n", ray->side_dist->x, ray->side_dist->y);
+	printf("delta distances: (%f / %f)\n", ray->delta_dist->x, ray->delta_dist->x);
+
 	printf("ray dir: (%f / %f)\n",ray->dir->x, ray->dir->y);
 	printf("player pos: (%f / %f)\n", window->player->pos->x, window->player->pos->y);
+	printf("wall_dist_perp: %f\n", ray->wall_dist_perp);
 	printf("############################\n");
+	while (sqrt((vec_x * vec_x) + (vec_y * vec_y)) <= ray->wall_dist_perp)
+	{
+		vec_x += ray->dir->x;
+		vec_y += ray->dir->y;
+	}
+	vec = ft_init_vector(vec_x, vec_y);
+	ft_draw_vector(window, *vec);
+
 //	printf("map tile: (%d / %d)\n", (int)window->player->pos->x / 32, (int)window->player->pos->y / 32);
 }

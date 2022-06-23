@@ -5,8 +5,8 @@
 # define WINDOW_WIDTH 1080
 # define WINDOW_HEIGHT 720
 # define M_DEGREE_TURN 0.05
-# define M_INIT_VECTOR_X 0
-# define M_INIT_VECTOR_Y 1
+# define M_INIT_VECTOR_X 1
+# define M_INIT_VECTOR_Y 0
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -65,6 +65,7 @@ typedef struct s_rc
 	t_vec_i	*map_pos;
 	int		hit;
 	int		side;
+	double	wall_dist_perp;
 }	t_rc;
 
 typedef struct s_key
@@ -172,11 +173,11 @@ int		ft_close(t_window *window);
 
 // raycaster.c
 
-void	ft_cast_ray(t_window *window, t_rc *rc);
+void	ft_cast_ray(t_window *window, t_rc *ray);
 void	ft_init_rc(t_window *window, t_rc *rc);
 void	ft_calc_step(t_window *window, t_rc *rc);
 void	ft_calc_hit(t_map map, t_rc *ray);
-void	ft_calc_distance(t_window *window, t_rc *ray);
+void	ft_calc_distance(t_rc *ray);
 void	ft_draw_to_wall(t_window *window, t_rc *ray);
 
 //map_helper.c

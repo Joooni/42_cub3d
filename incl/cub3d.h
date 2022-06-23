@@ -36,6 +36,12 @@ typedef struct s_image {
 	int		endian;
 }	t_image;
 
+typedef struct s_vec_i {
+	int	x;
+	int	y;
+}	t_vec_i;
+
+
 typedef struct s_vec {
 	float	x;
 	float	y;
@@ -79,7 +85,7 @@ typedef struct s_player
 	t_vec	plane;
 	t_vec	camera;
 	t_vec	step;
-	t_rc	ray;
+	t_rc	*ray;
 	t_key 	*key;
 	int		size;
 	int		color;
@@ -166,7 +172,7 @@ int		ft_close(t_window *window);
 
 void	ft_cast_ray(t_window *window, t_rc *rc);
 void	ft_calc_step(t_window *window, t_rc *rc);
-void	ft_calc_hit(t_map map, t_player *player);
+void	ft_calc_hit(t_map map, t_rc *ray);
 void	ft_init_rc(t_window *window, t_rc *rc);
 
 //map_helper.c

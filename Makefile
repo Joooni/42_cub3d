@@ -47,6 +47,9 @@ $(NAME): $(LIBFT)/libft.a $(SRC)
 debug: $(LIBFT)/libft.a $(SRC)
 	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -g -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 
+test:
+	make
+	./cub3d maps/map1.cub
 
 clean:
 	make clean -C $(LIBFT)

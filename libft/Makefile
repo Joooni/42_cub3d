@@ -62,12 +62,14 @@ GCC = gcc
 
 AR  = ar -crs
 
-FLAGS   = -Wall -Wextra -Werror 
+FLAGS   = -Wall -Wextra -Werror
 
 .c.o: $(SRC) $(HDRS)
-	$(GCC) $(FLAGS) -c -o $@ $<
+	@$(GCC) $(FLAGS) -c -o $@ $<
 
 $(NAME):	$(OBJS) $(HDRS)
+	echo "compiling files"
+	echo "\033[0;32m Compiled\n \033[0m";
 	$(AR) $(NAME) $(OBJS) $@ $^
 
 all:	$(NAME)

@@ -11,7 +11,7 @@ void	ft_init(t_window *window, char *path)
 	window->map->rows = 0;
 	window->map->columns = 0;
 	if (set_path(window, path))
-		ft_end_process("Invalid path");
+		ft_end_process(ERR_INV_PATH);
 }
 
 /*

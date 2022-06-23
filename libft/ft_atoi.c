@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 10:05:12 by jsubel            #+#    #+#             */
-/*   Updated: 2022/06/20 09:52:57 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/06/23 11:50:03 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 	s = 1;
 	res = 0;
 	while (is_whitespace(str[c]))
-		c++;
+		ft_end_process("Invalid character!");
 	if (str[c] == '-' || str[c] == '+')
 		if (str[c++] == '-')
 			s = -1;

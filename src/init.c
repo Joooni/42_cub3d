@@ -87,4 +87,5 @@ void	ft_init_ray(t_window *window)
 	window->player->ray->side_dist = (t_vec *)ft_calloc(1, sizeof(t_vec));
 	window->player->ray->map_pos = (t_vec_i *)ft_calloc(1, sizeof(t_vec_i));
 	window->player->ray->delta_dist = ft_calloc(1, sizeof(t_vec));
+	window->player->ray->pixel = ft_calloc(1, sizeof(t_vec_i));
 }

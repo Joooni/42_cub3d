@@ -17,7 +17,7 @@ int	ft_render_next_frame(t_window *window)
 	while (y < WINDOW_HEIGHT)
 	{
 		x = 0;
-		while (x < WINDOW_WIDTH)
+		while (x < WINDOW_WIDTH / 2)
 		{
 			ft_pixel_put_img(window->img, x, y, 0x00000000);
 			x++;
@@ -31,6 +31,7 @@ int	ft_render_next_frame(t_window *window)
 	ft_draw_vector(window, *(window->player->dir));
 	ft_draw_player(window);
 	ft_move(window);
+	drawing_handler(window);
 	mlx_put_image_to_window(window->mlx, window->win, window->img->img, 0, 0);
 	return (0);
 }

@@ -23,7 +23,7 @@ void	ft_draw_grid(t_window *window)
 	while (counter_y < WINDOW_HEIGHT)
 	{
 		counter_x = 0;
-		while (counter_x < WINDOW_WIDTH)
+		while (counter_x < WINDOW_WIDTH / 2)
 		{
 			if (counter_x % 32 == 0 || counter_y % 32 == 0)
 				ft_pixel_put_img(window->img, counter_x, counter_y, color);

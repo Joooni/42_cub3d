@@ -2,7 +2,7 @@
 
 # define CUB3D_H
 
-# define WINDOW_WIDTH 1080
+# define WINDOW_WIDTH 2160
 # define WINDOW_HEIGHT 720
 # define M_DEGREE_TURN 0.05
 # define M_INIT_VECTOR_X 0
@@ -57,12 +57,13 @@ typedef struct s_rect{
 
 typedef struct s_rc
 {
-	t_vec_i	pixel;
+	t_vec_i	*pixel;
 	t_vec	*dir;
 	t_vec	*side_dist;
 	t_vec	*delta_dist;
 	t_vec_i	step;
 	t_vec_i	*map_pos;
+	double wall_dist_perp;
 	int		hit;
 	int		side;
 }	t_rc;
@@ -176,8 +177,8 @@ void	ft_cast_ray(t_window *window, t_rc *rc);
 void	ft_init_rc(t_window *window, t_rc *rc);
 void	ft_calc_step(t_window *window, t_rc *rc);
 void	ft_calc_hit(t_map map, t_rc *ray);
-void	ft_calc_distance(t_window *window, t_rc *ray);
-void	ft_draw_to_wall(t_window *window, t_rc *ray);
+void	ft_calc_distance(t_rc *ray);
+//void	ft_draw_to_wall(t_window *window, t_rc *ray);
 
 //map_helper.c
 
@@ -197,5 +198,8 @@ int	init_colors(t_window *window);
 //draw_map.c
 
 void draw_map(t_window *window);
+
+//	3drawing.c
+void drawing_handler(t_window *window);
 
 #endif

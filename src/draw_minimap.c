@@ -4,8 +4,8 @@ void	ft_draw_player(t_window *window)
 {
 	t_rect player;
 
-	player.x = window->player->pos->x;
-	player.y = window->player->pos->y;
+	player.x = window->player->pos->x - window->player->size / 2;
+	player.y = window->player->pos->y - window->player->size / 2;
 	player.size_x = window->player->size;
 	player.size_y = player.size_x;
 	player.color = window->player->color;

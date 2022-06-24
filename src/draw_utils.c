@@ -27,8 +27,7 @@ int	ft_render_next_frame(t_window *window)
 	draw_map(window);
 	ft_draw_grid(window);
 	ft_grid_highlight(window);
-	ft_cast_ray(window, window->player->ray);
-	ft_draw_vector(window, *(window->player->dir));
+	ft_cast_ray(window);
 	ft_draw_player(window);
 	ft_move(window);
 	drawing_handler(window);
@@ -69,7 +68,7 @@ void	ft_draw_vector(t_window *window, t_vec vector)
 	delta_y = vector.y / nbr_pixels;
 	pixel_x = window->player->pos->x;
 	pixel_y = window->player->pos->y;
-	while (nbr_pixels + 150)
+	while (nbr_pixels)
 	{
 		ft_pixel_put_img(window->img, pixel_x, pixel_y, 0x006FF542);
 		pixel_x += delta_x;

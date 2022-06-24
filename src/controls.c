@@ -71,21 +71,33 @@ void	ft_move(t_window *window)
 void	ft_turn_right(t_window *window)
 {
 	double	old_dir_x;
+	double	old_plane_x;
 
 	old_dir_x = window->player->dir->x;
+	old_plane_x = window->player->plane.x;
 	window->player->dir->x = old_dir_x * cos(M_DEGREE_TURN) \
 		- window->player->dir->y * sin(M_DEGREE_TURN);
 	window->player->dir->y = old_dir_x * sin(M_DEGREE_TURN) \
 		+ window->player->dir->y * cos(M_DEGREE_TURN);
+	window->player->plane.x = old_plane_x * cos(M_DEGREE_TURN) \
+		- window->player->plane.y * sin(M_DEGREE_TURN);
+	window->player->plane.y = old_plane_x * sin(M_DEGREE_TURN) \
+		+ window->player->plane.y * cos(M_DEGREE_TURN);
 }
 
 void	ft_turn_left(t_window *window)
 {
 	double	old_dir_x;
+	double	old_plane_x;
 
 	old_dir_x = window->player->dir->x;
+	old_plane_x = window->player->plane.x;
 	window->player->dir->x = old_dir_x * cos(M_DEGREE_TURN) \
 		+ window->player->dir->y * sin(M_DEGREE_TURN);
 	window->player->dir->y = old_dir_x * sin(M_DEGREE_TURN) \
 		* -1 + window->player->dir->y * cos(M_DEGREE_TURN);
+	window->player->plane.x = old_plane_x * cos(M_DEGREE_TURN) \
+		+ window->player->plane.y * sin(M_DEGREE_TURN);
+	window->player->plane.y = old_plane_x * sin(M_DEGREE_TURN) \
+		* -1 + window->player->plane.y * cos(M_DEGREE_TURN);
 }

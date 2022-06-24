@@ -70,7 +70,7 @@ void	ft_init_player(t_window *window)
 	window->player->key->a_u = 0;
 	window->player->key->a_d = 0;
 	window->player->plane.x = 0;
-	window->player->plane.y = 1;
+	window->player->plane.y = 2;
 }
 
 t_vec	*ft_init_vector(double x, double y)

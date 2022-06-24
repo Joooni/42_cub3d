@@ -63,7 +63,6 @@ typedef struct s_rc
 	t_vec	*delta_dist;
 	t_vec_i	step;
 	t_vec_i	*map_pos;
-	double wall_dist_perp;
 	int		hit;
 	int		side;
 	double	wall_dist_perp;

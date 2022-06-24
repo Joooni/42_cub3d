@@ -7,7 +7,7 @@ void	ft_cast_ray(t_window *window)
 	int		nbr_rays;
 
 	i = 0;
-	nbr_rays = 200;
+	nbr_rays = 100;
 	while (i < nbr_rays)
 	{
 		window->player->camera.x = 2 * i / (double)nbr_rays - 1;

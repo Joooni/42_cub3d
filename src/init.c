@@ -2,7 +2,8 @@
 
 void	ft_init(t_window *window, char *path)
 {
-	window->win = mlx_new_window(window->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
+	window->win = mlx_new_window(window->mlx,
+			WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
 	if (!window->win)
 		ft_end_process(ERR_WINDOW_INIT);
 	window->img = ft_init_image(window->mlx);
@@ -16,10 +17,10 @@ void	ft_init(t_window *window, char *path)
 /*
 checks if the filepath ends with "".cub"
 */
-int set_path(t_window *window, char *path)
+int	set_path(t_window *window, char *path)
 {
-	int len;
-	int flag;
+	int	len;
+	int	flag;
 
 	len = ft_strlen(path);
 	flag = 0;
@@ -37,7 +38,7 @@ int set_path(t_window *window, char *path)
 	return (0);
 }
 
-t_image *ft_init_image(void *mlx)
+t_image	*ft_init_image(void *mlx)
 {
 	t_image	*image;
 
@@ -47,7 +48,8 @@ t_image *ft_init_image(void *mlx)
 	image->img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!image->img)
 		ft_end_process(ERR_IMAGE_INIT);
-	image->addr = mlx_get_data_addr(image->img, &(image->bpp), &(image->line_len), &(image->endian));
+	image->addr = mlx_get_data_addr(image->img, &(image->bpp),
+			&(image->line_len), &(image->endian));
 	return (image);
 }
 
@@ -71,9 +73,9 @@ void	ft_init_player(t_window *window)
 	window->player->plane.y = 1;
 }
 
-t_vec	*ft_init_vector (double x, double y)
+t_vec	*ft_init_vector(double x, double y)
 {
-	t_vec *vec;
+	t_vec	*vec;
 
 	vec = ft_calloc(1, sizeof(t_vec));
 	vec->x = x;
@@ -83,7 +85,7 @@ t_vec	*ft_init_vector (double x, double y)
 
 t_rc	*ft_init_ray(void)
 {
-	t_rc *ray;
+	t_rc	*ray;
 
 	ray = (t_rc *)ft_calloc(1, sizeof(t_rc));
 	ray->dir = (t_vec *)ft_calloc(1, sizeof(t_vec));

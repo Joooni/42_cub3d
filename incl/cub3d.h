@@ -134,8 +134,7 @@ int 	set_path(t_window *window, char *path);
 t_image	*ft_init_image(void *mlx);
 void	ft_init_player(t_window *window);
 t_vec	*ft_init_vector (double x, double y);
-void	ft_init_ray(t_window *window);
-
+t_rc	*ft_init_ray(void);
 // controls.c
 
 int		ft_key_press(int keycode, t_window *window);
@@ -173,7 +172,7 @@ int		ft_close(t_window *window);
 
 // raycaster.c
 
-void	ft_cast_ray(t_window *window, t_rc *ray);
+void	ft_cast_ray(t_window *window);
 void	ft_init_rc(t_window *window, t_rc *rc);
 void	ft_calc_step(t_window *window, t_rc *rc);
 void	ft_calc_hit(t_map map, t_rc *ray);

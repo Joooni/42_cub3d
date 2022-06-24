@@ -49,7 +49,7 @@ debug: $(LIBFT)/libft.a $(SRC)
 
 test:
 	make
-	./cub3d maps/map.cub
+	./cub3d maps/map1.cub
 
 clean:
 	make clean -C $(LIBFT)

@@ -19,7 +19,7 @@ int	ft_render_next_frame(t_window *window)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			ft_pixel_put_img(window->img, x, y, 0x00000000);
+			ft_pixel_put_img(window->img, x, y, 0x9c9c9c);
 			x++;
 		}
 		y++;

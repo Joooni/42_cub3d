@@ -7,7 +7,7 @@ void	ft_cast_ray(t_window *window)
 	int		nbr_rays;
 
 	i = 0;
-	nbr_rays = 100;
+	nbr_rays = WINDOW_WIDTH / 2;
 	while (i < nbr_rays)
 	{
 		window->player->camera.x = 2 * i / (double)nbr_rays - 1;
@@ -17,6 +17,7 @@ void	ft_cast_ray(t_window *window)
 		ray->hit = 0;
 		ft_calc_hit(*(window->map), ray);
 		ft_draw_to_wall(window, ray);
+		drawing_handler(window, ray, i + WINDOW_WIDTH / 2);
 		free(ray);
 		i++;
 	}

@@ -199,6 +199,7 @@ int	init_colors(t_window *window);
 void draw_map(t_window *window);
 
 //	3drawing.c
-void drawing_handler(t_window *window);
+void drawing_handler(t_window *window, t_rc *ray, int x);
+//void ft_paint_black(t_window *window);
 
 #endif

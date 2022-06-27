@@ -3,7 +3,7 @@
 # define CUB3D_H
 
 # define WINDOW_WIDTH 2160
-# define WINDOW_HEIGHT 720
+# define WINDOW_HEIGHT 1080
 # define M_DEGREE_TURN 0.05
 # define M_INIT_VECTOR_X 1
 # define M_INIT_VECTOR_Y 0
@@ -99,7 +99,17 @@ typedef struct s_color
 	int	red;
 	int	green;
 	int	blue;
+	int t;
 }	t_color;
+
+typedef struct s_textures
+{
+	void *img;
+	char *addr;
+	int	bpp;
+	int line_len;
+	int endian;
+}	t_textures;
 
 typedef struct s_map
 {
@@ -116,6 +126,10 @@ typedef struct s_map
 	char *c_tex;
 	t_color *f;
 	t_color *c;
+	t_textures *no_tex;
+	t_textures *ea_tex;
+	t_textures *so_tex;
+	t_textures *we_tex;
 }	t_map;
 
 typedef struct s_window
@@ -135,6 +149,7 @@ t_image	*ft_init_image(void *mlx);
 void	ft_init_player(t_window *window);
 t_vec	*ft_init_vector (double x, double y);
 t_rc	*ft_init_ray(void);
+void	ft_init_tex(t_window *window);
 // controls.c
 
 int		ft_key_press(int keycode, t_window *window);
@@ -200,6 +215,8 @@ void draw_map(t_window *window);
 
 //	3drawing.c
 void drawing_handler(t_window *window, t_rc *ray, int x);
-//void ft_paint_black(t_window *window);
+
+//	textures.c
+void	textures_handler(t_window *window);
 
 #endif

@@ -12,6 +12,16 @@ void	ft_init(t_window *window, char *path)
 	window->map->columns = 0;
 	if (set_path(window, path))
 		ft_end_process(ERR_INV_PATH);
+	ft_init_tex(window);
+	textures_handler(window);
+}
+
+void ft_init_tex(t_window *window)
+{
+	window->map->no_tex = ft_calloc(1, sizeof(t_textures));
+	window->map->ea_tex = ft_calloc(1, sizeof(t_textures));
+	window->map->so_tex = ft_calloc(1, sizeof(t_textures));
+	window->map->we_tex = ft_calloc(1, sizeof(t_textures));
 }
 
 /*
@@ -70,7 +80,7 @@ void	ft_init_player(t_window *window)
 	window->player->key->a_u = 0;
 	window->player->key->a_d = 0;
 	window->player->plane.x = 0;
-	window->player->plane.y = 2;
+	window->player->plane.y = 0.6666;
 }
 
 t_vec	*ft_init_vector(double x, double y)

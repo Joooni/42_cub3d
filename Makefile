@@ -27,6 +27,7 @@ SRC =	main.c \
 		$(SRC_PATH)check_map_utils.c \
 		$(SRC_PATH)draw_map.c \
 		$(SRC_PATH)3drawing.c \
+		$(SRC_PATH)textures.c \
 
 
 # -*- Objects -*-

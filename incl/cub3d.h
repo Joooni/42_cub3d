@@ -2,11 +2,13 @@
 
 # define CUB3D_H
 
-# define WINDOW_WIDTH 2160
-# define WINDOW_HEIGHT 1080
-# define M_DEGREE_TURN 0.05
-# define M_INIT_VECTOR_X 1
-# define M_INIT_VECTOR_Y 0
+# define WINDOW_WIDTH		2160
+# define WINDOW_HEIGHT		1080
+# define M_DEGREE_TURN		0.05
+# define M_INIT_VECTOR_X	1
+# define M_INIT_VECTOR_Y	0
+# define M_BASE_SPEED		1
+# define M_SPRINT_SPEED		3
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -78,6 +80,7 @@ typedef struct s_key
 	int		a_r;
 	int		a_u;
 	int		a_d;
+	int		shift;
 }	t_key;
 
 typedef struct s_player
@@ -94,6 +97,7 @@ typedef struct s_player
 	int		color;
 	int		mouse_x;
 	int		mouse_hide;
+	int		speed;
 }	t_player;
 
 typedef struct s_color

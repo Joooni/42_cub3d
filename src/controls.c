@@ -20,6 +20,8 @@ int	ft_key_press(int keycode, t_window *window)
 		window->player->key->a_l = 1;
 	if (keycode == ARROW_RIGHT)
 		window->player->key->a_r = 1;
+	if (keycode == KEY_SPACEBAR)
+		window->player->speed = M_SPRINT_SPEED;
 	return (0);
 }
 
@@ -45,6 +47,8 @@ int	ft_key_release(int keycode, t_window *window)
 		window->player->mouse_hide = 1;
 	else if (keycode == KEY_P && window->player->mouse_hide == 1)
 		window->player->mouse_hide = 0;
+	if (keycode == KEY_SPACEBAR)
+		window->player->speed = M_BASE_SPEED;
 	return (0);
 }
 
@@ -54,6 +58,8 @@ void	ft_move(t_window *window)
 	t_key	*key;
 
 	mv_dist = 8;
+	if (window->player->key->shift == 1)
+		mv_dist = 20;
 	key = window->player->key;
 	if (key->a && window->player->pos->x > mv_dist)
 		ft_move_left(window);

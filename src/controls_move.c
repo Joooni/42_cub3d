@@ -2,64 +2,80 @@
 
 void	ft_move_up(t_window *window)
 {
-	int pos_x;
-	int pos_y;
+	int	pos_x;
+	int	pos_y;
 
-	pos_x = (window->player->pos->x + window->player->dir->x) / 32;
-	pos_y = (window->player->pos->y + window->player->dir->y) / 32;
+	pos_x = (window->player->pos->x
+			+ window->player->dir->x * window->player->speed) / 32;
+	pos_y = (window->player->pos->y
+			+ window->player->dir->y * window->player->speed) / 32;
 	if (window->map->map[pos_y][pos_x] != '1')
 	{
-		window->player->pos->x += window->player->dir->x;
-		window->player->pos->y += window->player->dir->y;
+		window->player->pos->x += window->player->dir->x
+			* window->player->speed;
+		window->player->pos->y += window->player->dir->y
+			* window->player->speed;
 	}
 }
 
 void	ft_move_left(t_window *window)
 {
-	int pos_x;
-	int pos_y;
+	int	pos_x;
+	int	pos_y;
 
-	pos_x = (window->player->pos->x + window->player->dir->y) / 32;
-	pos_y = (window->player->pos->y - window->player->dir->x) / 32;
+	pos_x = (window->player->pos->x
+			+ window->player->dir->y * window->player->speed) / 32;
+	pos_y = (window->player->pos->y
+			- window->player->dir->x * window->player->speed) / 32;
 	if (window->map->map[pos_y][pos_x] != '1')
 	{
-		window->player->pos->x += window->player->dir->y;
-		window->player->pos->y -= window->player->dir->x;
+		window->player->pos->x += window->player->dir->y
+			* window->player->speed;
+		window->player->pos->y -= window->player->dir->x
+			* window->player->speed;
 	}
 }
 
 void	ft_move_right(t_window *window)
 {
-	int pos_x;
-	int pos_y;
+	int	pos_x;
+	int	pos_y;
 
-	pos_x = (window->player->pos->x - window->player->dir->y) / 32;
-	pos_y = (window->player->pos->y + window->player->dir->x) / 32;
+	pos_x = (window->player->pos->x
+			- window->player->dir->y * window->player->speed) / 32;
+	pos_y = (window->player->pos->y
+			+ window->player->dir->x * window->player->speed) / 32;
 	if (window->map->map[pos_y][pos_x] != '1')
 	{
-		window->player->pos->x -= window->player->dir->y;
-		window->player->pos->y += window->player->dir->x;
+		window->player->pos->x -= window->player->dir->y
+			* window->player->speed;
+		window->player->pos->y += window->player->dir->x
+			* window->player->speed;
 	}
 }
 
 void	ft_move_down(t_window *window)
 {
-	int pos_x;
-	int pos_y;
+	int	pos_x;
+	int	pos_y;
 
-	pos_x = (window->player->pos->x - window->player->dir->x) / 32;
-	pos_y = (window->player->pos->y - window->player->dir->y) / 32;
+	pos_x = (window->player->pos->x
+			- window->player->dir->x * window->player->speed) / 32;
+	pos_y = (window->player->pos->y
+			- window->player->dir->y * window->player->speed) / 32;
 	if (window->map->map[pos_y][pos_x] != '1')
 	{
-		window->player->pos->x -= window->player->dir->x;
-		window->player->pos->y -= window->player->dir->y;
+		window->player->pos->x -= window->player->dir->x
+			* window->player->speed;
+		window->player->pos->y -= window->player->dir->y
+			* window->player->speed;
 	}
 }
 
-void ft_mouse_tracker(t_window *window)
+void	ft_mouse_tracker(t_window *window)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	if (!window->player->mouse_hide)
 	{

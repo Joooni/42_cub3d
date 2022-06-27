@@ -21,5 +21,6 @@
 # define KEY_MINUS			44
 # define KEY_R				15
 # define KEY_C				8
+# define KEY_P				35
 
 #endif

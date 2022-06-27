@@ -81,6 +81,7 @@ void	ft_init_player(t_window *window)
 	window->player->plane.x = 0;
 	window->player->plane.y = 0.6666;
 	window->player->mouse_x = 0;
+	window->player->mouse_hide = 0;
 }
 
 t_vec	*ft_init_vector(double x, double y)

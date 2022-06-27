@@ -41,6 +41,10 @@ int	ft_key_release(int keycode, t_window *window)
 		window->player->key->a_l = 0;
 	if (keycode == ARROW_RIGHT)
 		window->player->key->a_r = 0;
+	if (keycode == KEY_P && window->player->mouse_hide == 0)
+		window->player->mouse_hide = 1;
+	else if (keycode == KEY_P && window->player->mouse_hide == 1)
+		window->player->mouse_hide = 0;
 	return (0);
 }
 

@@ -93,6 +93,7 @@ typedef struct s_player
 	int		size;
 	int		color;
 	int		mouse_x;
+	int		mouse_hide;
 }	t_player;
 
 typedef struct s_color

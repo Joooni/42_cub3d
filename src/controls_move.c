@@ -55,3 +55,17 @@ void	ft_move_down(t_window *window)
 		window->player->pos->y -= window->player->dir->y;
 	}
 }
+
+void ft_mouse_tracker(t_window *window)
+{
+	int x;
+	int y;
+
+	mlx_mouse_get_pos(window->win, &x, &y);
+	if (x > WINDOW_WIDTH / 2)
+		ft_turn_right(window);
+	if (x < WINDOW_WIDTH / 2)
+		ft_turn_left(window);
+	mlx_mouse_move(window->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+	window->player->mouse_x = x;
+}

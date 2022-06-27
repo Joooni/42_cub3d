@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 	mlx_hook(window->win, 17, 0, ft_close, window);
 	mlx_hook(window->win, 2, 1L << 0, ft_key_press, window);
 	mlx_hook(window->win, 3, 1L << 1, ft_key_release, window);
+	mlx_mouse_hide(window->mlx, window->win);
 	//print_read(window);
 	printf("%s\n", argv[0]); //testing
 	mlx_loop(window->mlx);

@@ -66,6 +66,7 @@ void	ft_move(t_window *window)
 		ft_turn_left(window);
 	if (key->a_r)
 		ft_turn_right(window);
+	ft_mouse_tracker(window);
 }
 
 void	ft_turn_right(t_window *window)

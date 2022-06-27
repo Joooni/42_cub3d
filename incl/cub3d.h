@@ -92,8 +92,7 @@ typedef struct s_player
 	t_key 	*key;
 	int		size;
 	int		color;
-	int move_flag_x;
-	int move_flag_y;
+	int		mouse_x;
 }	t_player;
 
 typedef struct s_color
@@ -157,6 +156,9 @@ void	ft_init_tex(t_window *window);
 int		ft_key_press(int keycode, t_window *window);
 int		ft_key_release(int keycode, t_window *window);
 void	ft_move(t_window *window);
+void	ft_turn_right(t_window *window);
+void	ft_turn_left(t_window *window);
+
 // void	ft_turn(int keycode, t_window *window);
 
 //	controls_move.c
@@ -165,10 +167,7 @@ void	ft_move_up(t_window *window);
 void	ft_move_left(t_window *window);
 void	ft_move_right(t_window *window);
 void	ft_move_down(t_window *window);
-void	ft_turn_right(t_window *window);
-void	ft_turn_left(t_window *window);
-
-
+void	ft_mouse_tracker(t_window *window);
 
 // draw_minimap.c
 

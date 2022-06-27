@@ -92,6 +92,8 @@ typedef struct s_player
 	t_key 	*key;
 	int		size;
 	int		color;
+	int move_flag_x;
+	int move_flag_y;
 }	t_player;
 
 typedef struct s_color

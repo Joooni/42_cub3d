@@ -7,6 +7,7 @@ void	textures_handler(t_window *window)
 	int		height;
 
 	map = window->map;
+	printf("path: %s\n", map->no_path);
 	map->no_tex->img = mlx_xpm_file_to_image(window->mlx, map->no_path, \
 		&width, &height);
 	if (!map->no_tex->img)

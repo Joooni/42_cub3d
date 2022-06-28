@@ -1,4 +1,4 @@
-NO ./textures/ground.xpm
+NO ./textures/wall_1.xpm
 SO ./path_to_the_south_texture
 WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
@@ -21,4 +21,3 @@ C 255,30,0
 11000001110101011111011110S0111
 11110111 1110101 101111010001
 11111111 1111111 111111111111
-

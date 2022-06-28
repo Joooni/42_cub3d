@@ -1,12 +1,12 @@
 #include "../incl/cub3d.h"
 
-static int *ft_set_color(t_textures *tex, int x, int y)
+static t_color *ft_set_color(t_textures *tex, int x, int y)
 {
 	int *pos;
 
 	pos = (int *)(tex->addr + (y * tex->line_len + \
 		x * (tex->bpp / 8)));
-	return (pos);
+	return ((t_color *)pos);
 }
 
 static t_color*** create_matrix(t_textures *tex, int heidth, int width)
@@ -14,21 +14,22 @@ static t_color*** create_matrix(t_textures *tex, int heidth, int width)
 	int i;
 	int j;
 
-	tex->matrix = ft_calloc(heidth + 1, sizeof(t_color **));
+	tex->matrix = ft_calloc(heidth, sizeof(t_color **));
 	j = 0;
 	while (j < heidth)
 	{
-		printf("new_line\n");
-		tex->matrix[j] = ft_calloc(width + 1, sizeof(t_color *));
+		tex->matrix[j] = ft_calloc(width, sizeof(t_color *));
 		i = 0;
 		while (i < width)
 		{
-			tex->matrix[j][i] = (t_color *)ft_set_color(tex, j, i);
+			tex->matrix[j][i] = ft_set_color(tex, i, j);
 			printf("matrix: %d\n", (int)tex->matrix[j][i]);
+			printf("b: %d\nr: %d\ng: %d\nt: %d\n", tex->matrix[j][i]->blue, tex->matrix[j][i]->red, tex->matrix[j][i]->green, tex->matrix[j][i]->t);
 			i++;
 		}
 		j++;
 	}
+	tex->height = j;
 	return (tex->matrix);
 }
 

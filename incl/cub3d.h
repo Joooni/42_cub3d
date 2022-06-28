@@ -102,10 +102,10 @@ typedef struct s_player
 
 typedef struct s_color
 {
-	int	red;
-	int	green;
-	int	blue;
-	int t;
+	unsigned char	blue;
+	unsigned char	green;
+	unsigned char	red;
+	unsigned char	t;
 }	t_color;
 
 typedef struct s_textures
@@ -114,6 +114,7 @@ typedef struct s_textures
 	char *addr;
 	int	bpp;
 	int line_len;
+	int height;
 	int endian;
 	t_color ***matrix;
 }	t_textures;

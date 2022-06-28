@@ -115,6 +115,7 @@ typedef struct s_textures
 	int	bpp;
 	int line_len;
 	int endian;
+	t_color ***matrix;
 }	t_textures;
 
 typedef struct s_map

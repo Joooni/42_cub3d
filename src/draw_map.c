@@ -1,8 +1,8 @@
 #include "../incl/cub3d.h"
 
-static void draw_something(t_window *window, int x, int y, int color)
+static void	draw_something(t_window *window, int x, int y, int color)
 {
-	t_rect rect;
+	t_rect	rect;
 
 	rect.x = x * 32;
 	rect.y = y * 32;
@@ -22,7 +22,7 @@ int static	player_flag(char **map, int y, int x)
 	return (1);
 }
 
-void draw_map(t_window *window)
+void	draw_map(t_window *window)
 {
 	int	x;
 	int	y;

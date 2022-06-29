@@ -2,13 +2,15 @@
 
 # define CUB3D_H
 
-# define WINDOW_WIDTH		2160
+# define WINDOW_WIDTH		1920
 # define WINDOW_HEIGHT		1080
 # define M_DEGREE_TURN		0.05
 # define M_INIT_VECTOR_X	1
 # define M_INIT_VECTOR_Y	0
 # define M_BASE_SPEED		1
 # define M_SPRINT_SPEED		3
+# define M_TEXTURE_WIDTH	64
+# define M_TEXTURE_HEIGHT	64
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -68,6 +70,14 @@ typedef struct s_rc
 	int		hit;
 	int		side;
 	double	wall_dist_perp;
+	double	line_height;
+	double	draw_start;
+	double	draw_end;
+	int		color;
+	double	wall_hit_x;
+	t_vec_i	tex;
+	double	tex_pos;
+	double	step_tex;
 }	t_rc;
 
 typedef struct s_key
@@ -135,9 +145,9 @@ typedef struct s_map
 	t_color *f;
 	t_color *c;
 	t_textures *no_tex;
-	t_textures *ea_tex;
 	t_textures *so_tex;
 	t_textures *we_tex;
+	t_textures *ea_tex;
 }	t_map;
 
 typedef struct s_window
@@ -158,6 +168,14 @@ void	ft_init_player(t_window *window);
 t_vec	*ft_init_vector (double x, double y);
 t_rc	*ft_init_ray(void);
 void	ft_init_tex(t_window *window);
+
+// free.c
+
+void	ft_free_ray(t_rc *ray);
+void	ft_free_player(t_window *window);
+void	ft_free_tex(t_window *window);
+void	ft_free_matrix(t_color ***matrix);
+
 // controls.c
 
 int		ft_key_press(int keycode, t_window *window);
@@ -192,6 +210,8 @@ void	ft_draw_vector(t_window *window, t_vec vector);
 // utils.c
 
 int		ft_close(t_window *window);
+int		ft_tcolor_to_int(t_color color);
+
 
 // raycaster.c
 
@@ -206,7 +226,7 @@ void	ft_draw_to_wall(t_window *window, t_rc *ray);
 
 int map_handler(t_window *window);
 int count_map(t_window *window, char *line);
-int	safe_preoptions(t_window *window, char *line, int counter);
+int	safe_preoptions(t_map *map, char *line, int counter);
 int safe_map(t_window *window, int rows);
 
 // check_map.c
@@ -222,9 +242,11 @@ int	init_colors(t_window *window);
 void draw_map(t_window *window);
 
 //	3drawing.c
-void drawing_handler(t_window *window, t_rc *ray, int x);
+void	drawing_handler(t_window *window, t_rc *ray, int x);
+void	ft_calc_tex_x(t_window *window, t_rc *ray);
 
 //	textures.c
 void	textures_handler(t_window *window);
+void	ft_load_textures(t_window *window);
 
 #endif

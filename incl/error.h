@@ -10,5 +10,7 @@
 # define ERR_INV_PATH		"Error: Invalid path"
 # define ERR_INV_IDEN		"Error: Invalid identifier"
 # define ERR_INV_MAP		"Error: Invalid map"
+# define ERR_INV_TEX		"Error: Invalid texture"
+# define ERR_INV_TEX_ADDR	"Error: texture address generation failed"
 
 #endif

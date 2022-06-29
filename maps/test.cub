@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./textures/brick_017.xpm
+SO ./textures/brick_024-2.xpm
+WE ./textures/city_014.xpm
+EA ./textures/nature_07.xpm
 
 
 F 220,100,0

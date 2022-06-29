@@ -20,6 +20,8 @@ SRC =	main.c \
 		$(SRC_PATH)draw_minimap.c \
 		$(SRC_PATH)draw_utils.c \
 		$(SRC_PATH)init.c \
+		$(SRC_PATH)init2.c \
+		$(SRC_PATH)free.c \
 		$(SRC_PATH)utils.c \
 		$(SRC_PATH)raycaster.c \
 		$(SRC_PATH)map_handler.c \
@@ -51,7 +53,11 @@ debug: $(LIBFT)/libft.a $(SRC)
 
 test:
 	make
-	./cub3d maps/map1.cub
+	./cub3d maps/test.cub
+
+leaks:
+	make
+	leaks --atExit -- ./cub3d maps/test.cub
 
 clean:
 	make clean -C $(LIBFT)

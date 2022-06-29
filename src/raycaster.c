@@ -18,14 +18,13 @@ void	ft_cast_ray(t_window *window)
 		ft_calc_hit(*(window->map), ray);
 		ft_draw_to_wall(window, ray);
 		drawing_handler(window, ray, i + WINDOW_WIDTH / 2);
-		free(ray);
+		ft_free_ray(ray);
 		i++;
 	}
 }
 
 void	ft_init_rc(t_window *window, t_rc *ray)
 {
-
 	ray->map_pos->x = (int)window->player->pos->x / 32;
 	ray->map_pos->y = (int)window->player->pos->y / 32;
 	ray->dir->x = window->player->dir->x

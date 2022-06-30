@@ -2,18 +2,18 @@
 
 static void	ft_scale_factor(t_window *window)
 {
-	window->scale_factor = WINDOW_WIDTH * 0.7 / window->map->columns;
-	if (WINDOW_HEIGHT * 0.7 / window->map->rows < window->scale_factor)
-		window->scale_factor = WINDOW_HEIGHT * 0.7 / window->map->rows;
+	window->scale_factor = WINDOW_WIDTH * 0.3 / window->map->columns;
+	if (WINDOW_HEIGHT * 0.3 / window->map->rows < window->scale_factor)
+		window->scale_factor = WINDOW_HEIGHT * 0.3 / window->map->rows;
 }
 static void	draw_something(t_window *window, int x, int y, int color)
 {
 	t_rect	rect;
 
-	rect.x = x * window->scale_factor;
-	rect.y = y * window->scale_factor;
-	rect.size_x = window->scale_factor;
-	rect.size_y = window->scale_factor;
+	rect.x = x * (int)window->scale_factor;
+	rect.y = y * (int)window->scale_factor;
+	rect.size_x = (int)window->scale_factor;
+	rect.size_y = (int)window->scale_factor;
 	rect.color = color;
 	ft_draw_rect(window, rect);
 }

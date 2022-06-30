@@ -1,13 +1,19 @@
 #include "../incl/cub3d.h"
 
+static void	ft_scale_factor(t_window *window)
+{
+	window->scale_factor = WINDOW_WIDTH * 0.7 / window->map->columns;
+	if (WINDOW_HEIGHT * 0.7 / window->map->rows < window->scale_factor)
+		window->scale_factor = WINDOW_HEIGHT * 0.7 / window->map->rows;
+}
 static void	draw_something(t_window *window, int x, int y, int color)
 {
 	t_rect	rect;
 
-	rect.x = x * 32;
-	rect.y = y * 32;
-	rect.size_x = 32;
-	rect.size_y = 32;
+	rect.x = x * window->scale_factor;
+	rect.y = y * window->scale_factor;
+	rect.size_x = window->scale_factor;
+	rect.size_y = window->scale_factor;
 	rect.color = color;
 	ft_draw_rect(window, rect);
 }
@@ -28,6 +34,7 @@ void	draw_map(t_window *window)
 	int	y;
 
 	y = 0;
+	ft_scale_factor(window);
 	while (y < window->map->rows)
 	{
 		x = 0;

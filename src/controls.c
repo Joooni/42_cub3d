@@ -73,42 +73,46 @@ void	ft_move(t_window *window)
 		> window->player->pos->y + mv_dist)
 		ft_move_down(window);
 	if (key->a_l)
-		ft_turn_left(window);
+		ft_turn_left(window, M_TURN_FACTOR);
 	if (key->a_r)
-		ft_turn_right(window);
+		ft_turn_right(window, M_TURN_FACTOR);
 	ft_mouse_tracker(window);
 }
 
-void	ft_turn_right(t_window *window)
+void	ft_turn_right(t_window *window, int diff_x)
 {
 	double	old_dir_x;
 	double	old_plane_x;
+	double	turn_speed;
 
 	old_dir_x = window->player->dir->x;
 	old_plane_x = window->player->plane.x;
-	window->player->dir->x = old_dir_x * cos(M_DEGREE_TURN) \
-		- window->player->dir->y * sin(M_DEGREE_TURN);
-	window->player->dir->y = old_dir_x * sin(M_DEGREE_TURN) \
-		+ window->player->dir->y * cos(M_DEGREE_TURN);
-	window->player->plane.x = old_plane_x * cos(M_DEGREE_TURN) \
-		- window->player->plane.y * sin(M_DEGREE_TURN);
-	window->player->plane.y = old_plane_x * sin(M_DEGREE_TURN) \
-		+ window->player->plane.y * cos(M_DEGREE_TURN);
+	turn_speed = M_DEGREE_TURN * diff_x / M_TURN_FACTOR;
+	window->player->dir->x = old_dir_x * cos(turn_speed) \
+		- window->player->dir->y * sin(turn_speed);
+	window->player->dir->y = old_dir_x * sin(turn_speed) \
+		+ window->player->dir->y * cos(turn_speed);
+	window->player->plane.x = old_plane_x * cos(turn_speed) \
+		- window->player->plane.y * sin(turn_speed);
+	window->player->plane.y = old_plane_x * sin(turn_speed) \
+		+ window->player->plane.y * cos(turn_speed);
 }
 
-void	ft_turn_left(t_window *window)
+void	ft_turn_left(t_window *window, int diff_x)
 {
 	double	old_dir_x;
 	double	old_plane_x;
+	double	turn_speed;
 
 	old_dir_x = window->player->dir->x;
 	old_plane_x = window->player->plane.x;
-	window->player->dir->x = old_dir_x * cos(M_DEGREE_TURN) \
-		+ window->player->dir->y * sin(M_DEGREE_TURN);
-	window->player->dir->y = old_dir_x * sin(M_DEGREE_TURN) \
-		* -1 + window->player->dir->y * cos(M_DEGREE_TURN);
-	window->player->plane.x = old_plane_x * cos(M_DEGREE_TURN) \
-		+ window->player->plane.y * sin(M_DEGREE_TURN);
-	window->player->plane.y = old_plane_x * sin(M_DEGREE_TURN) \
-		* -1 + window->player->plane.y * cos(M_DEGREE_TURN);
+	turn_speed = M_DEGREE_TURN * diff_x / M_TURN_FACTOR;
+	window->player->dir->x = old_dir_x * cos(turn_speed) \
+		+ window->player->dir->y * sin(turn_speed);
+	window->player->dir->y = old_dir_x * sin(turn_speed) \
+		* -1 + window->player->dir->y * cos(turn_speed);
+	window->player->plane.x = old_plane_x * cos(turn_speed) \
+		+ window->player->plane.y * sin(turn_speed);
+	window->player->plane.y = old_plane_x * sin(turn_speed) \
+		* -1 + window->player->plane.y * cos(turn_speed);
 }

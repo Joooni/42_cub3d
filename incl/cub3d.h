@@ -11,6 +11,7 @@
 # define M_SPRINT_SPEED		3
 # define M_TEXTURE_WIDTH	64
 # define M_TEXTURE_HEIGHT	64
+# define M_TURN_FACTOR		15
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -157,6 +158,7 @@ typedef struct s_window
 	t_image		*img;
 	t_player	*player;
 	t_map		*map;
+	double		scale_factor;
 }	t_window;
 
 // init.c
@@ -181,8 +183,8 @@ void	ft_free_matrix(t_color ***matrix);
 int		ft_key_press(int keycode, t_window *window);
 int		ft_key_release(int keycode, t_window *window);
 void	ft_move(t_window *window);
-void	ft_turn_right(t_window *window);
-void	ft_turn_left(t_window *window);
+void	ft_turn_right(t_window *window, int diff_x);
+void	ft_turn_left(t_window *window, int diff_x);
 
 // void	ft_turn(int keycode, t_window *window);
 

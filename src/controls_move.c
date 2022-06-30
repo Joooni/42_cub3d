@@ -82,9 +82,9 @@ void	ft_mouse_tracker(t_window *window)
 		mlx_mouse_hide(window->mlx, window->win);
 		mlx_mouse_get_pos(window->win, &x, &y);
 		if (x > WINDOW_WIDTH / 2)
-			ft_turn_right(window);
+			ft_turn_right(window, x - WINDOW_WIDTH / 2);
 		if (x < WINDOW_WIDTH / 2)
-			ft_turn_left(window);
+			ft_turn_left(window, WINDOW_WIDTH / 2 - x);
 		mlx_mouse_move(window->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 		window->player->mouse_x = x;
 		return ;

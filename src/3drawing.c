@@ -1,25 +1,11 @@
 #include "../incl/cub3d.h"
 
+void ft_draw_floor_ceiling(t_window *window, t_rc *ray, int x);
+
 void	drawing_handler(t_window *window, t_rc *ray, int x)
 {
-	//printf("line_height: %d\n", line_height);
-	//printf("start: %d\nend: %d\n", draw_start, draw_end);
-	//printf("side: %d\n", ray->side);
-	//north and south
-	//remove this when the textures work
-/* 	if (ray->side == 1)
-	{
-		ray->color = 0xd19041;
-		if (ray->dir->y < 0)
-			ray->color = 0xa85032;
-	}
-	else
-	{
-		ray->color = 0xeb9834;
-		if (ray->dir->x < 0)
-			ray->color = 0xd94d1e;
-	} */
 	ft_calc_tex_x(window, ray);
+	ft_draw_floor_ceiling(window, ray, x);
 	// scaling of texture coordinates to necessary wall size
 	ray->step_tex = 1.0 * M_TEXTURE_HEIGHT / ray->line_height;
 	ray->tex_pos = (ray->draw_start - WINDOW_HEIGHT / 2
@@ -41,6 +27,20 @@ void	drawing_handler(t_window *window, t_rc *ray, int x)
 		ft_pixel_put_img(window->img, x, ray->draw_start, ray->color);
 		ray->draw_start++;
 	}
+}
+
+void ft_draw_floor_ceiling(t_window *window, t_rc *ray, int x)
+{
+	int iterator;
+
+	iterator = 0;
+	//draw floor
+	while (iterator < ray->draw_start)
+		ft_pixel_put_img(window->img, x, iterator++, 0x4242f5);
+	//draw ceiling
+	iterator = ray->draw_end;
+	while (iterator < WINDOW_HEIGHT)
+		ft_pixel_put_img(window->img, x, iterator++, 0x42f5e6);
 }
 
 void	ft_calc_tex_x(t_window *window, t_rc *ray)

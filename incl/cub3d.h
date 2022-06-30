@@ -2,12 +2,12 @@
 
 # define CUB3D_H
 
-# define WINDOW_WIDTH		1920
+# define WINDOW_WIDTH		1280
 # define WINDOW_HEIGHT		1080
 # define M_DEGREE_TURN		0.05
 # define M_INIT_VECTOR_X	1
 # define M_INIT_VECTOR_Y	0
-# define M_BASE_SPEED		1
+# define M_BASE_SPEED		2
 # define M_SPRINT_SPEED		3
 # define M_TEXTURE_WIDTH	64
 # define M_TEXTURE_HEIGHT	64
@@ -220,7 +220,7 @@ void	ft_init_rc(t_window *window, t_rc *rc);
 void	ft_calc_step(t_window *window, t_rc *rc);
 void	ft_calc_hit(t_map map, t_rc *ray);
 void	ft_calc_distance(t_rc *ray);
-void	ft_draw_to_wall(t_window *window, t_rc *ray);
+void	ft_draw_to_wall(t_rc *ray);
 
 //map_helper.c
 

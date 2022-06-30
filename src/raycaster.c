@@ -7,7 +7,7 @@ void	ft_cast_ray(t_window *window)
 	int		nbr_rays;
 
 	i = 0;
-	nbr_rays = WINDOW_WIDTH / 2;
+	nbr_rays = WINDOW_WIDTH;
 	while (i < nbr_rays)
 	{
 		window->player->camera.x = 2 * i / (double)nbr_rays - 1;
@@ -16,8 +16,11 @@ void	ft_cast_ray(t_window *window)
 		ft_calc_step(window, ray);
 		ray->hit = 0;
 		ft_calc_hit(*(window->map), ray);
-		ft_draw_to_wall(window, ray);
-		drawing_handler(window, ray, i + WINDOW_WIDTH / 2);
+		if (ray->side == 0)
+			ray->wall_dist_perp = (ray->side_dist->x - 32 * ray->delta_dist->x);
+		else
+			ray->wall_dist_perp = (ray->side_dist->y - 32 * ray->delta_dist->y);
+		drawing_handler(window, ray, i);
 		ft_free_ray(ray);
 		i++;
 	}
@@ -90,23 +93,23 @@ void	ft_calc_step(t_window *window, t_rc *ray)
 	}
 }
 
-void	ft_draw_to_wall(t_window *window, t_rc *ray)
+void	ft_draw_to_wall(t_rc *ray)
 {
-	double	vec_x;
-	double	vec_y;
-	t_vec	*vec;
+	// double	vec_x;
+	// double	vec_y;
+	// t_vec	*vec;
 
-	vec_x = ray->dir->x;
-	vec_y = ray->dir->y;
+	// vec_x = ray->dir->x;
+	// vec_y = ray->dir->y;
 	if (ray->side == 0)
 		ray->wall_dist_perp = (ray->side_dist->x - 32 * ray->delta_dist->x);
 	else
 		ray->wall_dist_perp = (ray->side_dist->y - 32 * ray->delta_dist->y);
-	while (sqrt((vec_x * vec_x) + (vec_y * vec_y)) <= ray->wall_dist_perp)
-	{
-		vec_x += ray->dir->x;
-		vec_y += ray->dir->y;
-	}
-	vec = ft_init_vector(vec_x, vec_y);
-	ft_draw_vector(window, *vec);
+	// while (sqrt((vec_x * vec_x) + (vec_y * vec_y)) <= ray->wall_dist_perp)
+	// {
+	// 	vec_x += ray->dir->x;
+	// 	vec_y += ray->dir->y;
+	// }
+	// vec = ft_init_vector(vec_x, vec_y);
+	// ft_draw_vector(window, *vec);
 }

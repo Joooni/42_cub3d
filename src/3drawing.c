@@ -1,7 +1,5 @@
 #include "../incl/cub3d.h"
 
-void ft_draw_floor_ceiling(t_window *window, t_rc *ray, int x);
-
 void	drawing_handler(t_window *window, t_rc *ray, int x)
 {
 	ft_calc_tex_x(window, ray);
@@ -32,15 +30,18 @@ void	drawing_handler(t_window *window, t_rc *ray, int x)
 void ft_draw_floor_ceiling(t_window *window, t_rc *ray, int x)
 {
 	int iterator;
+	int fc;
 
 	iterator = 0;
-	//draw floor
-	while (iterator < ray->draw_start)
-		ft_pixel_put_img(window->img, x, iterator++, 0x4242f5);
+	fc = ft_tcolor_to_int(*(window->map->c));
 	//draw ceiling
+	while (iterator < ray->draw_start)
+		ft_pixel_put_img(window->img, x, iterator++, fc);
+	//draw floor
+	fc = ft_tcolor_to_int(*(window->map->f));
 	iterator = ray->draw_end;
 	while (iterator < WINDOW_HEIGHT)
-		ft_pixel_put_img(window->img, x, iterator++, 0x42f5e6);
+		ft_pixel_put_img(window->img, x, iterator++, fc);
 }
 
 void	ft_calc_tex_x(t_window *window, t_rc *ray)

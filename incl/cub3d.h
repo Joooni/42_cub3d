@@ -244,6 +244,7 @@ void draw_map(t_window *window);
 //	3drawing.c
 void	drawing_handler(t_window *window, t_rc *ray, int x);
 void	ft_calc_tex_x(t_window *window, t_rc *ray);
+void ft_draw_floor_ceiling(t_window *window, t_rc *ray, int x);
 
 //	textures.c
 void	textures_handler(t_window *window);

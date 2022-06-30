@@ -53,14 +53,14 @@ void	ft_calc_tex_x(t_window *window, t_rc *ray)
 	if (ray->draw_end >= WINDOW_HEIGHT)
 		ray->draw_end = WINDOW_HEIGHT - 1;
 	if (ray->side == 0)
-		ray->wall_hit_x = window->player->pos->y + 32 * ray->wall_dist_perp * ray->dir->y;
+		ray->wall_hit_x = window->player->pos->y + ray->wall_dist_perp * ray->dir->y;
 	else
-		ray->wall_hit_x = window->player->pos->x + 32 * ray->wall_dist_perp * ray->dir->x;
-	ray->wall_hit_x -= floor(ray->wall_hit_x);
+		ray->wall_hit_x = window->player->pos->x + ray->wall_dist_perp * ray->dir->x;
 	// find corresponding x-coordinate of texture
-	ray->tex.x = (int)(ray->wall_hit_x * (double)M_TEXTURE_WIDTH);
+	ray->tex.x = (int)ray->wall_hit_x % (int)M_TEXTURE_WIDTH;
 	if (ray->side == 0 && ray->dir->x > 0)
 		ray->tex.x = M_TEXTURE_WIDTH - ray->tex.x - 1;
 	if (ray->side == 1 && ray->dir->y < 0)
 		ray->tex.x = M_TEXTURE_WIDTH - ray->tex.x - 1;
+	
 }

@@ -25,29 +25,28 @@ takes the colors of and insert them into an extra struct for them
 */
 int	init_colors(t_window *window)
 {
-	char	**tmp_f;
-	char	**tmp_c;
+	char	**tmp;
 
 	window->map->f = ft_calloc(1, sizeof(t_color));
 	window->map->c = ft_calloc(1, sizeof(t_color));
-	tmp_f = ft_split(window->map->f_tex, ',');
-	tmp_c = ft_split(window->map->c_tex, ',');
-	if (!tmp_f[2] || !tmp_c[2])
+	tmp = ft_split(window->map->f_tex, ',');
+	if (!tmp[2])
 		ft_end_process(ERR_INV_COLORS);
-	window->map->f->red = ft_atoi(tmp_f[0]);
-	free(tmp_f[0]);
-	window->map->f->green = ft_atoi(tmp_f[1]);
-	free(tmp_f[1]);
-	window->map->f->blue = ft_atoi(tmp_f[2]);
-	free(tmp_f[2]);
-	free(tmp_f);
-	window->map->c->red = ft_atoi(tmp_c[0]);
-	free(tmp_c[0]);
-	window->map->c->green = ft_atoi(tmp_c[1]);
-	free(tmp_c[1]);
-	window->map->c->blue = ft_atoi(tmp_c[2]);
-	free(tmp_c[2]);
-	free(tmp_c);
+	window->map->f->red = ft_atoi(tmp[0]);
+	free(tmp[0]);
+	window->map->f->green = ft_atoi(tmp[1]);
+	free(tmp[1]);
+	window->map->f->blue = ft_atoi(tmp[2]);
+	free(tmp[2]);
+	free(tmp);
+	tmp = ft_split(window->map->c_tex, ',');
+	window->map->c->red = ft_atoi(tmp[0]);
+	free(tmp[0]);
+	window->map->c->green = ft_atoi(tmp[1]);
+	free(tmp[1]);
+	window->map->c->blue = ft_atoi(tmp[2]);
+	free(tmp[2]);
+	free(tmp);
 	if (!check_colors(window->map->f, window->map->c))
 		ft_end_process(ERR_INV_COLORS);
 	return (1);

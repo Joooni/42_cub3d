@@ -15,7 +15,7 @@ void	ft_init(t_window *window, char *path)
 	ft_init_tex(window);
 }
 
-void ft_init_tex(t_window *window)
+void	ft_init_tex(t_window *window)
 {
 	window->map->no_tex = ft_calloc(1, sizeof(t_textures));
 	window->map->ea_tex = ft_calloc(1, sizeof(t_textures));

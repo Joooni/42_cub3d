@@ -27,7 +27,8 @@ void	ft_draw_grid(t_window *window)
 		counter_x = 0;
 		while (counter_x < (int)window->scale_factor * window->map->columns)
 		{
-			if ((counter_x % (int)(window->scale_factor) == 0 || counter_y % (int)(window->scale_factor) == 0))
+			if ((counter_x % (int)(window->scale_factor) == 0
+				|| counter_y % (int)(window->scale_factor) == 0))
 				ft_pixel_put_img(window->img, counter_x, counter_y, color);
 			counter_x++;
 		}

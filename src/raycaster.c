@@ -90,24 +90,3 @@ void	ft_calc_step(t_window *window, t_rc *ray)
 				- window->player->pos->y) * ray->delta_dist->y;
 	}
 }
-
-// void	ft_draw_to_wall(t_rc *ray)
-// {
-// 	// double	vec_x;
-// 	// double	vec_y;
-// 	// t_vec	*vec;
-
-// 	// vec_x = ray->dir->x;
-// 	// vec_y = ray->dir->y;
-// 	if (ray->side == 0)
-// 		ray->wall_dist_perp = (ray->side_dist->x - 32 * ray->delta_dist->x);
-// 	else
-// 		ray->wall_dist_perp = (ray->side_dist->y - 32 * ray->delta_dist->y);
-// 	// while (sqrt((vec_x * vec_x) + (vec_y * vec_y)) <= ray->wall_dist_perp)
-// 	// {
-// 	// 	vec_x += ray->dir->x;
-// 	// 	vec_y += ray->dir->y;
-// 	// }
-// 	// vec = ft_init_vector(vec_x, vec_y);
-// 	// ft_draw_vector(window, *vec);
-// }

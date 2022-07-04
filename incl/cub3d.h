@@ -2,16 +2,16 @@
 
 # define CUB3D_H
 
-# define WINDOW_WIDTH		1280
+# define WINDOW_WIDTH		1281
 # define WINDOW_HEIGHT		1080
 # define M_DEGREE_TURN		0.05
-# define M_INIT_VECTOR_X	1
-# define M_INIT_VECTOR_Y	0
+# define M_FOV				0.66
 # define M_BASE_SPEED		2
 # define M_SPRINT_SPEED		3
 # define M_TEXTURE_WIDTH	64
 # define M_TEXTURE_HEIGHT	64
 # define M_TURN_FACTOR		15
+# define M_MINIMAP_FACTOR	0.3
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -48,8 +48,8 @@ typedef struct s_vec_i {
 
 
 typedef struct s_vec {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }	t_vec;
 
 typedef struct s_rect{
@@ -91,7 +91,7 @@ typedef struct s_key
 	int		a_r;
 	int		a_u;
 	int		a_d;
-	int		shift;
+	int		spacebar;
 }	t_key;
 
 typedef struct s_player
@@ -137,6 +137,7 @@ typedef struct s_map
 	int rows;
 	int columns;
 	char direction;
+	t_vec_i	index_dir;
 	char *no_path;
 	char *so_path;
 	char *we_path;
@@ -170,6 +171,7 @@ void	ft_init_player(t_window *window);
 t_vec	*ft_init_vector (double x, double y);
 t_rc	*ft_init_ray(void);
 void	ft_init_tex(t_window *window);
+void	ft_init_player_dir(t_player *player, char dir);
 
 // free.c
 

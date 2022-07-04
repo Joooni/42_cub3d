@@ -2,9 +2,9 @@
 
 static void	ft_scale_factor(t_window *window)
 {
-	window->scale_factor = WINDOW_WIDTH * 0.3 / window->map->columns;
-	if (WINDOW_HEIGHT * 0.3 / window->map->rows < window->scale_factor)
-		window->scale_factor = WINDOW_HEIGHT * 0.3 / window->map->rows;
+	window->scale_factor = (double)(WINDOW_WIDTH * M_MINIMAP_FACTOR / window->map->columns);
+	if (WINDOW_HEIGHT * M_MINIMAP_FACTOR / window->map->rows < window->scale_factor)
+		window->scale_factor = (double)(WINDOW_HEIGHT * M_MINIMAP_FACTOR / window->map->rows);
 }
 static void	draw_something(t_window *window, int x, int y, int color)
 {

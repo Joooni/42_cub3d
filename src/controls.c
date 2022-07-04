@@ -57,19 +57,19 @@ void	ft_move(t_window *window)
 	int		mv_dist;
 	t_key	*key;
 
-	mv_dist = 8;
-	if (window->player->key->shift == 1)
-		mv_dist = 20;
+	mv_dist = M_BASE_SPEED;
+	if (window->player->key->spacebar == 1)
+		mv_dist = M_SPRINT_SPEED;
 	key = window->player->key;
 	if (key->a && window->player->pos->x > mv_dist)
 		ft_move_left(window);
-	if (key->d && WINDOW_WIDTH > window->player->pos->x
+	if (key->d && window->map->columns * 32 > window->player->pos->x
 		+ mv_dist)
 		ft_move_right(window);
 	if ((key->a_u || key->w) && window->player->pos->y
 		> mv_dist)
 		ft_move_up(window);
-	if ((key->a_d || key->s) && WINDOW_HEIGHT
+	if ((key->a_d || key->s) && window->map->rows * 32
 		> window->player->pos->y + mv_dist)
 		ft_move_down(window);
 	if (key->a_l)
@@ -107,12 +107,12 @@ void	ft_turn_left(t_window *window, int diff_x)
 	old_dir_x = window->player->dir->x;
 	old_plane_x = window->player->plane.x;
 	turn_speed = M_DEGREE_TURN * diff_x / M_TURN_FACTOR;
-	window->player->dir->x = old_dir_x * cos(turn_speed) \
-		+ window->player->dir->y * sin(turn_speed);
-	window->player->dir->y = old_dir_x * sin(turn_speed) \
-		* -1 + window->player->dir->y * cos(turn_speed);
-	window->player->plane.x = old_plane_x * cos(turn_speed) \
-		+ window->player->plane.y * sin(turn_speed);
-	window->player->plane.y = old_plane_x * sin(turn_speed) \
-		* -1 + window->player->plane.y * cos(turn_speed);
+	window->player->dir->x = old_dir_x * cos(-turn_speed) \
+		- window->player->dir->y * sin(-turn_speed);
+	window->player->dir->y = old_dir_x * sin(-turn_speed) \
+		+ window->player->dir->y * cos(-turn_speed);
+	window->player->plane.x = old_plane_x * cos(-turn_speed) \
+		- window->player->plane.y * sin(-turn_speed);
+	window->player->plane.y = old_plane_x * sin(-turn_speed) \
+		+ window->player->plane.y * cos(-turn_speed);
 }

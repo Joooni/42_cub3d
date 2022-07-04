@@ -4,13 +4,11 @@ void	ft_cast_ray(t_window *window)
 {
 	int		i;
 	t_rc	*ray;
-	int		nbr_rays;
 
 	i = 0;
-	nbr_rays = WINDOW_WIDTH;
-	while (i < nbr_rays)
+	while (i < WINDOW_WIDTH)
 	{
-		window->player->camera.x = 2 * i / (double)nbr_rays - 1;
+		window->player->camera.x = 2 * i / (double)WINDOW_WIDTH - 1;
 		ray = ft_init_ray();
 		ft_init_rc(window, ray);
 		ft_calc_step(window, ray);

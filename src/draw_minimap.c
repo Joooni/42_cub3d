@@ -2,11 +2,12 @@
 
 void	ft_draw_player(t_window *window)
 {
-	t_rect player;
+	t_rect	player;
 
-	player.x = window->player->pos->x / 32;
-//	player.y = (window->player->pos->y * window->map->rows / 100) - window->player->size / 2;
-	player.y = window->player->pos->y / 32;
+	player.x = window->player->pos->x / 32 * window->scale_factor
+		- window->player->size / 2;
+	player.y = window->player->pos->y / 32 * window->scale_factor
+		- window->player->size / 2;
 	player.size_x = window->player->size;
 	player.size_y = player.size_x;
 	player.color = window->player->color;
@@ -26,7 +27,7 @@ void	ft_draw_grid(t_window *window)
 		counter_x = 0;
 		while (counter_x < (int)window->scale_factor * window->map->columns)
 		{
-			if (counter_x % (int)(window->scale_factor) == 0 || counter_y % (int)(window->scale_factor) == 0)
+			if ((counter_x % (int)(window->scale_factor) == 0 || counter_y % (int)(window->scale_factor) == 0))
 				ft_pixel_put_img(window->img, counter_x, counter_y, color);
 			counter_x++;
 		}

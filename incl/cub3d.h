@@ -152,7 +152,8 @@ typedef struct s_map
 	t_textures *so_tex;
 	t_textures *we_tex;
 	t_textures *ea_tex;
-	t_textures *wall_tex;
+	t_textures *wall_o_tex;
+	t_textures *wall_c_tex;
 }	t_map;
 
 typedef struct s_window

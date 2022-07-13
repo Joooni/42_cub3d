@@ -21,8 +21,9 @@ void	ft_init_tex(t_window *window)
 	window->map->ea_tex = ft_calloc(1, sizeof(t_textures));
 	window->map->so_tex = ft_calloc(1, sizeof(t_textures));
 	window->map->we_tex = ft_calloc(1, sizeof(t_textures));
-	window->map->wall_tex = ft_calloc(1, sizeof(t_textures));
-	window->map->wall_tex->open_flag = 0;
+	window->map->wall_o_tex = ft_calloc(1, sizeof(t_textures));
+	window->map->wall_c_tex = ft_calloc(1, sizeof(t_textures));
+	window->map->wall_o_tex->open_flag = 0;
 }
 
 /*

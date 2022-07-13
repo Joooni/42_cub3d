@@ -60,6 +60,8 @@ void	ft_calc_hit(t_map map, t_rc *ray)
 		}
 		if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '1')
 			ray->hit = 1;
+		else if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '2')
+			ray->hit = 2;
 	}
 }
 

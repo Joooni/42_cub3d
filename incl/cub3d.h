@@ -92,6 +92,7 @@ typedef struct s_key
 	int		a_u;
 	int		a_d;
 	int		spacebar;
+	int		e;
 }	t_key;
 
 typedef struct s_player
@@ -128,6 +129,7 @@ typedef struct s_textures
 	int height;
 	int endian;
 	t_color ***matrix;
+	int open_flag;
 }	t_textures;
 
 typedef struct s_map
@@ -150,6 +152,7 @@ typedef struct s_map
 	t_textures *so_tex;
 	t_textures *we_tex;
 	t_textures *ea_tex;
+	t_textures *wall_tex;
 }	t_map;
 
 typedef struct s_window
@@ -187,6 +190,7 @@ int		ft_key_release(int keycode, t_window *window);
 void	ft_move(t_window *window);
 void	ft_turn_right(t_window *window, int diff_x);
 void	ft_turn_left(t_window *window, int diff_x);
+void	ft_open_door(t_window *window);
 
 // void	ft_turn(int keycode, t_window *window);
 

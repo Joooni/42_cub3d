@@ -15,6 +15,7 @@ void	ft_init_player(t_window *window)
 	window->player->key->a_r = 0;
 	window->player->key->a_u = 0;
 	window->player->key->a_d = 0;
+	window->player->key->e = 0;
 	window->player->mouse_x = 0;
 	window->player->mouse_hide = 0;
 	window->player->speed = M_BASE_SPEED;

@@ -13,14 +13,17 @@ void	drawing_handler(t_window *window, t_rc *ray, int x)
 		ray->tex_pos += ray->step_tex;
 		ray->color = ft_tcolor_to_int(*(window->map->no_tex
 					->matrix[ray->tex.y][ray->tex.x]));
-		if (ray->side == 1 && ray->dir->y > 0)
+		if (ray->side == 1 && ray->dir->y > 0 && ray->hit == 1)
 			ray->color = ft_tcolor_to_int(*(window->map->so_tex
 						->matrix[ray->tex.y][ray->tex.x]));
-		else if (ray->side == 0 && ray->dir->x > 0)
+		else if (ray->side == 0 && ray->dir->x > 0 && ray->hit == 1)
 			ray->color = ft_tcolor_to_int(*(window->map->ea_tex
 						->matrix[ray->tex.y][ray->tex.x]));
-		else if (ray->side == 0 && ray->dir->x < 0)
+		else if (ray->side == 0 && ray->dir->x < 0 && ray->hit == 1)
 			ray->color = ft_tcolor_to_int(*(window->map->we_tex
+						->matrix[ray->tex.y][ray->tex.x]));
+		else if (ray->hit == 2 && window->map->wall_tex->open_flag == 0)
+			ray->color = ft_tcolor_to_int(*(window->map->wall_tex
 						->matrix[ray->tex.y][ray->tex.x]));
 		ft_pixel_put_img(window->img, x, ray->draw_start, ray->color);
 		ray->draw_start++;

@@ -22,6 +22,8 @@ int	ft_key_press(int keycode, t_window *window)
 		window->player->key->a_r = 1;
 	if (keycode == KEY_SPACEBAR)
 		window->player->speed = M_SPRINT_SPEED;
+	if (keycode == KEY_E)
+		window->player->key->e = 1;
 	return (0);
 }
 
@@ -43,6 +45,8 @@ int	ft_key_release(int keycode, t_window *window)
 		window->player->key->a_l = 0;
 	if (keycode == ARROW_RIGHT)
 		window->player->key->a_r = 0;
+	if (keycode == KEY_E)
+		window->player->key->e = 0;
 	if (keycode == KEY_P && window->player->mouse_hide == 0)
 		window->player->mouse_hide = 1;
 	else if (keycode == KEY_P && window->player->mouse_hide == 1)
@@ -115,4 +119,13 @@ void	ft_turn_left(t_window *window, int diff_x)
 		- window->player->plane.y * sin(-turn_speed);
 	window->player->plane.y = old_plane_x * sin(-turn_speed) \
 		+ window->player->plane.y * cos(-turn_speed);
+}
+
+void ft_open_door(t_window *window)
+{
+	if (window->player->ray->hit == 2 && window->player->key->e == 1 && window->map->wall_tex->open_flag == 0)
+		printf("DOOR, OPEN YOURSELF\n");
+	// else if (window->player->ray->hit == 2 && window->player->key->e == 1 && window->map->wall_tex->open_flag == 1)
+	// 	printf("DOOR, CLOSE YOURSELF\n");
+
 }

@@ -44,7 +44,7 @@ void	ft_init_rc(t_window *window, t_rc *ray)
 
 void	ft_calc_hit(t_map map, t_rc *ray)
 {
-	while (ray->hit == 0)
+	while (ray->hit == 0 || ray->hit == 3)
 	{
 		if (ray->side_dist->x < ray->side_dist->y)
 		{
@@ -62,6 +62,8 @@ void	ft_calc_hit(t_map map, t_rc *ray)
 			ray->hit = 1;
 		else if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '2')
 			ray->hit = 2;
+		else if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '3')
+			ray->hit = 3;
 	}
 }
 

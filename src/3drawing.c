@@ -22,12 +22,14 @@ void	drawing_handler(t_window *window, t_rc *ray, int x)
 		else if (ray->side == 0 && ray->dir->x < 0 && ray->hit == 1)
 			ray->color = ft_tcolor_to_int(*(window->map->we_tex
 						->matrix[ray->tex.y][ray->tex.x]));
-		else if (ray->hit == 2 && window->map->wall_o_tex->open_flag == 0)
-			ray->color = ft_tcolor_to_int(*(window->map->wall_o_tex
-						->matrix[ray->tex.y][ray->tex.x]));
-		else if (ray->hit == 2 && window->map->wall_o_tex->open_flag == 1)
+		else if ((ray->hit == 2 || ray->hit == 3) && window->map->wall_c_tex->open_flag == 0) //should close the door
+		{
+			window->map->map[(int)ray->map_pos->y][(int)ray->map_pos->x] = '2';
 			ray->color = ft_tcolor_to_int(*(window->map->wall_c_tex
 						->matrix[ray->tex.y][ray->tex.x]));
+		}
+		else if (ray->hit == 2 && window->map->wall_c_tex->open_flag == 1) //sets the door(2) to an open door(3)
+			window->map->map[(int)ray->map_pos->y][(int)ray->map_pos->x] = '3';
 		ft_pixel_put_img(window->img, x, ray->draw_start, ray->color);
 		ray->draw_start++;
 	}

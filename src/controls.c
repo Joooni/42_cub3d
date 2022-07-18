@@ -123,14 +123,14 @@ void	ft_turn_left(t_window *window, int diff_x)
 
 void ft_open_door(t_window *window)
 {
-	if (window->player->key->e == 1 && window->map->wall_o_tex->open_flag == 0)
+	if (window->player->key->e == 1 && window->map->wall_c_tex->open_flag == 0)
 	{
-		window->map->wall_o_tex->open_flag = 1;
+		window->map->wall_c_tex->open_flag = 1;
 		printf("DOOR, OPEN YOURSELF\n");
 	}
-	else if (window->player->key->e == 1 && window->map->wall_o_tex->open_flag == 1)
+	else if (window->player->key->e == 1 && window->map->wall_c_tex->open_flag == 1)
 	{
-		window->map->wall_o_tex->open_flag = 0;
+		window->map->wall_c_tex->open_flag = 0;
 		printf("DOOR, CLOSE YOURSELF\n");
 	}
 }

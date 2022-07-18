@@ -53,9 +53,7 @@ void	textures_handler(t_window *window)
 		= create_matrix(window->map->we_tex, height, width);
 	window->map->ea_tex->matrix
 		= create_matrix(window->map->ea_tex, height, width);
-	window->map->wall_o_tex->matrix
-		= create_matrix(window->map->wall_o_tex, height, width);
-	window->map->wall_o_tex->matrix
+	window->map->wall_c_tex->matrix
 		= create_matrix(window->map->wall_c_tex, height, width);
 }
 
@@ -76,12 +74,10 @@ void	ft_load_textures(t_window *window)
 		&width, &height);
 	map->ea_tex->img = mlx_xpm_file_to_image(window->mlx, map->ea_path, \
 		&width, &height);
-	map->wall_o_tex->img = mlx_xpm_file_to_image(window->mlx, "textures/floor.xpm", \
-		&width, &height);
-	map->wall_c_tex->img = mlx_xpm_file_to_image(window->mlx, "textures/ceiling.xpm", \
+	map->wall_c_tex->img = mlx_xpm_file_to_image(window->mlx, "textures/door.xpm", \
 		&width, &height);
 	if (!map->no_tex->img || !map->so_tex->img
-		|| !map->we_tex->img || !map->ea_tex->img || !map->wall_o_tex->img)
+		|| !map->we_tex->img || !map->ea_tex->img || !map->wall_c_tex->img)
 		ft_end_process(ERR_INV_TEX);
 	ft_get_tex_address(window);
 }
@@ -103,11 +99,9 @@ static void	ft_get_tex_address(t_window *window)
 		&(map->we_tex->bpp), &(map->we_tex->line_len), &(map->we_tex->endian));
 	map->ea_tex->addr = mlx_get_data_addr(map->ea_tex->img, \
 		&(map->ea_tex->bpp), &(map->ea_tex->line_len), &(map->ea_tex->endian));
-	map->wall_o_tex->addr = mlx_get_data_addr(map->wall_o_tex->img, \
-		&(map->wall_o_tex->bpp), &(map->wall_o_tex->line_len), &(map->wall_o_tex->endian));
 	map->wall_c_tex->addr = mlx_get_data_addr(map->wall_c_tex->img, \
 		&(map->wall_c_tex->bpp), &(map->wall_c_tex->line_len), &(map->wall_c_tex->endian));
 	if (!map->no_tex->addr || !map->so_tex->addr
-		|| !map->we_tex->addr || !map->ea_tex->addr || !map->wall_o_tex->addr)
+		|| !map->we_tex->addr || !map->ea_tex->addr || !map->wall_c_tex->addr)
 		ft_end_process(ERR_INV_TEX_ADDR);
 }

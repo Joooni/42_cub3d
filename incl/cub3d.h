@@ -146,6 +146,7 @@ typedef struct s_map
 	char *so_path;
 	char *we_path;
 	char *ea_path;
+	char *do_path;
 	char *f_tex;
 	char *c_tex;
 	t_color *f;
@@ -234,7 +235,7 @@ void	ft_draw_to_wall(t_rc *ray);
 
 //map_helper.c
 
-int map_handler(t_window *window);
+void map_handler(t_window *window);
 int count_map(t_window *window, char *line);
 int	safe_preoptions(t_map *map, char *line, int counter);
 int safe_map(t_window *window, int rows);

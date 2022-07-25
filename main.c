@@ -36,16 +36,13 @@ int	main(int argc, char **argv)
 	window->mlx = mlx;
 	ft_init(window, argv[1]);
 	mlx_mouse_move(window->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	if (map_handler(window))
-		ft_end_process(ERR_INV_MAP);
+	map_handler(window);
 	ft_init_player_dir(window->player, window->map->direction);
 	textures_handler(window);
 	mlx_loop_hook(window->mlx, ft_render_next_frame, window);
 	mlx_hook(window->win, 17, 0, ft_close, window);
 	mlx_hook(window->win, 2, 1L << 0, ft_key_press, window);
 	mlx_hook(window->win, 3, 1L << 1, ft_key_release, window);
-	//print_read(window);
-	printf("%s\n", argv[0]); //testing
 	mlx_loop(window->mlx);
 	return (0);
 }

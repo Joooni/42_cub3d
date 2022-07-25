@@ -19,6 +19,9 @@ int	safe_preoptions(t_map *map, char *line, int counter)
 	else if (line[counter] == 'E' && line[counter + 1] == 'A' && !map->ea_path)
 		map->ea_path = ft_substr(line, counter + 3, ft_strlen(line) \
 			- counter - 4);
+	else if (line[counter] == 'D' && line[counter + 1] == 'O' && !map->do_path)
+		map->do_path = ft_substr(line, counter + 3, ft_strlen(line) \
+			- counter - 4);
 	else if (line[counter] == 'F' && !map->f_tex)
 		map->f_tex = ft_substr(line, counter + 2, ft_strlen(line) \
 			- counter - 2);
@@ -97,7 +100,7 @@ int	safe_map(t_window *window, int rows)
 reads in the map that got passed and calls different functions to
 handle the input
 */
-int	map_handler(t_window *window)
+void	map_handler(t_window *window)
 {
 	int		fd;
 	int		counter;
@@ -107,7 +110,7 @@ int	map_handler(t_window *window)
 	fd = open(window->map->path, O_RDONLY);
 	player_flag = 0;
 	if (fd <= 0)
-		return (1);
+		ft_end_process(ERR_INV_MAP);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -124,5 +127,4 @@ int	map_handler(t_window *window)
 	safe_map(window, window->map->rows);
 	if (player_flag == 0 || player_flag > 1 || !check_map(window))
 		ft_end_process(ERR_INV_MAP);
-	return (0);
 }

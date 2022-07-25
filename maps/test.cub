@@ -3,6 +3,7 @@ SO ./textures/brick_024-2.xpm
 WE ./textures/city_014.xpm
 EA ./textures/nature_07.xpm
 
+DO ./textures/ground.xpm
 
 F 224,245,66
 C 66,245,206

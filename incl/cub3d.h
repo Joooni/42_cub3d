@@ -79,6 +79,8 @@ typedef struct s_rc
 	t_vec_i	tex;
 	double	tex_pos;
 	double	step_tex;
+	int		door_flag;
+	t_vec_i	door_pos;
 }	t_rc;
 
 typedef struct s_key
@@ -191,7 +193,6 @@ int		ft_key_release(int keycode, t_window *window);
 void	ft_move(t_window *window);
 void	ft_turn_right(t_window *window, int diff_x);
 void	ft_turn_left(t_window *window, int diff_x);
-void	ft_open_door(t_window *window);
 
 // void	ft_turn(int keycode, t_window *window);
 

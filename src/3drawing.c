@@ -1,5 +1,7 @@
 #include "../incl/cub3d.h"
 
+static void door_checker(t_window *window, t_rc *ray);
+
 void	drawing_handler(t_window *window, t_rc *ray, int x)
 {
 	ft_calc_tex_x(window, ray);
@@ -22,16 +24,32 @@ void	drawing_handler(t_window *window, t_rc *ray, int x)
 		else if (ray->side == 0 && ray->dir->x < 0 && ray->hit == 1)
 			ray->color = ft_tcolor_to_int(*(window->map->we_tex
 						->matrix[ray->tex.y][ray->tex.x]));
-		else if ((ray->hit == 2 || ray->hit == 3) && window->map->wall_c_tex->open_flag == 0) //should close the door
-		{
-			window->map->map[(int)ray->map_pos->y][(int)ray->map_pos->x] = '2';
+		else if (ray->hit == 2)
 			ray->color = ft_tcolor_to_int(*(window->map->wall_c_tex
 						->matrix[ray->tex.y][ray->tex.x]));
-		}
-		else if (ray->hit == 2 && window->map->wall_c_tex->open_flag == 1) //sets the door(2) to an open door(3)
-			window->map->map[(int)ray->map_pos->y][(int)ray->map_pos->x] = '3';
+		door_checker(window, ray);
 		ft_pixel_put_img(window->img, x, ray->draw_start, ray->color);
 		ray->draw_start++;
+	}
+}
+
+static void door_checker(t_window *window, t_rc *ray)
+{
+	int door_dist_x;
+	int door_dist_y;
+
+	door_dist_x = abs((int)window->player->pos->x / 32 - ray->door_pos.x);
+	door_dist_y = abs((int)window->player->pos->y / 32 - ray->door_pos.y);
+	if (ray->hit == 2 && window->player->key->e == 1 && ray->wall_dist_perp < 33) //sets the door(2) to an open door(3)
+			window->map->map[(int)ray->map_pos->y][(int)ray->map_pos->x] = '3';
+	else if (ray->door_flag == 1 && window->player->key->e == 1 && (door_dist_x <= 1 && door_dist_y <= 1)) //(window->player->key->e == 1 && ray->door_flag == 1)  //should close the door (but it's not)
+	{
+		// printf("x: %d \ny: %d\n", door_dist_x, door_dist_y);
+		// printf("x: %d \ny: %d\n", (int)window->player->map_pos.x,(int)window->player->map_pos.y);
+		//printf("x: %d \ny: %d\n", (int)ray->map_pos->y,(int)ray->map_pos->x);
+		window->map->map[(int)ray->door_pos.y][(int)ray->door_pos.x] = '2';
+		// ray->color = ft_tcolor_to_int(*(window->map->wall_c_tex
+		// 			->matrix[ray->tex.y][ray->tex.x]));
 	}
 }
 

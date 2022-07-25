@@ -25,13 +25,12 @@ int	ft_render_next_frame(t_window *window)
 		y++;
 	}
 	// ft_grid_highlight(window);
-	ft_move(window);
 	ft_cast_ray(window);
+	ft_move(window);
 	draw_map(window);
 	// ft_draw_grid(window);
 	// ft_grid_highlight(window);
 	ft_draw_player(window);
-	ft_open_door(window); //doors
 	mlx_put_image_to_window(window->mlx, window->win, window->img->img, 0, 0);
 	return (0);
 }

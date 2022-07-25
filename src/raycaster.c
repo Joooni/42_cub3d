@@ -63,7 +63,11 @@ void	ft_calc_hit(t_map map, t_rc *ray)
 		else if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '2')
 			ray->hit = 2;
 		else if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '3')
-			ray->hit = 3;
+		{
+			ray->door_pos.x = (int)ray->map_pos->x;
+			ray->door_pos.y = (int)ray->map_pos->y;
+			ray->door_flag = 1;
+		}	
 	}
 }
 

@@ -1,5 +1,12 @@
 #include "../incl/cub3d.h"
 
+static int	ft_skip_whitespaces(char *line, int counter)
+{
+	while (line[counter] == ' ')
+		counter++;
+	return (counter);
+}
+
 /*
 gets triggert when the first character of the line is a alph
 safes all the paths of the directions and the colors of the
@@ -7,27 +14,28 @@ ciling and the floor
 */
 int	safe_preoptions(t_map *map, char *line, int counter)
 {
+	counter = ft_skip_whitespaces(line, counter);
 	if (line[counter] == 'N' && line[counter + 1] == 'O' && !map->no_path)
-		map->no_path = ft_substr(line, counter + 3, ft_strlen(line) \
-			- counter - 4);
+		map->no_path = ft_substr(line, ft_skip_whitespaces(line, counter + 3), \
+		ft_strlen(line) - counter - 4);
 	else if (line[counter] == 'S' && line[counter + 1] == 'O' && !map->so_path)
-		map->so_path = ft_substr(line, counter + 3, ft_strlen(line) \
-			- counter - 4);
+		map->so_path = ft_substr(line, ft_skip_whitespaces(line, counter + 3), \
+		ft_strlen(line) - counter - 4);
 	else if (line[counter] == 'W' && line[counter + 1] == 'E' && !map->we_path)
-		map->we_path = ft_substr(line, counter + 3, ft_strlen(line) \
-			- counter - 4);
+		map->we_path = ft_substr(line, ft_skip_whitespaces(line, counter + 3), \
+		ft_strlen(line) - counter - 4);
 	else if (line[counter] == 'E' && line[counter + 1] == 'A' && !map->ea_path)
-		map->ea_path = ft_substr(line, counter + 3, ft_strlen(line) \
-			- counter - 4);
+		map->ea_path = ft_substr(line, ft_skip_whitespaces(line, counter + 3), \
+		ft_strlen(line) - counter - 4);
 	else if (line[counter] == 'D' && line[counter + 1] == 'O' && !map->do_path)
-		map->do_path = ft_substr(line, counter + 3, ft_strlen(line) \
-			- counter - 4);
+		map->do_path = ft_substr(line, ft_skip_whitespaces(line, counter + 3), \
+		ft_strlen(line) - counter - 4);
 	else if (line[counter] == 'F' && !map->f_tex)
-		map->f_tex = ft_substr(line, counter + 2, ft_strlen(line) \
-			- counter - 2);
+		map->f_tex = ft_substr(line, ft_skip_whitespaces(line, counter + 2), \
+		ft_strlen(line) - counter - 2);
 	else if (line[counter] == 'C' && !map->c_tex)
-		map->c_tex = ft_substr(line, counter + 2, ft_strlen(line) \
-			- counter - 2);
+		map->c_tex = ft_substr(line, ft_skip_whitespaces(line, counter) + 2, \
+		ft_strlen(line) - counter - 2);
 	else
 		ft_end_process(ERR_INV_IDEN);
 	return (0);

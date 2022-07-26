@@ -11,7 +11,6 @@ static int	check_colors(char **tmp)
 		return (0);
 	if (ft_atoi(tmp[2]) < 0 || ft_atoi(tmp[2]) > 255)
 		return (0);
-
 	return (1);
 }
 

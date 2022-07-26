@@ -3,10 +3,10 @@ SO ./textures/brick_024-2.xpm
 WE ./textures/city_014.xpm
 EA ./textures/nature_07.xpm
 
-DO ./textures/ground.xpm
+DO ./textures/door.xpm
 
-F 224,245,66
-C 66,245,206
+F 255,245,66
+C 0,245,206
 
 
 11111111111111111111111111111111111111111111111111111111111111111

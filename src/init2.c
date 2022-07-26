@@ -5,7 +5,7 @@ void	ft_init_player(t_window *window)
 	window->player = (t_player *)ft_calloc(1, sizeof(t_player));
 	window->player->key = (t_key *)ft_calloc(1, sizeof(t_key));
 	window->player->pos = ft_init_vector(0, 0);
-	window->player->size = 10;
+	window->player->size = 6;
 	window->player->color = 0x0058BD55;
 	window->player->key->w = 0;
 	window->player->key->a = 0;

@@ -261,4 +261,7 @@ void ft_draw_floor_ceiling(t_window *window, t_rc *ray, int x);
 void	textures_handler(t_window *window);
 void	ft_load_textures(t_window *window);
 
+// ft_split_cub3d.c
+char	**ft_split_cub3d(const char *s, char c);
+
 #endif

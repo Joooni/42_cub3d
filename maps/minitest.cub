@@ -1,0 +1,15 @@
+NO ./textures/brick_017.xpm
+SO ./textures/brick_024-2.xpm
+WE ./textures/city_014.xpm
+EA ./textures/nature_07.xpm
+
+DO ./textures/door.xpm
+
+F 224,245,66
+C 66,245,206
+
+11111
+10001
+10N01
+10001
+11111

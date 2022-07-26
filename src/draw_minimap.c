@@ -4,10 +4,8 @@ void	ft_draw_player(t_window *window)
 {
 	t_rect	player;
 
-	player.x = window->player->pos->x / 32 * window->scale_factor
-		- window->player->size / 2;
-	player.y = window->player->pos->y / 32 * window->scale_factor
-		- window->player->size / 2;
+	player.x = window->player->pos->x / 32 * window->scale_factor - window->player->size / 2;
+	player.y = window->player->pos->y / 32 * window->scale_factor - window->player->size / 2;
 	player.size_x = window->player->size;
 	player.size_y = player.size_x;
 	player.color = window->player->color;
@@ -44,10 +42,10 @@ void	ft_grid_highlight(t_window *window)
 
 	square_x = window->player->pos->x / 32;
 	square_y = window->player->pos->y / 32;
-	square.x = square_x * 32;
-	square.y = square_y * 32;
-	square.size_x = 32;
-	square.size_y = 32;
+	square.x = square_x * window->scale_factor;
+	square.y = square_y * window->scale_factor;
+	square.size_x = window->scale_factor;
+	square.size_y = window->scale_factor;
 	square.color = 0x006C6C6C;
 	ft_draw_rect(window, square);
 }

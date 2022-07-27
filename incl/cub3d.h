@@ -141,6 +141,7 @@ typedef struct s_map
 	int rows;
 	int columns;
 	char direction;
+	int overhang;
 	t_vec_i	index_dir;
 	char *no_path;
 	char *so_path;

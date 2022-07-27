@@ -28,7 +28,34 @@ int static	player_flag(char **map, int line, int i)
 		&& map[line - 1][i] != 'E' && map[line + 1][i] != 'E' \
 		&& map[line - 1][i] != 'S' && map[line + 1][i] != 'S' \
 		&& map[line - 1][i] != 'W' && map[line + 1][i] != 'W')
-		return (0);
+		return (1);
+	return (0);
+}
+
+static int check_overhang(t_window *window, int line, int i)
+{
+	char **map;
+
+	map = window->map->map;
+	while (map[line][i] && map[line][i] != '\n')
+	{
+		if (map[line][i] == ' ' && (map[line - 1][i] != '1' \
+			&& map[line - 1][i] != ' '))
+			return (0);
+		i++;
+	}
+	if (i < window->map->columns && map[line + 1][i + 1] \
+		&& window->map->overhang == 0)
+	{
+		window->map->overhang = 1;
+		while (map[line + 1][i])
+		{
+			if (map[line + 1][i] != '1' && map[line + 1][i] \
+				&& map[line + 1][i] != '\n')
+				return (0);
+			i++;
+		}
+	}
 	return (1);
 }
 
@@ -40,14 +67,15 @@ static int	line_check(t_window *window, int line)
 	int		i;
 	char	**map;
 
-	i = 0;
-	map = window->map->map;
-	if (map[line][i] != ' ' && map[line][i] != '1')
-		return (0);
 	i = 1;
+	map = window->map->map;
+	if (map[line][0] != ' ' && map[line][0] != '1')
+		return (0);
 	while (map[line][i] && map[line][i] != '\n')
 	{
 		if (map[line][i] == ' ' && map[line][i] != ' ' && map[line][i] != '1')
+			return (0);
+		if (!check_overhang(window, line, i))
 			return (0);
 		while (map[line][i] == ' ')
 			i++;

@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:27:03 by jsubel            #+#    #+#             */
-/*   Updated: 2022/07/26 11:10:49 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/07/28 13:35:36 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static size_t	ft_count_words(const char *s, char c)
 			marker = 1;
 			nbr_of_words++;
 		}
-		else if(s[i] == c && s[i + 1] == c)
+		else if (s[i] == c && s[i + 1] == c)
 			ft_end_process(ERR_INV_COLORS);
 		else if (s[i] == c)
 			marker = 0;

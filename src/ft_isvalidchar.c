@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:35:56 by jsubel            #+#    #+#             */
-/*   Updated: 2022/07/28 12:33:12 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/07/28 13:35:20 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_isvalidchar(int c)
 
 int	new_line_check(t_window *window, char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] == ' ')

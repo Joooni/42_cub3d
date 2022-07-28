@@ -32,9 +32,9 @@ int static	player_flag(char **map, int line, int i)
 	return (0);
 }
 
-static int check_overhang(t_window *window, int line, int i)
+static int	check_overhang(t_window *window, int line, int i)
 {
-	char **map;
+	char	**map;
 
 	map = window->map->map;
 	while (map[line][i] && map[line][i] != '\n')
@@ -73,9 +73,8 @@ static int	line_check(t_window *window, int line)
 		return (0);
 	while (map[line][i] && map[line][i] != '\n')
 	{
-		if (map[line][i] == ' ' && map[line][i] != ' ' && map[line][i] != '1')
-			return (0);
-		if (!check_overhang(window, line, i))
+		if ((map[line][i] == ' ' && map[line][i] != ' ' && map[line][i] != '1') \
+			|| !check_overhang(window, line, i))
 			return (0);
 		while (map[line][i] == ' ')
 			i++;

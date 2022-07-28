@@ -142,6 +142,7 @@ typedef struct s_map
 	int columns;
 	char direction;
 	int overhang;
+	int new_line;
 	t_vec_i	index_dir;
 	char *no_path;
 	char *so_path;
@@ -264,5 +265,9 @@ void	ft_load_textures(t_window *window);
 
 // ft_split_cub3d.c
 char	**ft_split_cub3d(const char *s, char c);
+
+// ft_isvalidchar.c
+int	ft_isvalidchar(int c);
+int new_line_check(t_window *window, char *line);
 
 #endif

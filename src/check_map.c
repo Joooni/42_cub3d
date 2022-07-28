@@ -45,13 +45,13 @@ static int check_overhang(t_window *window, int line, int i)
 		i++;
 	}
 	if (i < window->map->columns \
-		&& window->map->overhang == 0 && map[line + 1][i + 1])
+		&& window->map->overhang <= line + 1 && map[line + 1][i + 2])
 	{
-		window->map->overhang = 1;
+		window->map->overhang = line;
 		while (map[line + 1][i])
 		{
 			if (map[line + 1][i] != '1' && map[line + 1][i] \
-				&& map[line + 1][i] != '\n')
+				&& map[line + 1][i] != '\n' && map[line + 1][i] != '\0')
 				return (0);
 			i++;
 		}

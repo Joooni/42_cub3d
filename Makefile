@@ -31,6 +31,7 @@ SRC =	main.c \
 		$(SRC_PATH)3drawing.c \
 		$(SRC_PATH)textures.c \
 		$(SRC_PATH)ft_split_cub3d.c \
+		$(SRC_PATH)ft_isvalidchar.c \
 
 
 # -*- Objects -*-

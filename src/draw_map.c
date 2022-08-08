@@ -72,6 +72,4 @@ static void	ft_draw_map_helper(t_window	*window, int x, int y)
 		draw_something(window, x, y, 0x00353542);
 	else if (window->map->map[y][x] == '2' || player_flag(window, y, x))
 		draw_something(window, x, y, 0x00686a6e);
-	else if (player_flag(window->map->map, y, x))
-		draw_something(window, x, y, 0x005858ad);
 }

@@ -104,8 +104,6 @@ void	ft_mouse_tracker(t_window *window)
 {
 	int	x;
 	int	y;
-	int	curr_x;
-	int	curr_y;
 
 	if (window->player->mouse_hide)
 		mlx_mouse_show(window->mlx, window->win);

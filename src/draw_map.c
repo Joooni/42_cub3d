@@ -28,8 +28,11 @@ static void	draw_something(t_window *window, int x, int y, int color)
 	ft_draw_rect(window, rect);
 }
 
-int static	player_flag(char **map, int y, int x)
+int static	player_flag(t_window *window, int y, int x)
 {
+	char	**map;
+
+	map = window->map->map;
 	if (map[y][x] != 'N' && map[y][x] != 'N' \
 		&& map[y][x] != 'E' && map[y][x] != 'E' \
 		&& map[y][x] != 'S' && map[y][x] != 'S' \
@@ -67,7 +70,7 @@ static void	ft_draw_map_helper(t_window	*window, int x, int y)
 		draw_something(window, x, y, 0x006C6C6C);
 	else if (window->map->map[y][x] == '0')
 		draw_something(window, x, y, 0x00353542);
-	else if (window->map->map[y][x] == '2')
+	else if (window->map->map[y][x] == '2' || player_flag(window, y, x))
 		draw_something(window, x, y, 0x00686a6e);
 	else if (player_flag(window->map->map, y, x))
 		draw_something(window, x, y, 0x005858ad);

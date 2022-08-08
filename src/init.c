@@ -10,6 +10,8 @@ void	ft_init(t_window *window, char *path)
 	ft_init_player(window);
 	window->map->rows = 0;
 	window->map->columns = 0;
+	window->map->overhang = 0;
+	window->map->new_line = 0;
 	if (set_path(window, path))
 		ft_end_process(ERR_INV_PATH);
 	ft_init_tex(window);

@@ -98,6 +98,7 @@ int	safe_map(t_window *window, int rows)
 		if (ft_isdigit(line[counter]) && line[0] != 'F' && line[0] != 'C' \
 			&& i < rows)
 			window->map->map[i++] = ft_substr(line, 0, ft_strlen(line));
+		new_line_check(window, line);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -133,6 +134,6 @@ void	map_handler(t_window *window)
 		line = get_next_line(fd);
 	}
 	safe_map(window, window->map->rows);
-	if (player_flag == 0 || player_flag > 1 || !check_map(window))
+	if (player_flag != 1 || !check_map(window))
 		ft_end_process(ERR_INV_MAP);
 }

@@ -27,6 +27,7 @@
 # include <math.h>
 # include "error.h"
 # include "keys.h"
+#include <sys/time.h>
 
 /**
 * @brief minilibx image structure
@@ -145,6 +146,8 @@ typedef struct s_map
 	int rows;
 	int columns;
 	char direction;
+	int overhang;
+	int new_line;
 	t_vec_i	index_dir;
 	char *no_path;
 	char *so_path;
@@ -163,6 +166,7 @@ typedef struct s_map
 	t_textures *wall_c_tex;
 }	t_map;
 
+
 typedef struct s_window
 {
 	void		*mlx;
@@ -171,7 +175,17 @@ typedef struct s_window
 	t_player	*player;
 	t_map		*map;
 	double		scale_factor;
+	double		start_time;
+	double		old_time;
+	double		time_stamp;
 }	t_window;
+
+
+
+//time.c
+long long	get_time(void);
+long long curr_time(t_window *window);
+void	render_time(t_window *window);
 
 // init.c
 
@@ -267,5 +281,10 @@ void	ft_load_textures(t_window *window);
 
 // ft_split_cub3d.c
 char	**ft_split_cub3d(const char *s, char c);
+
+// ft_isvalidchar.c
+int	ft_isvalidchar(int c);
+int new_line_check(t_window *window, char *line);
+
 
 #endif

@@ -23,7 +23,10 @@ int	ft_key_press(int keycode, t_window *window)
 	if (keycode == KEY_SPACEBAR)
 		window->player->speed = M_SPRINT_SPEED;
 	if (keycode == KEY_E && window->player->key->e == 0)
+	{
+		window->time_stamp = curr_time(window);
 		window->player->key->e = 1;
+	}
 	return (0);
 }
 
@@ -52,7 +55,10 @@ int	ft_key_release(int keycode, t_window *window)
 	if (keycode == KEY_SPACEBAR)
 		window->player->speed = M_BASE_SPEED;
 	if (keycode == KEY_E && window->player->key->e == 1)
+	{
+		window->time_stamp = curr_time(window);
 		window->player->key->e = 0;
+	}
 	return (0);
 }
 

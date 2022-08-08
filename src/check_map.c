@@ -10,9 +10,9 @@ static int	check_top_n_bot(t_window *window, int line)
 	i = 0;
 	while (window->map->map[line][i] && window->map->map[line][i] != '\n')
 	{
-		if (window->map->map[line][i] != '1' && window->map->map[line][i]
-			!= ' ')
-			return (0);
+		if (window->map->map[line][i] != '1' \
+			&& window->map->map[line][i] != ' ')
+			ft_end_process(ERR_INV_MAP);
 		i++;
 	}
 	return (1);
@@ -22,7 +22,7 @@ static int	check_top_n_bot(t_window *window, int line)
 belongs to the line check and is just looking for the player, so that the check
 isn't throwing an error
 */
-int static	player_flag(char **map, int line, int i)
+static int	player_flag(char **map, int line, int i)
 {
 	if (map[line - 1][i] != 'N' && map[line + 1][i] != 'N' \
 		&& map[line - 1][i] != 'E' && map[line + 1][i] != 'E' \
@@ -73,6 +73,7 @@ static int	line_check(t_window *window, int line)
 		return (0);
 	while (map[line][i] && map[line][i] != '\n')
 	{
+		printf("zeile %d\n", i);
 		if ((map[line][i] == ' ' && map[line][i] != ' ' && map[line][i] != '1') \
 			|| !check_overhang(window, line, i))
 			return (0);
@@ -99,15 +100,19 @@ int	check_map(t_window *window)
 	int	i;
 
 	i = 0;
-	if (!check_top_n_bot(window, i))
+	if (!check_top_n_bot(window, i++))
 		return (0);
-	i = 1;
+	printf("top done\n");
 	while (i < window->map->rows)
 	{
 		if (!line_check(window, i))
 			return (0);
+		printf("line %d done\n", i);
 		i++;
 	}
+	if (!check_top_n_bot(window, i - 1))
+		return (0);
+	printf("bottum done\n");
 	if (!init_colors(window))
 		return (0);
 	return (1);

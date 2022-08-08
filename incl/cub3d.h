@@ -23,6 +23,7 @@
 # include <math.h>
 # include "error.h"
 # include "keys.h"
+#include <sys/time.h>
 
 /**
 * @brief minilibx image structure
@@ -169,7 +170,15 @@ typedef struct s_window
 	t_player	*player;
 	t_map		*map;
 	double		scale_factor;
+	double		start_time;
+	double		old_time;
 }	t_window;
+
+
+
+//time.c
+long long	get_time(void);
+void	render_time(t_window *window);
 
 // init.c
 
@@ -269,5 +278,6 @@ char	**ft_split_cub3d(const char *s, char c);
 // ft_isvalidchar.c
 int	ft_isvalidchar(int c);
 int new_line_check(t_window *window, char *line);
+
 
 #endif

@@ -1,6 +1,8 @@
 #include "../incl/cub3d.h"
 
-static void	ft_scale_factor(t_window *window)
+static void	ft_draw_map_helper(t_window	*window, int x, int y);
+
+void	ft_scale_factor(t_window *window)
 {
 	window->scale_factor = (double)
 		(WINDOW_WIDTH
@@ -42,26 +44,31 @@ void	draw_map(t_window *window)
 	int	y;
 
 	y = 0;
-	ft_scale_factor(window);
 	while (y < window->map->rows)
 	{
 		x = 0;
 		while (x < window->map->columns)
 		{
-			if (window->map->map[y][x] == '1')
-				draw_something(window, x, y, 0x00303096);
-			else if (y == (int)window->player->pos->y / 32 && x == (int)window->player->pos->x / 32)
-				draw_something(window, x, y, 0x006C6C6C);
-			else if (window->map->map[y][x] == '0')
-				draw_something(window, x, y, 0x00353542);
-			else if (window->map->map[y][x] == '2')
-				draw_something(window, x, y, 0x00686a6e);
-			else if (player_flag(window->map->map, y, x))
-				draw_something(window, x, y, 0x005858ad);
-			else if (window->map->map[y][x] == '\n')
+			ft_draw_map_helper(window, x, y);
+			if (window->map->map[y][x] == '\n')
 				break ;
 			x++;
 		}
 		y++;
 	}
+}
+
+static void	ft_draw_map_helper(t_window	*window, int x, int y)
+{
+	if (window->map->map[y][x] == '1')
+		draw_something(window, x, y, 0x00303096);
+	else if (y == (int)window->player->pos->y / 32
+		&& x == (int)window->player->pos->x / 32)
+		draw_something(window, x, y, 0x006C6C6C);
+	else if (window->map->map[y][x] == '0')
+		draw_something(window, x, y, 0x00353542);
+	else if (window->map->map[y][x] == '2')
+		draw_something(window, x, y, 0x00686a6e);
+	else if (player_flag(window->map->map, y, x))
+		draw_something(window, x, y, 0x005858ad);
 }

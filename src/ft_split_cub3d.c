@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_cub3d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:27:03 by jsubel            #+#    #+#             */
-/*   Updated: 2022/07/26 11:10:49 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/08/08 09:49:46 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static size_t	ft_count_words(const char *s, char c)
 			marker = 1;
 			nbr_of_words++;
 		}
-		else if(s[i] == c && s[i + 1] == c)
+		else if (s[i] == c && s[i + 1] == c)
 			ft_end_process(ERR_INV_COLORS);
 		else if (s[i] == c)
 			marker = 0;
@@ -45,7 +45,7 @@ static size_t	ft_word_len(const char *s, char c, size_t i)
 
 	nbr_of_letters = 0;
 	while (s[i] != c && s[i] != '\0' && i < ft_strlen(s))
-	{	
+	{
 		nbr_of_letters++;
 		i++;
 	}

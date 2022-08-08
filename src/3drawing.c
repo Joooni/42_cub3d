@@ -39,7 +39,7 @@ static int	door_checker(t_window *window, t_rc *ray)
 		&& ray->wall_dist_perp < 33)
 			window->map->map[(int)ray->map_pos->y][(int)ray->map_pos->x] = '3';
 	else if (ray->door_flag == 1 && window->player->key->e == 1 \
-		&& (door_dist_x <= 1 && door_dist_y <= 1))
+		&& (door_dist_x <= 1 && door_dist_y <= 1) && curr_time(window) - window->time_stamp > 0.1)
 		window->map->map[(int)ray->door_pos.y][(int)ray->door_pos.x] = '2';
 	if (ray->hit == 2)
 		return (ft_tcolor_to_int(*(window->map->wall_c_tex \

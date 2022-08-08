@@ -10,6 +10,11 @@ long long	get_time(void)
 	return (time);
 }
 
+long long curr_time(t_window *window)
+{
+	return ((get_time() - window->start_time) / 1000);
+}
+
 void	render_time(t_window *window)
 {
 	char		*temp;

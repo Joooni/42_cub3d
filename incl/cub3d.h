@@ -172,12 +172,14 @@ typedef struct s_window
 	double		scale_factor;
 	double		start_time;
 	double		old_time;
+	double		time_stamp;
 }	t_window;
 
 
 
 //time.c
 long long	get_time(void);
+long long curr_time(t_window *window);
 void	render_time(t_window *window);
 
 // init.c

@@ -36,10 +36,10 @@ static int	door_checker(t_window *window, t_rc *ray)
 	door_dist_x = abs((int)window->player->pos->x / 32 - ray->door_pos.x);
 	door_dist_y = abs((int)window->player->pos->y / 32 - ray->door_pos.y);
 	if (ray->hit == 2 && window->player->key->e == 1 \
-		&& ray->wall_dist_perp < 33)
+		&& ray->wall_dist_perp < 33 && (curr_time(window) - window->time_stamp) / 1000 < 0.2)
 			window->map->map[(int)ray->map_pos->y][(int)ray->map_pos->x] = '3';
 	else if (ray->door_flag == 1 && window->player->key->e == 1 \
-		&& (door_dist_x <= 1 && door_dist_y <= 1) && curr_time(window) - window->time_stamp > 0.1)
+		&& (door_dist_x <= 1 && door_dist_y <= 1) && (curr_time(window) - window->time_stamp) / 1000 > 0.2)
 		window->map->map[(int)ray->door_pos.y][(int)ray->door_pos.x] = '2';
 	if (ray->hit == 2)
 		return (ft_tcolor_to_int(*(window->map->wall_c_tex \

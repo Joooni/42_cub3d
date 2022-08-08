@@ -162,6 +162,7 @@ typedef struct s_map
 	t_textures *wall_c_tex;
 }	t_map;
 
+
 typedef struct s_window
 {
 	void		*mlx;

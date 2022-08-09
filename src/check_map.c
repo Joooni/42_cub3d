@@ -45,7 +45,7 @@ static int	check_overhang(t_window *window, int line, int i)
 		i++;
 	}
 	if (i < window->map->columns \
-		&& window->map->overhang <= line + 1 && map[line + 1][i + 2])
+		&& window->map->overhang <= line + 1 && map[line][i])
 	{
 		window->map->overhang = line;
 		while (map[line + 1][i])
@@ -73,7 +73,6 @@ static int	line_check(t_window *window, int line)
 		return (0);
 	while (map[line][i] && map[line][i] != '\n')
 	{
-		printf("zeile %d\n", i);
 		if ((map[line][i] == ' ' && map[line][i] != ' ' && map[line][i] != '1') \
 			|| !check_overhang(window, line, i))
 			return (0);
@@ -102,17 +101,14 @@ int	check_map(t_window *window)
 	i = 0;
 	if (!check_top_n_bot(window, i++))
 		return (0);
-	printf("top done\n");
 	while (i < window->map->rows)
 	{
 		if (!line_check(window, i))
 			return (0);
-		printf("line %d done\n", i);
 		i++;
 	}
 	if (!check_top_n_bot(window, i - 1))
 		return (0);
-	printf("bottum done\n");
 	if (!init_colors(window))
 		return (0);
 	return (1);

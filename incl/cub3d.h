@@ -12,6 +12,8 @@
 # define M_TEXTURE_HEIGHT	64
 # define M_TURN_FACTOR		15
 # define M_MINIMAP_FACTOR	0.3
+# define PLAYER_POS			"WESN"
+# define VALID_SYMBOLS		"0123NESW"
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -289,5 +291,11 @@ char	**ft_split_cub3d(const char *s, char c);
 int	ft_isvalidchar(int c);
 int new_line_check(t_window *window, char *line);
 
+//check_map2.c
+int	square_exists(t_window *window, int i, int j);
+int	square_below_exists(t_window *window, int i, int j);
+int	square_above_exists(t_window *window, int i, int j);
+int	square_left_exists(t_window *window, int i, int j);
+int	square_right_exists(t_window *window, int i, int j);
 
 #endif

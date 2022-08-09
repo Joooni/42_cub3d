@@ -33,6 +33,7 @@ SRC =	main.c \
 		$(SRC_PATH)ft_split_cub3d.c \
 		$(SRC_PATH)ft_isvalidchar.c \
 		$(SRC_PATH)time.c \
+		$(SRC_PATH)check_map2.c \
 
 
 # -*- Objects -*-

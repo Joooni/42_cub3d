@@ -1,6 +1,28 @@
 #include "../incl/cub3d.h"
 
+int	char_surrounded_my_valid(t_window *window, int i, int j)
+{
+	if (ft_strchr(VALID_SYMBOLS, window->map->map[i][j - 1]) == NULL
+		|| ft_strchr(VALID_SYMBOLS, window->map->map[i][j + 1]) == NULL
+		|| ft_strchr(VALID_SYMBOLS, window->map->map[i - 1][j]) == NULL
+		|| ft_strchr(VALID_SYMBOLS, window->map->map[i + 1][j]) == NULL)
+	{
+		ft_end_process(ERR_INV_MAP);
+	}
+	return (1);
+}
 
+int	character_is_surrounded(t_window *window, int i, int j)
+{
+	if (!square_left_exists(window, i, j)
+		|| !square_right_exists(window, i, j)
+		|| !square_above_exists(window, i, j)
+		|| !square_below_exists(window, i, j))
+	{
+		ft_end_process(ERR_INV_MAP);
+	}
+	return (1);
+}
 
 /*
 handler function which checks if the map fits to the requirements
@@ -10,53 +32,30 @@ handler function which checks if the map fits to the requirements
 */
 int	check_map(t_window *window)
 {
-	int	x;
-	int y;
-	int counter = 0;
+	int		i;
+	int		j;
+	int		counter;
 
-	x = 0;
-	y = 0;
-	while (window->map->map[y][x] == ' ')
-		x++;
-	window->check->start_x = x;
-	window->check->start_y = y;
-	while (window->check->end_pos_flag)
+	counter = 0;
+	i = 0;
+	j = 0;
+	while (window->map->map[i] != NULL && i < window->map->rows)
 	{
-		printf("here1\n");
-		if (window->check->start_x == x && window->check->start_y == y && counter >= 1)
-			window->check->end_pos_flag = 0;
-		else if (window->map->map[y - 1][x] && window->map->map[y - 1][x] == '1')					//1
-			y--;
-		else if (window->map->map[y - 1][x + 1] && window->map->map[y - 1][x + 1] == '1')			//2
+		j = 0;
+		while (window->map->map[i][j] && window->map->map[i][j] != '\n' )
 		{
-			y--;
-			x++;
+			if (window->map->map[i][j] == '0'
+				|| ft_strchr(PLAYER_POS, window->map->map[i][j]))
+			{
+				if (!character_is_surrounded(window, i, j)
+					|| !char_surrounded_my_valid(window, i, j))
+				{
+					return (0);
+				}
+			}
+			j++;
 		}
-		else if (window->map->map[y][x + 1] == '1' && window->map->map[y][x + 1])				//3
-			x++;
-		else if (window->map->map[y + 1][x + 1] == '1' && window->map->map[y + 1][x + 1])			//4
-		{
-			y++;
-			x++;
-		}
-		else if (window->map->map[y + 1][x] == '1' && window->map->map[y + 1][x])				//5
-			y++;
-		else if (window->map->map[y + 1][x - 1] == '1' && window->map->map[y + 1][x - 1])			//6
-		{
-			y++;
-			x--;
-		}
-		else if (window->map->map[y][x - 1] == '1' && window->map->map[y][x - 1])				//7
-			x--;
-		else if (window->map->map[y - 1][x - 1] == '1' && window->map->map[y - 1][x - 1])			//8
-		{
-			y--;
-			x--;
-		}
-		else
-			ft_end_process(ERR_INV_MAP);
-		//check_end
-		printf("Round[%d]: %d %d\n", counter++, x, y);
+		i++;
 	}
 	if (!init_colors(window))
 		return (0);

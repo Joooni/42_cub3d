@@ -11,8 +11,8 @@ void print_read(t_window *window)
 		printf("line[%d] %s", i, window->map->map[i]);
 		i++;
 	}
-	printf("F: %d,%d,%d C: %d,%d,%d\n rows: %d\ncolumns: %d\ndirection: %c\n", window->map->f->red, window->map->f->green, window->map->f->blue, window->map->c->red, window->map->c->green, window->map->c->blue, window->map->rows, window->map->columns, window->map->direction);
-	printf("Player x: %d y: %d\n", (int)window->player->pos->x, (int)window->player->pos->y);
+	//printf("F: %d,%d,%d C: %d,%d,%d\n rows: %d\ncolumns: %d\ndirection: %c\n", window->map->f->red, window->map->f->green, window->map->f->blue, window->map->c->red, window->map->c->green, window->map->c->blue, window->map->rows, window->map->columns, window->map->direction);
+	//printf("Player x: %d y: %d\n", (int)window->player->pos->x, (int)window->player->pos->y);
 
 	// printf("-------\nTEST\n---------\nmap[6][31]: %c\n------------\n", window->map->map[6][31]);
 	// if (window->map->map[6][31] != '1')

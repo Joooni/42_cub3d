@@ -58,16 +58,16 @@ void	ft_calc_hit(t_map map, t_rc *ray)
 			ray->map_pos->y += ray->step.y;
 			ray->side = 1;
 		}
-		if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '1')
+		if (map.map[ray->map_pos->y][ray->map_pos->x] == MAP_WALL)
 			ray->hit = 1;
-		else if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '2')
+		else if (map.map[ray->map_pos->y][ray->map_pos->x] == MAP_DOOR_CLOSED)
 			ray->hit = 2;
-		else if (map.map[(int)ray->map_pos->y][(int) ray->map_pos->x] == '3')
+		else if (map.map[ray->map_pos->y][ray->map_pos->x] == MAP_DOOR_OPEN)
 		{
-			ray->door_pos.x = (int)ray->map_pos->x;
-			ray->door_pos.y = (int)ray->map_pos->y;
+			ray->door_pos.x = ray->map_pos->x;
+			ray->door_pos.y = ray->map_pos->y;
 			ray->door_flag = 1;
-		}	
+		}
 	}
 }
 

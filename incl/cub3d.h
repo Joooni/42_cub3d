@@ -14,6 +14,10 @@
 # define M_MINIMAP_FACTOR	0.3
 # define PLAYER_POS			"WESN"
 # define VALID_SYMBOLS		"0123NESW"
+# define MAP_EMPTY_SPACE	'0'
+# define MAP_WALL			'1'
+# define MAP_DOOR_CLOSED	'2'
+# define MAP_DOOR_OPEN		'3'
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -258,10 +262,10 @@ void	ft_draw_to_wall(t_rc *ray);
 
 //map_helper.c
 
-void map_handler(t_window *window);
-int count_map(t_window *window, char *line);
-int	safe_preoptions(t_map *map, char *line, int counter);
-int safe_map(t_window *window, int rows);
+void	map_handler(t_window *window);
+int		count_map(t_window *window, char *line);
+int		safe_preoptions(t_map *map, char *line, int counter);
+int 	safe_map(t_window *window, int rows);
 
 // check_map.c
 
@@ -273,12 +277,12 @@ int	init_colors(t_window *window);
 
 //draw_map.c
 
-void draw_map(t_window *window);
-
+void	draw_map(t_window *window);
+// void	ft_scale_factor(t_window *window);
 //	3drawing.c
 void	drawing_handler(t_window *window, t_rc *ray, int x);
 void	ft_calc_tex_x(t_window *window, t_rc *ray);
-void ft_draw_floor_ceiling(t_window *window, t_rc *ray, int x);
+void	ft_draw_floor_ceiling(t_window *window, t_rc *ray, int x);
 
 //	textures.c
 void	textures_handler(t_window *window);

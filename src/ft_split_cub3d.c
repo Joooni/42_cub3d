@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_cub3d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:27:03 by jsubel            #+#    #+#             */
-/*   Updated: 2022/07/28 13:35:36 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/08/08 14:36:01 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static size_t	ft_word_len(const char *s, char c, size_t i)
 
 	nbr_of_letters = 0;
 	while (s[i] != c && s[i] != '\0' && i < ft_strlen(s))
-	{	
+	{
 		nbr_of_letters++;
 		i++;
 	}

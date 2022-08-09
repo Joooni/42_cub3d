@@ -21,6 +21,9 @@ void	ft_init_player(t_window *window)
 	window->player->mouse_x = 0;
 	window->player->mouse_hide = 0;
 	window->player->speed = M_BASE_SPEED;
+	//check
+	window->check = (t_check *)ft_calloc(1, sizeof(t_check));
+	window->check->end_pos_flag = 1;
 }
 
 t_vec	*ft_init_vector(double x, double y)

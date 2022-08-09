@@ -1,118 +1,63 @@
 #include "../incl/cub3d.h"
 
-/*
-checks the top and the bottom of the map if there is a 1 or whitespace
-*/
-static int	check_top_n_bot(t_window *window, int line)
-{
-	int	i;
 
-	i = 0;
-	while (window->map->map[line][i] && window->map->map[line][i] != '\n')
-	{
-		if (window->map->map[line][i] != '1' \
-			&& window->map->map[line][i] != ' ')
-			ft_end_process(ERR_INV_MAP);
-		i++;
-	}
-	return (1);
-}
-
-/*
-belongs to the line check and is just looking for the player, so that the check
-isn't throwing an error
-*/
-static int	player_flag(char **map, int line, int i)
-{
-	if (map[line - 1][i] != 'N' && map[line + 1][i] != 'N' \
-		&& map[line - 1][i] != 'E' && map[line + 1][i] != 'E' \
-		&& map[line - 1][i] != 'S' && map[line + 1][i] != 'S' \
-		&& map[line - 1][i] != 'W' && map[line + 1][i] != 'W')
-		return (1);
-	return (0);
-}
-
-static int	check_overhang(t_window *window, int line, int i)
-{
-	char	**map;
-
-	map = window->map->map;
-	while (map[line][i] && map[line][i] != '\n')
-	{
-		if (map[line][i] == ' ' && (map[line - 1][i] != '1' \
-			&& map[line - 1][i] != ' ') && map[line - 1][i])
-			return (0);
-		i++;
-	}
-	if (i < window->map->columns \
-		&& window->map->overhang <= line + 1 && map[line + 1][i + 2])
-	{
-		window->map->overhang = line;
-		while (map[line + 1][i])
-		{
-			if (map[line + 1][i] != '1' && map[line + 1][i] \
-				&& map[line + 1][i] != '\n' && map[line + 1][i] != '\0')
-				return (0);
-			i++;
-		}
-	}
-	return (1);
-}
-
-/*
-checks each line - exept top and bottom - if there is an 1 or the player
-*/
-static int	line_check(t_window *window, int line)
-{
-	int		i;
-	char	**map;
-
-	i = 1;
-	map = window->map->map;
-	if (map[line][0] != ' ' && map[line][0] != '1')
-		return (0);
-	while (map[line][i] && map[line][i] != '\n')
-	{
-		printf("zeile %d\n", i);
-		if ((map[line][i] == ' ' && map[line][i] != ' ' && map[line][i] != '1') \
-			|| !check_overhang(window, line, i))
-			return (0);
-		while (map[line][i] == ' ')
-			i++;
-		if (map[line][i - 1] == ' ' && map[line][i] != '1')
-			return (0);
-		if (map[line][i] == '0' && ((map[line - 1][i] != '1' && map[line -1][i]
-		!= '0') || (map[line + 1][i] != '1' && map[line + 1][i] != '0'))
-		&& player_flag(map, line, i))
-			return (1);
-		i++;
-	}
-	if (map[line][i - 1] != ' ' && map[line][i - 1] != '1')
-		return (0);
-	return (1);
-}
 
 /*
 handler function which checks if the map fits to the requirements
+[8] [1] [2]
+[7] [S] [3]
+[6] [5] [4]
 */
 int	check_map(t_window *window)
 {
-	int	i;
+	int	x;
+	int y;
+	int counter = 0;
 
-	i = 0;
-	if (!check_top_n_bot(window, i++))
-		return (0);
-	printf("top done\n");
-	while (i < window->map->rows)
+	x = 0;
+	y = 0;
+	while (window->map->map[y][x] == ' ')
+		x++;
+	window->check->start_x = x;
+	window->check->start_y = y;
+	while (window->check->end_pos_flag)
 	{
-		if (!line_check(window, i))
-			return (0);
-		printf("line %d done\n", i);
-		i++;
+		printf("here1\n");
+		if (window->check->start_x == x && window->check->start_y == y && counter >= 1)
+			window->check->end_pos_flag = 0;
+		else if (window->map->map[y - 1][x] && window->map->map[y - 1][x] == '1')					//1
+			y--;
+		else if (window->map->map[y - 1][x + 1] && window->map->map[y - 1][x + 1] == '1')			//2
+		{
+			y--;
+			x++;
+		}
+		else if (window->map->map[y][x + 1] == '1' && window->map->map[y][x + 1])				//3
+			x++;
+		else if (window->map->map[y + 1][x + 1] == '1' && window->map->map[y + 1][x + 1])			//4
+		{
+			y++;
+			x++;
+		}
+		else if (window->map->map[y + 1][x] == '1' && window->map->map[y + 1][x])				//5
+			y++;
+		else if (window->map->map[y + 1][x - 1] == '1' && window->map->map[y + 1][x - 1])			//6
+		{
+			y++;
+			x--;
+		}
+		else if (window->map->map[y][x - 1] == '1' && window->map->map[y][x - 1])				//7
+			x--;
+		else if (window->map->map[y - 1][x - 1] == '1' && window->map->map[y - 1][x - 1])			//8
+		{
+			y--;
+			x--;
+		}
+		else
+			ft_end_process(ERR_INV_MAP);
+		//check_end
+		printf("Round[%d]: %d %d\n", counter++, x, y);
 	}
-	if (!check_top_n_bot(window, i - 1))
-		return (0);
-	printf("bottum done\n");
 	if (!init_colors(window))
 		return (0);
 	return (1);

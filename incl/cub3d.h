@@ -162,6 +162,12 @@ typedef struct s_map
 	t_textures *wall_c_tex;
 }	t_map;
 
+typedef struct s_check
+{
+	int end_pos_flag;
+	int start_x;
+	int start_y;
+}	t_check;
 
 typedef struct s_window
 {
@@ -170,6 +176,7 @@ typedef struct s_window
 	t_image		*img;
 	t_player	*player;
 	t_map		*map;
+	t_check		*check;
 	double		scale_factor;
 	double		start_time;
 	double		old_time;

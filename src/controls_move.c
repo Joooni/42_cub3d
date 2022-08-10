@@ -9,8 +9,7 @@ void	ft_move_up(t_window *window)
 			+ window->player->dir->x * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
 			+ window->player->dir->y * window->player->speed) / 32;
-	if (window->map->map[pos_y][pos_x] != '1' \
-		&& window->map->map[pos_y][pos_x] != '2')
+	if (ft_isvalidchar(window, pos_x, pos_y))
 	{
 		window->player->pos->x += window->player->dir->x
 			* window->player->speed;
@@ -28,8 +27,7 @@ void	ft_move_left(t_window *window)
 			+ window->player->dir->y * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
 			- window->player->dir->x * window->player->speed) / 32;
-	if (window->map->map[pos_y][pos_x] != '1' \
-		&& window->map->map[pos_y][pos_x] != '2')
+	if (ft_isvalidchar(window, pos_x, pos_y))
 	{
 		window->player->pos->x -= window->player->plane.x
 			* window->player->speed;
@@ -47,8 +45,7 @@ void	ft_move_right(t_window *window)
 			+ window->player->plane.x * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
 			+ window->player->plane.y * window->player->speed) / 32;
-	if (window->map->map[pos_y][pos_x] != '1' \
-		&& window->map->map[pos_y][pos_x] != '2')
+	if (ft_isvalidchar(window, pos_x, pos_y))
 	{
 		window->player->pos->x += window->player->plane.x
 			* window->player->speed;
@@ -66,8 +63,7 @@ void	ft_move_down(t_window *window)
 			- window->player->dir->x * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
 			- window->player->dir->y * window->player->speed) / 32;
-	if (window->map->map[pos_y][pos_x] != '1' \
-		&& window->map->map[pos_y][pos_x] != '2')
+	if (ft_isvalidchar(window, pos_x, pos_y))
 	{
 		window->player->pos->x -= window->player->dir->x
 			* window->player->speed;

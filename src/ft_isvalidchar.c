@@ -6,17 +6,16 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:35:56 by jsubel            #+#    #+#             */
-/*   Updated: 2022/07/28 13:35:20 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/08/10 12:18:16 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
 
-int	ft_isvalidchar(int c)
+int	ft_isvalidchar(t_window *window, int pos_x, int pos_y)
 {
-	if ((c >= '0' && c <= '3') || c == 'N' || c == 'O' || c == 'S' \
-		|| c == 'W' || c == 'E' || c == 'A' || c == 'F' || c == 'C' \
-		|| c == 'D' || c == 'O' || c == '\n' || c == '1')
+	if (window->map->map[pos_y][pos_x] && (window->map->map[pos_y][pos_x] == '0' \
+		|| window->map->map[pos_y][pos_x] == '3' || ft_strchr(PLAYER_POS, window->map->map[pos_y][pos_x])))
 		return (1);
 	return (0);
 }

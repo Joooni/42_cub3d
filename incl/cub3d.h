@@ -13,7 +13,7 @@
 # define M_TURN_FACTOR		15
 # define M_MINIMAP_FACTOR	0.3
 # define PLAYER_POS			"WESN"
-# define VALID_SYMBOLS		"0123NESW"
+# define VALID_SYMBOLS		"012NESW"
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -98,6 +98,7 @@ typedef struct s_key
 	int		a_d;
 	int		spacebar;
 	int		e;
+	int		m;
 }	t_key;
 
 typedef struct s_player
@@ -259,7 +260,7 @@ void	ft_draw_to_wall(t_rc *ray);
 //map_helper.c
 
 void map_handler(t_window *window);
-int count_map(t_window *window, char *line);
+int	count_map(t_window *window, char *line, int *columns);
 int	safe_preoptions(t_map *map, char *line, int counter);
 int safe_map(t_window *window, int rows);
 
@@ -288,7 +289,7 @@ void	ft_load_textures(t_window *window);
 char	**ft_split_cub3d(const char *s, char c);
 
 // ft_isvalidchar.c
-int	ft_isvalidchar(int c);
+int	ft_isvalidchar(t_window *window, int pos_x, int pos_y);
 int new_line_check(t_window *window, char *line);
 
 //check_map2.c

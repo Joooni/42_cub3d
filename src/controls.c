@@ -22,6 +22,8 @@ int	ft_key_press(int keycode, t_window *window)
 		window->player->key->a_r = 1;
 	if (keycode == KEY_SPACEBAR)
 		window->player->speed = M_SPRINT_SPEED;
+	if (keycode == KEY_M)
+		window->player->key->m = 1;
 	if (keycode == KEY_E && window->player->key->e == 0)
 	{
 		window->time_stamp = curr_time(window);
@@ -54,6 +56,8 @@ int	ft_key_release(int keycode, t_window *window)
 		window->player->mouse_hide = 0;
 	if (keycode == KEY_SPACEBAR)
 		window->player->speed = M_BASE_SPEED;
+	if (keycode == KEY_M)
+		window->player->key->m = 0;
 	if (keycode == KEY_E && window->player->key->e == 1)
 	{
 		window->time_stamp = curr_time(window);

@@ -13,14 +13,7 @@ void	ft_move_up(t_window *window)
 			+ window->player->dir->x * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
 			+ window->player->dir->y * window->player->speed) / 32;
-<<<<<<< HEAD
-	if (window->map->map[pos_y][pos_x] != MAP_WALL
-		&& window->map->map[pos_y][pos_x] != MAP_DOOR_CLOSED
-		&& window->map->map[curr_y][pos_x] != MAP_WALL
-		&& window->map->map[pos_y][curr_x] != MAP_WALL)
-=======
 	if (ft_isvalidchar(window, pos_x, pos_y))
->>>>>>> remotes/origin/check_zeros
 	{
 		window->player->pos->x += window->player->dir->x
 			* window->player->speed;
@@ -42,14 +35,7 @@ void	ft_move_left(t_window *window)
 			+ window->player->dir->y * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
 			- window->player->dir->x * window->player->speed) / 32;
-<<<<<<< HEAD
-	if (window->map->map[pos_y][pos_x] != MAP_WALL
-		&& window->map->map[pos_y][pos_x] != MAP_DOOR_CLOSED
-		&& window->map->map[curr_y][pos_x] != MAP_WALL
-		&& window->map->map[pos_y][curr_x] != MAP_WALL)
-=======
 	if (ft_isvalidchar(window, pos_x, pos_y))
->>>>>>> remotes/origin/check_zeros
 	{
 		window->player->pos->x -= window->player->plane.x
 			* window->player->speed;
@@ -71,14 +57,7 @@ void	ft_move_right(t_window *window)
 			+ window->player->plane.x * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
 			+ window->player->plane.y * window->player->speed) / 32;
-<<<<<<< HEAD
-	if (window->map->map[pos_y][pos_x] != MAP_WALL
-		&& window->map->map[pos_y][pos_x] != MAP_DOOR_CLOSED
-		&& window->map->map[curr_y][pos_x] != MAP_WALL
-		&& window->map->map[pos_y][curr_x] != MAP_WALL)
-=======
 	if (ft_isvalidchar(window, pos_x, pos_y))
->>>>>>> remotes/origin/check_zeros
 	{
 		window->player->pos->x += window->player->plane.x
 			* window->player->speed;
@@ -100,14 +79,7 @@ void	ft_move_down(t_window *window)
 			- window->player->dir->x * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
 			- window->player->dir->y * window->player->speed) / 32;
-<<<<<<< HEAD
-	if (window->map->map[pos_y][pos_x] != MAP_WALL
-		&& window->map->map[pos_y][pos_x] != MAP_DOOR_CLOSED
-		&& window->map->map[curr_y][pos_x] != MAP_WALL
-		&& window->map->map[pos_y][curr_x] != MAP_WALL)
-=======
 	if (ft_isvalidchar(window, pos_x, pos_y))
->>>>>>> remotes/origin/check_zeros
 	{
 		window->player->pos->x -= window->player->dir->x
 			* window->player->speed;

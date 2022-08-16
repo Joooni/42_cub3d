@@ -45,7 +45,7 @@ int	safe_preoptions(t_map *map, char *line, int counter)
 gets triggert when the first character of the line is a number
 safes every row of the map in the char** map and counts the size
 */
-int	count_map(t_window *window, char *line, int *columns)
+int	count_map(t_window *window, char *line)
 {
 	int	i;
 	int	flag;
@@ -54,8 +54,6 @@ int	count_map(t_window *window, char *line, int *columns)
 	flag = 0;
 	while (line[i])
 	{
-		if (ft_isdigit(line[i]))
-			*columns += 1;
 		if (line[i] == 'N' || line[i] == 'E' || line[i] == 'S'
 			|| line[i] == 'W')
 		{
@@ -67,8 +65,8 @@ int	count_map(t_window *window, char *line, int *columns)
 		i++;
 	}
 	window->map->rows++;
-	if (window->map->columns < *columns)
-		window->map->columns = *columns;
+	if (window->map->columns < (int)ft_strlen(line))
+		window->map->columns = ft_strlen(line);
 	return (flag);
 }
 
@@ -127,7 +125,7 @@ void	map_handler(t_window *window)
 		if (ft_isalpha(line[counter]))
 			safe_preoptions(window->map, line, counter);
 		else if (ft_isdigit(line[counter]))
-			player_flag += count_map(window, line, &counter);
+			player_flag += count_map(window, line);
 		free(line);
 		line = get_next_line(fd);
 	}

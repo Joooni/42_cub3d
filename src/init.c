@@ -15,7 +15,6 @@ void	ft_init(t_window *window, char *path)
 	if (set_path(window, path))
 		ft_end_process(ERR_INV_PATH);
 	ft_init_tex(window);
-	// ft_scale_factor(window);
 }
 
 void	ft_init_tex(t_window *window)

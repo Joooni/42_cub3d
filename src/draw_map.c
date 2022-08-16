@@ -55,7 +55,7 @@ static int	ft_draw_map_helper(t_window *window, int x, int y)
 		draw_something(window, x, y, 0x00353542);
 	else if (window->map->map[y][x] == MAP_DOOR_CLOSED)
 		draw_something(window, x, y, 0x00686A6E);
-	if (window->map->map[y][x] == '\n')
+	else if (window->map->map[y][x] == '\n')
 		return (1);
 	return (0);
 }
@@ -72,7 +72,8 @@ void	draw_map(t_window *window)
 		x = 0;
 		while (x < window->map->columns)
 		{
-			if (ft_draw_map_helper(window, x, y))
+			if (window->map->map[y][x]
+				&& ft_draw_map_helper(window, x, y))
 				break ;
 			x++;
 		}

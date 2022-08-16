@@ -28,6 +28,9 @@ void	ft_free_tex(t_window *window)
 	free(window->map->so_tex);
 	ft_free_matrix(window->map->we_tex->matrix);
 	free(window->map->we_tex);
+	free(window->map->wall_o_tex);
+	ft_free_matrix(window->map->wall_c_tex->matrix);
+	free(window->map->wall_c_tex);
 }
 
 void	ft_free_matrix(t_color ***matrix)

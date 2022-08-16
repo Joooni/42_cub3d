@@ -24,11 +24,10 @@ void	render_time(t_window *window)
 	u_int64_t	time;
 	double		frametime;
 
-	temp = ft_calloc(1, sizeof(char *));
 	time = get_time() - window->start_time;
 	// printf("%llu.%llus\n", time / 1000, time % 1000);
 	frametime = (time - window->old_time) / 1000.0;
-	temp = ft_itoa(1 / frametime);
+	temp = ft_itoa((int)(1 / frametime));
 	//printf("FPS: %d\n", (int)(1.0 / frametime));
 	window->old_time = time;
 	// printf("oldtime: %f\n", window->old_time / 1000);

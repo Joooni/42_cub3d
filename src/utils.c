@@ -6,6 +6,7 @@ int	ft_close(t_window *window)
 {
 	ft_free_tex(window);
 	ft_free_player(window);
+	ft_free_map(window);
 	if (window->img->img != NULL)
 	{
 		mlx_destroy_image(window->mlx, window->img->img);

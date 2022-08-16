@@ -5,6 +5,7 @@ void	ft_free_player(t_window *window)
 	free(window->player->key);
 	free(window->player->pos);
 	free(window->player->dir);
+	free(window->check);
 	free(window->player);
 }
 
@@ -37,4 +38,17 @@ void	ft_free_matrix(t_color ***matrix)
 	while (++i < M_TEXTURE_HEIGHT)
 		free(matrix[i]);
 	free(matrix);
+}
+
+void	ft_free_map(t_window *window)
+{
+	int	i;
+
+	i = 0;
+	while (i < window->map->rows)
+	{
+		free(window->map->map[i]);
+		i++;
+	}
+	free(window->map->map);
 }

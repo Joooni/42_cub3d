@@ -8,7 +8,7 @@ void print_read(t_window *window)
 	int i = 0;
 	while (i < window->map->rows)
 	{
-		printf("line[%d] %s", i, window->map->map[i]);
+		printf("line[%d]  \t%s", i, window->map->map[i]);
 		i++;
 	}
 	//printf("F: %d,%d,%d C: %d,%d,%d\n rows: %d\ncolumns: %d\ndirection: %c\n", window->map->f->red, window->map->f->green, window->map->f->blue, window->map->c->red, window->map->c->green, window->map->c->blue, window->map->rows, window->map->columns, window->map->direction);
@@ -37,7 +37,6 @@ int	main(int argc, char **argv)
 	ft_init(window, argv[1]);
 	mlx_mouse_move(window->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 	map_handler(window);
-	print_read(window);
 	ft_init_player_dir(window->player, window->map->direction);
 	textures_handler(window);
 	mlx_loop_hook(window->mlx, ft_render_next_frame, window);

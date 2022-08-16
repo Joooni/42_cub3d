@@ -53,7 +53,7 @@ $(NAME): $(LIBFT)/libft.a $(SRC)
 	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 
 debug: $(LIBFT)/libft.a $(SRC)
-	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -g -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
+	$(GCC) $(OBJ) $(FLAGS) $^ -L $(LIBFT) -ggdb3 -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 
 test:
 	make
@@ -61,7 +61,7 @@ test:
 
 leaks:
 	make
-	leaks --atExit -- ./cub3d maps/test.cub
+	leaks --fullStacks --atExit -- ./cub3d maps/test.cub
 
 clean:
 	make clean -C $(LIBFT)

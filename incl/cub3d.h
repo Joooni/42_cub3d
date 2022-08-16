@@ -214,7 +214,7 @@ void	ft_free_ray(t_rc *ray);
 void	ft_free_player(t_window *window);
 void	ft_free_tex(t_window *window);
 void	ft_free_matrix(t_color ***matrix);
-
+void	ft_free_map(t_window *window);
 // controls.c
 
 int		ft_key_press(int keycode, t_window *window);

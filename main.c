@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 	ft_init(window, argv[1]);
 	mlx_mouse_move(window->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 	map_handler(window);
+	print_read(window);
 	ft_init_player_dir(window->player, window->map->direction);
 	textures_handler(window);
 	mlx_loop_hook(window->mlx, ft_render_next_frame, window);

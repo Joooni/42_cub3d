@@ -24,4 +24,5 @@
 # define KEY_C				8
 # define KEY_P				35
 # define KEY_SPACEBAR		49
+# define KEY_M				46
 #endif

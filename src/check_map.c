@@ -44,7 +44,7 @@ int	check_map(t_window *window)
 		j = 0;
 		while (window->map->map[i][j] && window->map->map[i][j] != '\n' )
 		{
-			if (window->map->map[i][j] == '0'
+			if (window->map->map[i][j] == '0' || window->map->map[i][j] == '2'
 				|| ft_strchr(PLAYER_POS, window->map->map[i][j]))
 			{
 				if (!character_is_surrounded(window, i, j)

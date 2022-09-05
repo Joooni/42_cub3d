@@ -1,25 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/05 13:08:29 by jtomala           #+#    #+#             */
+/*   Updated: 2022/09/05 13:08:44 by jtomala          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "incl/cub3d.h"
-
-/*
-small testfunction to see what got red
-*/
-void print_read(t_window *window)
-{
-	int i = 0;
-	while (i < window->map->rows)
-	{
-		printf("line[%d]  \t%s", i, window->map->map[i]);
-		i++;
-	}
-	//printf("F: %d,%d,%d C: %d,%d,%d\n rows: %d\ncolumns: %d\ndirection: %c\n", window->map->f->red, window->map->f->green, window->map->f->blue, window->map->c->red, window->map->c->green, window->map->c->blue, window->map->rows, window->map->columns, window->map->direction);
-	//printf("Player x: %d y: %d\n", (int)window->player->pos->x, (int)window->player->pos->y);
-
-	// printf("-------\nTEST\n---------\nmap[6][31]: %c\n------------\n", window->map->map[6][31]);
-	// if (window->map->map[6][31] != '1')
-	// 	printf("true\n");
-	// else
-	// 	printf("false\n");
-}
 
 int	main(int argc, char **argv)
 {
@@ -46,5 +37,3 @@ int	main(int argc, char **argv)
 	mlx_loop(window->mlx);
 	return (0);
 }
-
-

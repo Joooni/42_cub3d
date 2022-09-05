@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/05 13:06:26 by jtomala           #+#    #+#             */
+/*   Updated: 2022/09/05 13:21:37 by jtomala          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 
 # define CUB3D_H
@@ -194,8 +206,8 @@ typedef struct s_window
 
 //time.c
 long long	get_time(void);
-long long curr_time(t_window *window);
-void	render_time(t_window *window);
+long long 	curr_time(t_window *window);
+void		render_time(t_window *window);
 
 // init.c
 
@@ -270,11 +282,11 @@ int 	safe_map(t_window *window, int rows);
 
 // check_map.c
 
-int	check_map(t_window *window);
+int		check_map(t_window *window);
 
 //check_map_utils.c
 
-int	init_colors(t_window *window);
+int		init_colors(t_window *window);
 
 //draw_map.c
 
@@ -293,14 +305,18 @@ void	ft_load_textures(t_window *window);
 char	**ft_split_cub3d(const char *s, char c);
 
 // ft_isvalidchar.c
-int	ft_isvalidchar(t_window *window, int pos_x, int pos_y);
-int new_line_check(t_window *window, char *line);
+int		ft_isvalidchar(t_window *window, int pos_x, int pos_y);
+int		new_line_check(t_window *window, char *line);
 
 //check_map2.c
-int	square_exists(t_window *window, int i, int j);
-int	square_below_exists(t_window *window, int i, int j);
-int	square_above_exists(t_window *window, int i, int j);
-int	square_left_exists(t_window *window, int i, int j);
-int	square_right_exists(t_window *window, int i, int j);
+int		square_exists(t_window *window, int i, int j);
+int		square_below_exists(t_window *window, int i, int j);
+int		square_above_exists(t_window *window, int i, int j);
+int		square_left_exists(t_window *window, int i, int j);
+int		square_right_exists(t_window *window, int i, int j);
+
+//movement.c
+void	ft_key_press2(int keycode, t_window *window);
+void	ft_key_release2(int keycode, t_window *window);
 
 #endif

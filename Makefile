@@ -34,6 +34,7 @@ SRC =	main.c \
 		$(SRC_PATH)ft_isvalidchar.c \
 		$(SRC_PATH)time.c \
 		$(SRC_PATH)check_map2.c \
+		$(SRC_PATH)movement.c \
 
 
 # -*- Objects -*-

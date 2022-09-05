@@ -1,25 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   controls.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/05 13:07:27 by jtomala           #+#    #+#             */
+/*   Updated: 2022/09/05 13:20:10 by jtomala          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incl/cub3d.h"
 
 int	ft_key_press(int keycode, t_window *window)
 {
-	if (keycode == KEY_ESCAPE)
-		ft_close(window);
-	if (keycode == KEY_W)
-		window->player->key->w = 1;
-	if (keycode == KEY_A)
-		window->player->key->a = 1;
-	if (keycode == KEY_S)
-		window->player->key->s = 1;
-	if (keycode == KEY_D)
-		window->player->key->d = 1;
-	if (keycode == ARROW_UP)
-		window->player->key->a_u = 1;
-	if (keycode == ARROW_DOWN)
-		window->player->key->a_d = 1;
-	if (keycode == ARROW_LEFT)
-		window->player->key->a_l = 1;
-	if (keycode == ARROW_RIGHT)
-		window->player->key->a_r = 1;
+	ft_key_press2(keycode, window);
 	if (keycode == KEY_SPACEBAR)
 		window->player->speed = M_SPRINT_SPEED;
 	if (keycode == KEY_M)
@@ -34,22 +29,7 @@ int	ft_key_press(int keycode, t_window *window)
 
 int	ft_key_release(int keycode, t_window *window)
 {
-	if (keycode == KEY_W)
-		window->player->key->w = 0;
-	if (keycode == KEY_A)
-		window->player->key->a = 0;
-	if (keycode == KEY_S)
-		window->player->key->s = 0;
-	if (keycode == KEY_D)
-		window->player->key->d = 0;
-	if (keycode == ARROW_UP)
-		window->player->key->a_u = 0;
-	if (keycode == ARROW_DOWN)
-		window->player->key->a_d = 0;
-	if (keycode == ARROW_LEFT)
-		window->player->key->a_l = 0;
-	if (keycode == ARROW_RIGHT)
-		window->player->key->a_r = 0;
+	ft_key_release2(keycode, window);
 	if (keycode == KEY_P && window->player->mouse_hide == 0)
 		window->player->mouse_hide = 1;
 	else if (keycode == KEY_P && window->player->mouse_hide == 1)

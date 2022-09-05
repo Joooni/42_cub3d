@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/05 13:07:30 by jtomala           #+#    #+#             */
+/*   Updated: 2022/09/05 13:22:21 by jtomala          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incl/cub3d.h"
 
 static void	ft_scale_factor(t_window *window, int map_flag)
@@ -28,19 +40,6 @@ static void	draw_something(t_window *window, int x, int y, int color)
 	rect.color = color;
 	ft_draw_rect(window, rect);
 }
-
-// static int	player_flag(t_window *window, int y, int x)
-// {
-// 	char	**map;
-
-// 	map = window->map->map;
-// 	if (map[y][x] != 'N' && map[y][x] != 'N' \
-// 		&& map[y][x] != 'E' && map[y][x] != 'E' \
-// 		&& map[y][x] != 'S' && map[y][x] != 'S' \
-// 		&& map[y][x] != 'W' && map[y][x] != 'W')
-// 		return (0);
-// 	return (1);
-// }
 
 static int	ft_draw_map_helper(t_window *window, int x, int y)
 {

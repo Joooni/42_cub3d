@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/05 13:07:18 by jtomala           #+#    #+#             */
+/*   Updated: 2022/09/05 13:10:42 by jtomala          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incl/cub3d.h"
 
 int	char_surrounded_my_valid(t_window *window, int i, int j)
@@ -46,13 +58,9 @@ int	check_map(t_window *window)
 		{
 			if (window->map->map[i][j] == '0' || window->map->map[i][j] == '2'
 				|| ft_strchr(PLAYER_POS, window->map->map[i][j]))
-			{
 				if (!character_is_surrounded(window, i, j)
 					|| !char_surrounded_my_valid(window, i, j))
-				{
 					return (0);
-				}
-			}
 			j++;
 		}
 		i++;

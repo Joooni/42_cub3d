@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:07:18 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:10:42 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 13:59:46 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,11 @@ int	character_is_surrounded(t_window *window, int i, int j)
 	return (1);
 }
 
-/*
-handler function which checks if the map fits to the requirements
-[8] [1] [2]
-[7] [S] [3]
-[6] [5] [4]
-*/
 int	check_map(t_window *window)
 {
 	int		i;
 	int		j;
-	int		counter;
 
-	counter = 0;
 	i = 0;
 	j = 0;
 	while (window->map->map[i] != NULL && i < window->map->rows)

@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:07:25 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:07:26 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 14:00:51 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ void	ft_move_up(t_window *window)
 {
 	int	pos_x;
 	int	pos_y;
-	int	curr_x;
-	int	curr_y;
 
-	curr_x = (int)window->player->pos->x / 32;
-	curr_y = (int)window->player->pos->y / 32;
 	pos_x = (window->player->pos->x
 			+ window->player->dir->x * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
@@ -38,11 +34,7 @@ void	ft_move_left(t_window *window)
 {
 	int	pos_x;
 	int	pos_y;
-	int	curr_x;
-	int	curr_y;
 
-	curr_x = (int)window->player->pos->x / 32;
-	curr_y = (int)window->player->pos->y / 32;
 	pos_x = (window->player->pos->x
 			+ window->player->dir->y * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
@@ -60,11 +52,7 @@ void	ft_move_right(t_window *window)
 {
 	int	pos_x;
 	int	pos_y;
-	int	curr_x;
-	int	curr_y;
 
-	curr_x = (int)window->player->pos->x / 32;
-	curr_y = (int)window->player->pos->y / 32;
 	pos_x = (window->player->pos->x
 			+ window->player->plane.x * window->player->speed) / 32;
 	pos_y = (window->player->pos->y
@@ -82,11 +70,7 @@ void	ft_move_down(t_window *window)
 {
 	int	pos_x;
 	int	pos_y;
-	int	curr_x;
-	int	curr_y;
 
-	curr_x = (int)window->player->pos->x / 32;
-	curr_y = (int)window->player->pos->y / 32;
 	pos_x = (window->player->pos->x
 			- window->player->dir->x * window->player->speed) / 32;
 	pos_y = (window->player->pos->y

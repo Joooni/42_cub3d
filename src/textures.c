@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:08:09 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:08:10 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 13:59:08 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ static t_color	***create_matrix(t_textures *tex, int height, int width)
 
 void	textures_handler(t_window *window)
 {
-	t_map	*map;
 	int		width;
 	int		height;
 
-	map = window->map;
 	width = M_TEXTURE_WIDTH;
 	height = M_TEXTURE_HEIGHT;
 	ft_load_textures(window);
@@ -99,12 +97,8 @@ void	ft_load_textures(t_window *window)
 static void	ft_get_tex_address(t_window *window)
 {
 	t_map	*map;
-	int		width;
-	int		height;
 
 	map = window->map;
-	width = M_TEXTURE_WIDTH;
-	height = M_TEXTURE_HEIGHT;
 	map->no_tex->addr = mlx_get_data_addr(map->no_tex->img, \
 		&(map->no_tex->bpp), &(map->no_tex->line_len), &(map->no_tex->endian));
 	map->so_tex->addr = mlx_get_data_addr(map->so_tex->img, \

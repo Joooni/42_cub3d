@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:06:50 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:06:51 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 13:28:27 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # define ARROW_UP			126
 # define ARROW_DOWN			125
 
-#  define KEY_W				13
-#  define KEY_A				0
-#  define KEY_S				1
-#  define KEY_D				2
-#  define KEY_E				14
+# define KEY_W				13
+# define KEY_A				0
+# define KEY_S				1
+# define KEY_D				2
+# define KEY_E				14
 
-#  define MOUSE_UP			4
-#  define MOUSE_DOWN		5
+# define MOUSE_UP			4
+# define MOUSE_DOWN		5
 
 # define KEY_ESCAPE			53
 # define KEY_SPACE			49

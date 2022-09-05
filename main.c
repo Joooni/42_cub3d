@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:08:29 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:08:44 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 17:28:14 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	main(int argc, char **argv)
 	t_window	*window;
 	void		*mlx;
 
+	if (argc != 2)
+		ft_end_process(ERR_INV_INPUT);
 	window = (t_window *)ft_calloc(1, sizeof(t_window));
 	window->map = (t_map *)ft_calloc(1, sizeof(t_map));
 	if (!window || !window->map)
 		ft_end_process(ERR_MLX_INIT);
-	if (argc != 2)
-		ft_end_process(ERR_INV_INPUT);
 	mlx = mlx_init();
 	window->mlx = mlx;
 	ft_init(window, argv[1]);

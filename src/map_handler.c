@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:07:58 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:25:26 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 17:23:37 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	safe_map(t_window *window, int rows)
 	int		counter;
 	char	*line;
 
+	check_if_exists(window);
 	window->map->map = (char **)ft_calloc(rows, sizeof(char *));
 	i = 0;
 	fd = open(window->map->path, O_RDONLY);

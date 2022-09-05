@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:06:26 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:33:38 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 17:26:31 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,6 +308,8 @@ int			square_below_exists(t_window *window, int i, int j);
 int			square_above_exists(t_window *window, int i, int j);
 int			square_left_exists(t_window *window, int i, int j);
 int			square_right_exists(t_window *window, int i, int j);
+
+void check_if_exists(t_window *window);
 
 //movement.c
 void		ft_key_press2(int keycode, t_window *window);

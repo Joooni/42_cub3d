@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:08:15 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:08:16 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 17:26:09 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ int	ft_tcolor_to_int(t_color color)
 {
 	return (color.t << 24 | color.red << 16
 		| color.green << 8 | color.blue);
+}
+
+void check_if_exists(t_window *window)
+{
+	if (window->map->c_tex == NULL || window->map->f_tex == NULL)
+		ft_end_process(ERR_INV_TEX);
 }

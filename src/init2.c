@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:07:55 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:07:56 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 13:25:09 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_init_player(t_window *window)
 	window->player->mouse_x = 0;
 	window->player->mouse_hide = 0;
 	window->player->speed = M_BASE_SPEED;
-	//check
 	window->check = (t_check *)ft_calloc(1, sizeof(t_check));
 	window->check->end_pos_flag = 1;
 }

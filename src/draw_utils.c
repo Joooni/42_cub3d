@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:07:37 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:07:38 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 13:23:09 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,9 @@ int	ft_render_next_frame(t_window *window)
 		}
 		y++;
 	}
-	// ft_grid_highlight(window);
 	ft_cast_ray(window);
 	ft_move(window);
 	draw_map(window);
-	// ft_draw_grid(window);
-	// ft_grid_highlight(window);
-	// ft_draw_player(window);
 	mlx_put_image_to_window(window->mlx, window->win, window->img->img, 0, 0);
 	render_time(window);
 	return (0);

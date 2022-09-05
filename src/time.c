@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:08:12 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:08:13 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 13:26:32 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ long long	get_time(void)
 }
 
 // Returns the time since program start in milliseconds
-long long curr_time(t_window *window)
+long long	curr_time(t_window *window)
 {
 	return ((get_time() - window->start_time));
 }
@@ -37,13 +37,12 @@ void	render_time(t_window *window)
 	double		frametime;
 
 	time = get_time() - window->start_time;
-	// printf("%llu.%llus\n", time / 1000, time % 1000);
 	frametime = (time - window->old_time) / 1000.0;
 	temp = ft_itoa((int)(1 / frametime));
-	//printf("FPS: %d\n", (int)(1.0 / frametime));
 	window->old_time = time;
-	// printf("oldtime: %f\n", window->old_time / 1000);
-	mlx_string_put(window->mlx, window->win, WINDOW_WIDTH - 50, 25, 0x444444, temp);
-	mlx_string_put(window->mlx, window->win, WINDOW_WIDTH - 35, 25, 0x444444, "FPS");
+	mlx_string_put(window->mlx, window->win, WINDOW_WIDTH - 50, 25, \
+		0x444444, temp);
+	mlx_string_put(window->mlx, window->win, WINDOW_WIDTH - 35, 25, \
+		0x444444, "FPS");
 	free(temp);
 }

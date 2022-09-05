@@ -6,7 +6,7 @@
 /*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:35:56 by jsubel            #+#    #+#             */
-/*   Updated: 2022/09/05 13:07:45 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/09/05 13:24:49 by jtomala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int	ft_isvalidchar(t_window *window, int pos_x, int pos_y)
 {
-	if (window->map->map[pos_y][pos_x] && (window->map->map[pos_y][pos_x] == '0' \
-		|| window->map->map[pos_y][pos_x] == '3' || ft_strchr(PLAYER_POS, window->map->map[pos_y][pos_x])))
+	if (window->map->map[pos_y][pos_x] && \
+		(window->map->map[pos_y][pos_x] == '0' \
+		|| window->map->map[pos_y][pos_x] == '3' \
+		|| ft_strchr(PLAYER_POS, window->map->map[pos_y][pos_x])))
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:07:41 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:23:34 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:29:00 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	ft_free_tex(t_window *window)
 	free(window->map->wall_o_tex);
 	ft_free_matrix(window->map->wall_c_tex->matrix);
 	free(window->map->wall_c_tex);
+	ft_free_matrix(window->map->gui_tex->matrix);
+	free(window->map->gui_tex);
+
 }
 
 void	ft_free_matrix(t_color ***matrix)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:08:05 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:08:06 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:30:41 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	ft_calc_hit(t_map map, t_rc *ray)
 			ray->door_pos.y = ray->map_pos->y;
 			ray->door_flag = 1;
 		}
+		else if (map.map[ray->map_pos->y][ray->map_pos->x] == SECRET_GUI)
+			ray->hit = 4;
 	}
 }
 

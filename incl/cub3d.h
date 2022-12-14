@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:06:26 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 17:26:31 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:29:36 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define CUB3D_H
 
 # define WINDOW_WIDTH		1281
-# define WINDOW_HEIGHT		1080
+# define WINDOW_HEIGHT		1000
 # define M_DEGREE_TURN		0.05
 # define M_FOV				0.66
 # define M_BASE_SPEED		2
@@ -25,11 +25,12 @@
 # define M_TURN_FACTOR		15
 # define MINIMAP_FACTOR		0.3
 # define PLAYER_POS			"WESN"
-# define VALID_SYMBOLS		"0123NESW"
+# define VALID_SYMBOLS		"01234NESW"
 # define MAP_EMPTY_SPACE	'0'
 # define MAP_WALL			'1'
 # define MAP_DOOR_CLOSED	'2'
 # define MAP_DOOR_OPEN		'3'
+# define SECRET_GUI			'4'
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -176,6 +177,7 @@ typedef struct s_map
 	t_textures	*so_tex;
 	t_textures	*we_tex;
 	t_textures	*ea_tex;
+	t_textures	*gui_tex;
 	t_textures	*wall_o_tex;
 	t_textures	*wall_c_tex;
 }	t_map;

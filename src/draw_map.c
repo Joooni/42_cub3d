@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:07:30 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:22:21 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:57:09 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	draw_something(t_window *window, int x, int y, int color)
 
 static int	ft_draw_map_helper(t_window *window, int x, int y)
 {
-	if (window->map->map[y][x] == MAP_WALL)
+	if (window->map->map[y][x] == MAP_WALL || window->map->map[y][x] == SECRET_GUI)
 		draw_something(window, x, y, 0x00303096);
 	else if ((y == (int)window->player->pos->y / 32 && x == (int) \
 		window->player->pos->x / 32))

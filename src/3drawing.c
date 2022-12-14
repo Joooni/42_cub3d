@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3drawing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:07:00 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:12:39 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:45:16 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	drawing_handler(t_window *window, t_rc *ray, int x)
 						->matrix[ray->tex.y][ray->tex.x]));
 		else if (ray->side == 0 && ray->dir->x < 0 && ray->hit == 1)
 			ray->color = ft_tcolor_to_int(*(window->map->we_tex
+						->matrix[ray->tex.y][ray->tex.x]));
+		else if (ray->hit == 4)
+			ray->color = ft_tcolor_to_int(*(window->map->gui_tex
 						->matrix[ray->tex.y][ray->tex.x]));
 		ft_pixel_put_img(window->img, x, ray->draw_start, ray->color);
 		ray->draw_start++;

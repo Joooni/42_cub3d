@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtomala <jtomala@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:07:52 by jtomala           #+#    #+#             */
-/*   Updated: 2022/09/05 13:07:53 by jtomala          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:47:36 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_init_tex(t_window *window)
 	window->map->we_tex = ft_calloc(1, sizeof(t_textures));
 	window->map->wall_o_tex = ft_calloc(1, sizeof(t_textures));
 	window->map->wall_c_tex = ft_calloc(1, sizeof(t_textures));
+	window->map->gui_tex = ft_calloc(1, sizeof(t_textures));
 	window->map->wall_o_tex->open_flag = 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:08:12 by jtomala           #+#    #+#             */
-/*   Updated: 2022/12/14 17:02:34 by jsubel           ###   ########.fr       */
+/*   Updated: 2022/12/15 10:41:12 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,21 @@ void	render_time(t_window *window)
 	frametime = (time - window->old_time) / 1000.0;
 	temp = ft_itoa((int)(1 / frametime));
 	window->old_time = time;
+	int color;
+	color = 0x444444;
+	if (window->player->key->m == 1)
+		color = 0xFFFFFF;
 	mlx_string_put(window->mlx, window->win, WINDOW_WIDTH - 50, 25, \
-		0x444444, temp);
+		color, temp);
 	mlx_string_put(window->mlx, window->win, WINDOW_WIDTH - 35, 25, \
-		0x444444, "FPS");
+		color, "FPS");
 	mlx_string_put(window->mlx, window->win, 35, WINDOW_HEIGHT - 75, \
-		0x444444, "ESCAPE\t - CLOSE GAME");
+		color, "ESCAPE\t - CLOSE GAME");
 	mlx_string_put(window->mlx, window->win, 35, WINDOW_HEIGHT - 60, \
-		0x444444, "SPACEBAR\t - SPRINT");
+		color, "SPACEBAR\t - SPRINT");
 	mlx_string_put(window->mlx, window->win, 35, WINDOW_HEIGHT - 45, \
-		0x444444, "M\t - MINIMAP");
+		color, "M\t - MINIMAP");
 	mlx_string_put(window->mlx, window->win, 35, WINDOW_HEIGHT - 30, \
-		0x444444, "E\t - OPEN/CLOSE DOOR");
+		color, "E\t - OPEN/CLOSE DOOR");
 	free(temp);
 }

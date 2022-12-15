@@ -6,7 +6,7 @@
 /*   By: jsubel <jsubel@student.42wolfsburg.de >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:06:26 by jtomala           #+#    #+#             */
-/*   Updated: 2022/12/14 17:06:10 by jsubel           ###   ########.fr       */
+/*   Updated: 2022/12/15 10:26:19 by jsubel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 # define CUB3D_H
 
-# define WINDOW_WIDTH		1000
-# define WINDOW_HEIGHT		1000
+# define WINDOW_WIDTH		1080
+# define WINDOW_HEIGHT		850
 # define M_DEGREE_TURN		0.05
 # define M_FOV				0.66
 # define M_BASE_SPEED		2
